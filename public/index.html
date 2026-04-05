@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MISFAT CMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brand:#C61F26; --brand2:#9F171C; --accent:#1E293B; --bg:#F8FAFC; --panel:#fff; --line:#E2E8F0; --text:#1E293B; --muted:#64748B;
+  --radius:24px; --shadow:0 16px 40px rgba(2,6,23,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
+button,input,textarea,select{font:inherit}
+a{text-decoration:none;color:inherit}
+.container{max-width:1280px;margin:0 auto;padding:0 28px}
+.hide{display:none!important}
+.nav{position:fixed;top:0;left:0;right:0;height:82px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid rgba(15,23,42,.06);z-index:1000}
+.nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:14px;background:none;border:none;cursor:pointer}
+.logo-mark{width:56px;height:44px;border:2px solid var(--brand);border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--brand);background:#fff;overflow:hidden}
+.logo-mark img{width:100%;height:100%;object-fit:cover}
+.logo-name{font-family:Barlow,Inter,sans-serif;font-size:30px;line-height:1;font-weight:800;color:var(--brand)}
+.logo-sub{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:#64748B;margin-top:5px}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-link{background:none;border:none;padding:10px 12px;cursor:pointer;font-size:13px;font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:#334155;position:relative}
+.nav-link.active,.nav-link:hover{color:var(--brand)}
+.nav-link.active:after,.nav-link:hover:after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;background:var(--brand)}
+.nav-right{display:flex;gap:10px;align-items:center}
+.btn{border:none;border-radius:14px;cursor:pointer;font-weight:700;transition:.2s}
+.btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
+.btn.white{background:#fff;border:1px solid var(--line);color:#334155}
+.btn{padding:11px 16px}
+.user-badge{display:none;background:#fff;border:1px solid rgba(198,31,38,.2);padding:9px 13px;border-radius:999px;font-size:12px;font-weight:700;color:var(--brand)}
+.page{display:none;padding-top:82px;min-height:100vh}
+.page.active{display:block}
+.hero{position:relative;background:linear-gradient(110deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.93) 54%,rgba(226,232,240,.86) 100%),radial-gradient(circle at top right,rgba(198,31,38,.12),transparent 35%);overflow:hidden}
+.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,transparent 0 65%,rgba(198,31,38,.05) 65% 100%)}
+.hero-wrap{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:30px;align-items:center;min-height:calc(100vh - 82px);padding:54px 0 60px}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid rgba(198,31,38,.18);color:var(--brand);font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
+.hero h1{font-size:clamp(48px,6vw,82px);line-height:.94;letter-spacing:-2.8px;font-weight:800;max-width:780px;margin:20px 0 18px}
+.hero h1 span{color:var(--brand)}
+.hero p{font-size:18px;line-height:1.8;color:#475569;max-width:650px;margin-bottom:26px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-actions .btn{padding:16px 24px}
+.hero-visual{min-height:580px;border-radius:32px;overflow:hidden;position:relative;box-shadow:var(--shadow);background:linear-gradient(155deg,#2B313A 0%, #3A414B 40%, #D5DAE1 40%, #F5F7FA 100%)}
+.hero-band{position:absolute;inset:0 0 auto 0;height:88px;background:linear-gradient(90deg,var(--brand) 0 34%, rgba(255,255,255,.92) 34% 100%)}
+.hero-chip{position:absolute;top:26px;left:26px;background:#fff;border-radius:999px;padding:10px 14px;font-size:12px;font-weight:800;color:var(--brand);letter-spacing:1.2px}
+.hero-panel{position:absolute;right:24px;top:118px;width:300px;background:rgba(255,255,255,.98);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
+.hero-panel .small{font-size:12px;text-transform:uppercase;color:#64748B;letter-spacing:1.7px;font-weight:800}
+.hero-panel .big{font-size:40px;line-height:1;color:var(--brand);font-weight:800;margin:10px 0}
+.hero-panel p{font-size:14px;color:#64748B;line-height:1.7}
+.hero-card{position:absolute;left:28px;right:110px;bottom:28px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:28px;padding:28px;border:1px solid rgba(255,255,255,.7)}
+.hero-card h3{font-size:36px;line-height:1.03;letter-spacing:-1px;margin-bottom:10px}
+.hero-card p{font-size:15px;line-height:1.75;color:#566273}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-38px;position:relative;z-index:5}
+.kpi,.card{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+.kpi{padding:24px}
+.kpi .v{font-size:46px;line-height:1;font-weight:800;color:var(--brand)}
+.kpi .t{margin-top:8px;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#64748B;font-weight:800}
+.section{padding:84px 0}
+.section-alt{background:#fff}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:30px}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2.4px;text-transform:uppercase;color:var(--brand);margin-bottom:12px}
+.h2{font-size:44px;line-height:1.02;letter-spacing:-1.6px;font-weight:800;max-width:860px}
+.lead{max-width:740px;color:var(--muted);font-size:17px;line-height:1.75}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.tile,.qse-card,.story,.info-card,.contact-panel,.login-panel,.editor-panel,.admin-panel{padding:26px}
+.tile-icon{width:56px;height:56px;border-radius:18px;background:rgba(198,31,38,.08);display:flex;align-items:center;justify-content:center;font-size:25px;color:var(--brand);margin-bottom:18px}
+.tile h3{font-size:21px;line-height:1.15;margin-bottom:10px}
+.tile p,.story p,.qse-card p,.info-card p,.contact-panel p,.editor-panel p{font-size:15px;line-height:1.75;color:var(--muted)}
+.solution{padding:0;overflow:hidden;cursor:pointer}
+.solution-top{height:196px;background:linear-gradient(150deg,#E2E8F0 0%,#F8FAFC 56%, #D4DCE4 56%, #EFF4F9 100%);position:relative;padding:22px;display:flex;align-items:end}
+.solution-icon{font-size:82px;line-height:1}
+.solution-badge{position:absolute;top:18px;right:18px;padding:8px 12px;background:var(--brand);color:#fff;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
+.solution-body{padding:22px}
+.solution-ref{font-size:12px;color:var(--brand);font-weight:800;letter-spacing:1.6px;margin-bottom:8px}
+.solution-name{font-size:22px;font-weight:800;line-height:1.14;margin-bottom:10px}
+.solution-foot{display:flex;align-items:center;justify-content:space-between;margin-top:16px}
+.price{font-size:34px;color:var(--brand);font-weight:800;line-height:1}
+.price span{font-size:13px;color:#64748B;font-weight:700}
+.page-top{background:linear-gradient(180deg,#fff 0%,#F3F6F9 100%);border-bottom:1px solid var(--line)}
+.page-title{font-size:58px;line-height:1;letter-spacing:-1.6px;font-weight:800;margin-bottom:12px}
+.page-sub{font-size:17px;line-height:1.75;color:var(--muted);max-width:800px}
+.page-top .container{padding-top:42px;padding-bottom:40px}
+.filters{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
+.search-wrap{flex:1;min-width:300px;position:relative}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#64748B}
+.search-input,.form-input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--text);outline:none}
+.search-input{padding-left:42px}
+.cat-filters{display:flex;flex-wrap:wrap;gap:8px}
+.cat-btn{border:none;background:#fff;border:1px solid var(--line);padding:11px 16px;border-radius:999px;cursor:pointer;font-weight:800;color:#475569}
+.cat-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
+.partner-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.partner{height:94px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#7C8593}
+.contact-grid,.product-detail,.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.info-row{display:flex;gap:14px;margin-bottom:18px}
+.info-icon{width:48px;height:48px;border-radius:16px;background:rgba(198,31,38,.08);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--brand);flex:0 0 48px}
+.map-box{min-height:190px;border:1px dashed rgba(198,31,38,.32);border-radius:20px;background:linear-gradient(135deg,rgba(198,31,38,.05),rgba(15,23,42,.02));display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#475569}
+.login-wrap{min-height:calc(100vh - 82px);display:flex;align-items:center;justify-content:center;padding:26px}
+.success-msg,.error-msg{display:none;padding:13px 16px;border-radius:16px;font-size:14px;font-weight:700;margin-bottom:14px}
+.success-msg.show,.error-msg.show{display:block}
+.success-msg{background:#ECFDF5;color:#047857;border:1px solid #A7F3D0}
+.error-msg{background:#FEF2F2;color:#B91C1C;border:1px solid #FECACA}
+.demo-box{margin-top:18px;padding:16px;border-radius:18px;background:#F8FAFC;border:1px dashed var(--line);line-height:1.8;color:#475569}
+.admin-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px}
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
+.admin-panel .n{font-size:42px;line-height:1;font-weight:800;color:var(--brand)}
+.admin-panel .t{margin-top:6px;font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;font-weight:800}
+.admin-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.admin-tab{border:none;background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800;color:#475569}
+.admin-tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
+.admin-section{display:none}
+.admin-section.active{display:block}
+.editor-field{margin-bottom:12px}
+.editor-field.full{grid-column:1/-1}
+.editor-field label,.form-label{display:block;margin-bottom:8px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#64748B}
+.editor-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse}
+th,td{padding:16px 18px;border-bottom:1px solid var(--line);text-align:left}
+th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;background:#FAFBFC}
+.table-product{display:flex;align-items:center;gap:12px}
+.table-product-icon{width:44px;height:44px;border-radius:14px;background:#F1F5F9;display:flex;align-items:center;justify-content:center;font-size:22px}
+.footer{background:#1F2937;color:#E5E7EB}
+.footer-inner{padding:56px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:28px}
+.footer-title{font-size:13px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:14px}
+.footer-link{display:block;background:none;border:none;color:#D1D5DB;cursor:pointer;text-align:left;margin:10px 0}
+.footer-copy{margin-top:22px;padding-top:18px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;font-size:13px;color:#CBD5E1}
+.modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.58);z-index:2000;align-items:center;justify-content:center;padding:22px}
+.modal.show{display:flex}
+.modal-box{max-width:640px;width:100%;padding:28px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+.modal-box h3{font-size:30px;line-height:1;font-weight:800;margin-bottom:18px}
+.full{grid-column:1/-1}
+@media (max-width:1100px){.hero-wrap,.product-detail,.contact-grid,.grid-2,.footer-grid,.grid-4,.admin-stats,.partner-grid,.grid-3{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){.nav-links{display:none}.hero-wrap,.product-detail,.contact-grid,.grid-2,.grid-3,.grid-4,.footer-grid,.admin-stats,.partner-grid,.editor-grid{grid-template-columns:1fr}.hero-visual{min-height:460px}.hero-card{right:28px}.kpis{grid-template-columns:1fr}.page-title{font-size:44px}.h2{font-size:34px}}
+</style>
+</head>
+<body>
+<div class="nav">
+  <div class="container nav-inner">
+    <button class="logo" onclick="showPage('home')">
+      <div class="logo-mark" id="logo-mark"></div>
+      <div>
+        <div class="logo-name" id="brand-name"></div>
+        <div class="logo-sub" id="brand-subtitle"></div>
+      </div>
+    </button>
+    <div class="nav-links" id="nav-links"></div>
+    <div class="nav-right">
+      <span class="user-badge" id="user-badge"></span>
+      <button class="btn white" id="login-btn" onclick="showPage('login')">Connexion</button>
+      <button class="btn white hide" id="logout-btn" onclick="logout()">Déconnexion</button>
+    </div>
+  </div>
+</div>
+
+<div class="page active" id="page-home">
+  <section class="hero">
+    <div class="container">
+      <div class="hero-wrap">
+        <div>
+          <div class="badge"><span class="badge-dot"></span><span id="hero-badge"></span></div>
+          <h1 id="hero-title"></h1>
+          <p id="hero-text"></p>
+          <div class="hero-actions">
+            <button class="btn primary" onclick="showPage('catalog')">Explorer le catalogue</button>
+            <button class="btn white" onclick="showPage('about')">Découvrir l’entreprise</button>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-band"></div>
+          <div class="hero-chip" id="hero-chip">Corporate Platform</div>
+          <div class="hero-panel">
+            <div class="small" id="hero-panel-title"></div>
+            <div class="big" id="hero-panel-value"></div>
+            <p id="hero-panel-text"></p>
+          </div>
+          <div class="hero-card">
+            <h3 id="hero-card-title"></h3>
+            <p id="hero-card-text"></p>
+          </div>
+        </div>
+      </div>
+      <div class="kpis">
+        <div class="kpi"><div class="v" id="kpi1">850+</div><div class="t">Références</div></div>
+        <div class="kpi"><div class="v" id="kpi2">12</div><div class="t">Marchés</div></div>
+        <div class="kpi"><div class="v" id="kpi3">19</div><div class="t">Années</div></div>
+        <div class="kpi"><div class="v" id="kpi4">25</div><div class="t">Partenaires</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Présentation</div>
+          <div class="h2">Une présence digitale plus forte pour une image de marque plus crédible.</div>
+        </div>
+      </div>
+      <div class="grid-4">
+        <div class="card tile"><div class="tile-icon">🏭</div><h3>Image industrielle</h3><p>Architecture corporate et grands blocs visuels.</p></div>
+        <div class="card tile"><div class="tile-icon">📦</div><h3>Catalogue premium</h3><p>Recherche, filtres, cartes plus propres et fiche produit plus valorisante.</p></div>
+        <div class="card tile"><div class="tile-icon">🌍</div><h3>Multi-pages</h3><p>Plusieurs pages corporate pour un rendu plus officiel.</p></div>
+        <div class="card tile"><div class="tile-icon">⚙️</div><h3>Admin total</h3><p>Nom, logo, couleurs, pages, produits, contact et contenu modifiables.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Catalogue</div>
+          <div class="h2">Nos solutions de filtration</div>
+        </div>
+        <button class="btn white" onclick="showPage('catalog')">Voir tout</button>
+      </div>
+      <div class="grid-3" id="home-products"></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="eyebrow">Partenaires</div>
+          <div class="h2">Zone partenaires</div>
+          <p class="lead">Les éléments de ce bloc sont éditables depuis l’admin.</p>
+        </div>
+      </div>
+      <div class="partner-grid" id="partner-grid"></div>
+    </div>
+  </section>
+</div>
+
+<div id="dynamic-pages"></div>
+
+<div class="page" id="page-login">
+  <div class="login-wrap">
+    <div class="card login-panel">
+      <div class="eyebrow">Admin</div>
+      <div class="page-title" style="font-size:42px">Connexion</div>
+      <p class="lead" style="font-size:15px;margin-bottom:18px">Accède à l’espace admin pour tout modifier. Les changements sont enregistrés sur le serveur et visibles depuis d’autres navigateurs.</p>
+      <div class="error-msg" id="login-error">Identifiants incorrects.</div>
+      <div class="editor-field"><label class="form-label">Email</label><input class="form-input" id="l-email" placeholder="admin@misfat.tn"></div>
+      <div class="editor-field"><label class="form-label">Mot de passe</label><input class="form-input" id="l-pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
+      <button class="btn primary" style="width:100%;padding:14px 18px" onclick="doLogin()">Se connecter</button>
+      <div class="demo-box"><strong>Compte admin :</strong><br>admin@misfat.tn / admin123</div>
+    </div>
+  </div>
+</div>
+
+<div class="page" id="page-admin">
+  <section class="page-top">
+    <div class="container">
+      <div class="eyebrow">Administration</div>
+      <div class="page-title">CMS total</div>
+      <div class="page-sub">Tout ce que tu enregistres ici est sauvegardé côté serveur. Donc les modifications apparaissent dans les autres navigateurs qui ouvrent le site.</div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="admin-head">
+        <div class="admin-tabs">
+          <button class="admin-tab active" onclick="showAdminTab('brand',this)">Marque</button>
+          <button class="admin-tab" onclick="showAdminTab('hero',this)">Hero</button>
+          <button class="admin-tab" onclick="showAdminTab('pages',this)">Pages</button>
+          <button class="admin-tab" onclick="showAdminTab('products',this)">Produits</button>
+          <button class="admin-tab" onclick="showAdminTab('partners',this)">Partenaires</button>
+          <button class="admin-tab" onclick="showAdminTab('contact',this)">Contact</button>
+        </div>
+        <button class="btn white" onclick="resetSite()">Reset</button>
+      </div>
+
+      <div class="admin-stats">
+        <div class="card admin-panel"><div class="n" id="stat-products"></div><div class="t">Produits</div></div>
+        <div class="card admin-panel"><div class="n" id="stat-pages"></div><div class="t">Pages</div></div>
+        <div class="card admin-panel"><div class="n" id="stat-partners"></div><div class="t">Partenaires</div></div>
+        <div class="card admin-panel"><div class="n" id="stat-stock"></div><div class="t">Stock total</div></div>
+      </div>
+
+      <div class="admin-section active" id="admin-brand">
+        <div class="card editor-panel">
+          <div class="eyebrow">Marque & design</div>
+          <div class="editor-grid">
+            <div class="editor-field"><label>Nom</label><input class="form-input" id="brand-name-input"></div>
+            <div class="editor-field"><label>Sous-titre</label><input class="form-input" id="brand-subtitle-input"></div>
+            <div class="editor-field"><label>Type logo</label>
+              <select class="form-input" id="brand-logo-type">
+                <option value="text">Texte</option>
+                <option value="image">Image URL</option>
+              </select>
+            </div>
+            <div class="editor-field"><label>Texte logo</label><input class="form-input" id="brand-logo-text"></div>
+            <div class="editor-field full"><label>Logo image URL</label><input class="form-input" id="brand-logo-image"></div>
+            <div class="editor-field"><label>Couleur principale</label><input class="form-input" id="brand-primary"></div>
+            <div class="editor-field"><label>Couleur secondaire</label><input class="form-input" id="brand-secondary"></div>
+            <div class="editor-field"><label>Couleur accent</label><input class="form-input" id="brand-accent"></div>
+            <div class="editor-field"><label>Couleur fond</label><input class="form-input" id="brand-bg"></div>
+          </div>
+          <div class="editor-actions"><button class="btn primary" onclick="saveBrand()">Enregistrer la marque</button></div>
+        </div>
+      </div>
+
+      <div class="admin-section" id="admin-hero">
+        <div class="card editor-panel">
+          <div class="eyebrow">Hero</div>
+          <div class="editor-grid">
+            <div class="editor-field full"><label>Badge</label><input class="form-input" id="hero-badge-input"></div>
+            <div class="editor-field full"><label>Titre</label><input class="form-input" id="hero-title-input"></div>
+            <div class="editor-field"><label>Mot en surbrillance</label><input class="form-input" id="hero-highlight-input"></div>
+            <div class="editor-field"><label>Panel title</label><input class="form-input" id="hero-panel-title-input"></div>
+            <div class="editor-field"><label>Panel value</label><input class="form-input" id="hero-panel-value-input"></div>
+            <div class="editor-field full"><label>Texte hero</label><textarea class="form-input" id="hero-text-input" rows="3"></textarea></div>
+            <div class="editor-field full"><label>Panel text</label><textarea class="form-input" id="hero-panel-text-input" rows="3"></textarea></div>
+            <div class="editor-field full"><label>Card title</label><input class="form-input" id="hero-card-title-input"></div>
+            <div class="editor-field full"><label>Card text</label><textarea class="form-input" id="hero-card-text-input" rows="3"></textarea></div>
+          </div>
+          <div class="editor-actions"><button class="btn primary" onclick="saveHero()">Enregistrer le hero</button></div>
+        </div>
+      </div>
+
+      <div class="admin-section" id="admin-pages">
+        <div class="card editor-panel">
+          <div class="eyebrow">Pages</div>
+          <p>Tu peux modifier le menu, les titres et le contenu de toutes les pages.</p>
+          <div id="pages-editor-list" style="margin-top:18px"></div>
+          <div class="editor-actions">
+            <button class="btn white" onclick="addPage()">Ajouter une page</button>
+            <button class="btn primary" onclick="savePages()">Enregistrer les pages</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-section" id="admin-products">
+        <div class="card editor-panel" style="margin-bottom:18px">
+          <div class="editor-actions"><button class="btn primary" onclick="openProductModal()">+ Ajouter un produit</button></div>
+        </div>
+        <div class="card table-wrap">
+          <table>
+            <thead><tr><th>Produit</th><th>Réf.</th><th>Catégorie</th><th>Prix</th><th>Stock</th><th>Actions</th></tr></thead>
+            <tbody id="admin-products-table"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="admin-section" id="admin-partners">
+        <div class="card editor-panel">
+          <div class="eyebrow">Partenaires</div>
+          <div id="partners-editor"></div>
+          <div class="editor-actions">
+            <button class="btn white" onclick="addPartner()">Ajouter partenaire</button>
+            <button class="btn primary" onclick="savePartners()">Enregistrer partenaires</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="admin-section" id="admin-contact">
+        <div class="card editor-panel">
+          <div class="eyebrow">Contact</div>
+          <div class="editor-grid">
+            <div class="editor-field full"><label>Adresse</label><input class="form-input" id="contact-address-input"></div>
+            <div class="editor-field"><label>Téléphone</label><input class="form-input" id="contact-phone-input"></div>
+            <div class="editor-field"><label>Email</label><input class="form-input" id="contact-email-input"></div>
+          </div>
+          <div class="editor-actions"><button class="btn primary" onclick="saveContact()">Enregistrer le contact</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="modal" id="product-modal">
+  <div class="modal-box">
+    <h3 id="product-modal-title">Ajouter un produit</h3>
+    <div class="editor-grid">
+      <div class="editor-field full"><label>Nom</label><input class="form-input" id="m-name"></div>
+      <div class="editor-field"><label>Référence</label><input class="form-input" id="m-ref"></div>
+      <div class="editor-field"><label>Prix</label><input class="form-input" id="m-price" type="number"></div>
+      <div class="editor-field"><label>Catégorie</label><select class="form-input" id="m-cat"><option value="oil">Huile</option><option value="air">Air</option><option value="fuel">Carburant</option><option value="cabin">Habitacle</option></select></div>
+      <div class="editor-field"><label>Stock</label><input class="form-input" id="m-stock" type="number"></div>
+      <div class="editor-field"><label>Icône</label><input class="form-input" id="m-img"></div>
+      <div class="editor-field full"><label>Marques</label><input class="form-input" id="m-brand"></div>
+      <div class="editor-field full"><label>Spécifications</label><input class="form-input" id="m-specs"></div>
+      <div class="editor-field full"><label>Description</label><textarea class="form-input" id="m-desc" rows="4"></textarea></div>
+    </div>
+    <div class="editor-actions">
+      <button class="btn primary" onclick="saveProduct()">Enregistrer</button>
+      <button class="btn white" onclick="closeProductModal()">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<footer class="footer" id="footer">
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div>
+        <div class="logo-name" id="footer-name"></div>
+        <div style="max-width:380px;color:#D1D5DB;line-height:1.8;margin-top:10px">Site corporate premium avec CMS simple pour tout modifier.</div>
+      </div>
+      <div>
+        <div class="footer-title">Navigation</div>
+        <div id="footer-nav"></div>
+      </div>
+      <div>
+        <div class="footer-title">Contact</div>
+        <div class="footer-link" id="footer-address"></div>
+        <div class="footer-link" id="footer-phone"></div>
+        <div class="footer-link" id="footer-email"></div>
+      </div>
+      <div>
+        <div class="footer-title">Admin</div>
+        <button class="footer-link" onclick="showPage('login')">Connexion</button>
+        <button class="footer-link" onclick="showPage('admin')">Dashboard</button>
+      </div>
+    </div>
+    <div class="footer-copy"><div id="footer-copy-name"></div><div>CMS Node local</div></div>
+  </div>
+</footer>
+
+<script>
+let site = null;
+let currentUser = null;
+let currentCat = 'all';
+let editingProductId = null;
+
+async function apiGet(){ const r = await fetch('/api/site-data'); return await r.json(); }
+async function apiSave(){ await fetch('/api/site-data', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(site)}); }
+async function apiReset(){ await fetch('/api/reset', {method:'POST'}); site = await apiGet(); initUI(); }
+
+function applyBrandVars(){
+  document.documentElement.style.setProperty('--brand', site.brand.primaryColor);
+  document.documentElement.style.setProperty('--brand2', site.brand.secondaryColor);
+  document.documentElement.style.setProperty('--accent', site.brand.accentColor);
+  document.documentElement.style.setProperty('--bg', site.brand.backgroundColor);
+}
+function renderLogo(){
+  const mark = document.getElementById('logo-mark');
+  if(site.brand.logoType === 'image' && site.brand.logoImageUrl){
+    mark.innerHTML = `<img src="${site.brand.logoImageUrl}" alt="logo">`;
+  } else {
+    mark.textContent = site.brand.logoText || 'M';
+  }
+  document.getElementById('brand-name').textContent = site.brand.name;
+  document.getElementById('brand-subtitle').textContent = site.brand.subtitle;
+  document.getElementById('footer-name').textContent = site.brand.name;
+  document.getElementById('footer-copy-name').textContent = '© 2026 ' + site.brand.name;
+}
+function renderNav(){
+  const nav = document.getElementById('nav-links');
+  nav.innerHTML = '<button class="nav-link active" id="nav-home" onclick="showPage(\'home\')">Accueil</button>';
+  site.pages.forEach(p => {
+    nav.innerHTML += `<button class="nav-link" id="nav-${p.slug}" onclick="showPage('${p.slug}')">${p.nav}</button>`;
+  });
+  nav.innerHTML += '<button class="nav-link hide" id="nav-admin" onclick="showPage(\'admin\')">Admin</button>';
+  const footerNav = document.getElementById('footer-nav');
+  footerNav.innerHTML = '';
+  site.pages.slice(0,4).forEach(p => {
+    footerNav.innerHTML += `<button class="footer-link" onclick="showPage('${p.slug}')">${p.nav}</button>`;
+  });
+}
+function renderHero(){
+  document.getElementById('hero-badge').textContent = site.hero.badge;
+  let title = site.hero.title;
+  if(site.hero.highlight && title.includes(site.hero.highlight)){
+    title = title.replace(site.hero.highlight, `<span>${site.hero.highlight}</span>`);
+  }
+  document.getElementById('hero-title').innerHTML = title;
+  document.getElementById('hero-text').textContent = site.hero.text;
+  document.getElementById('hero-panel-title').textContent = site.hero.panelTitle;
+  document.getElementById('hero-panel-value').textContent = site.hero.panelValue;
+  document.getElementById('hero-panel-text').textContent = site.hero.panelText;
+  document.getElementById('hero-card-title').textContent = site.hero.cardTitle;
+  document.getElementById('hero-card-text').textContent = site.hero.cardText;
+  document.getElementById('hero-chip').textContent = site.brand.name + ' Corporate Platform';
+}
+function renderPartners(){
+  document.getElementById('partner-grid').innerHTML = site.partners.map(p => `<div class="card partner">${p}</div>`).join('');
+}
+function renderContactBlocks(){
+  const ids = [['footer-address','address'],['footer-phone','phone'],['footer-email','email']];
+  ids.forEach(([id,k]) => document.getElementById(id).textContent = site.contact[k]);
+}
+function renderPages(){
+  const wrap = document.getElementById('dynamic-pages');
+  wrap.innerHTML = '';
+  site.pages.forEach(p => {
+    if(p.slug === 'catalog'){
+      wrap.innerHTML += `
+      <div class="page" id="page-catalog">
+        <section class="page-top"><div class="container"><div class="eyebrow">${p.eyebrow}</div><div class="page-title">${p.title}</div><div class="page-sub">${p.subtitle}</div></div></section>
+        <section class="section"><div class="container">
+          <div class="filters">
+            <div class="search-wrap"><span class="search-icon">🔍</span><input class="search-input" id="search-input" placeholder="Rechercher..." oninput="filterProducts()"></div>
+            <div class="cat-filters">
+              <button class="cat-btn active" id="cat-all" onclick="setCat('all', this)">Tous</button>
+              <button class="cat-btn" onclick="setCat('oil', this)">Huile</button>
+              <button class="cat-btn" onclick="setCat('air', this)">Air</button>
+              <button class="cat-btn" onclick="setCat('fuel', this)">Carburant</button>
+              <button class="cat-btn" onclick="setCat('cabin', this)">Habitacle</button>
+            </div>
+          </div>
+          <div id="results-count" style="margin-bottom:18px;color:#64748B;font-weight:700"></div>
+          <div class="grid-3" id="catalog-products"></div>
+        </div></section>
+      </div>`;
+    } else if(p.slug === 'contact'){
+      wrap.innerHTML += `
+      <div class="page" id="page-contact">
+        <section class="page-top"><div class="container"><div class="eyebrow">${p.eyebrow}</div><div class="page-title">${p.title}</div><div class="page-sub">${p.subtitle}</div></div></section>
+        <section class="section"><div class="container contact-grid">
+          <div class="card contact-panel">
+            <div class="success-msg" id="success-msg">✓ Message envoyé avec succès.</div>
+            <div class="editor-field"><label class="form-label">Nom complet</label><input class="form-input" id="c-name" placeholder="Votre nom"></div>
+            <div class="editor-field"><label class="form-label">Email</label><input class="form-input" id="c-email" placeholder="Votre email"></div>
+            <div class="editor-field"><label class="form-label">Sujet</label><input class="form-input" id="c-subject" placeholder="Sujet"></div>
+            <div class="editor-field"><label class="form-label">Message</label><textarea class="form-input" id="c-message" rows="6" placeholder="Votre message"></textarea></div>
+            <button class="btn primary" onclick="sendContact()">Envoyer</button>
+          </div>
+          <div class="card contact-panel">
+            <div class="info-row"><div class="info-icon">📍</div><div><div class="eyebrow">Adresse</div><div>${site.contact.address}</div></div></div>
+            <div class="info-row"><div class="info-icon">📞</div><div><div class="eyebrow">Téléphone</div><div>${site.contact.phone}</div></div></div>
+            <div class="info-row"><div class="info-icon">✉️</div><div><div class="eyebrow">Email</div><div>${site.contact.email}</div></div></div>
+            <div class="map-box">Bloc carte / localisation<br><strong style="display:block;color:var(--brand);margin-top:10px">${site.brand.name}</strong></div>
+          </div>
+        </div></section>
+      </div>`;
+    } else {
+      wrap.innerHTML += `
+      <div class="page" id="page-${p.slug}">
+        <section class="page-top"><div class="container"><div class="eyebrow">${p.eyebrow}</div><div class="page-title">${p.title}</div><div class="page-sub">${p.subtitle}</div></div></section>
+        <section class="section"><div class="container">
+          <div class="card story"><p>${p.content || ''}</p></div>
+        </div></section>
+      </div>`;
+    }
+  });
+  wrap.innerHTML += `<div class="page" id="page-product"><section class="page-top"><div class="container"><div class="eyebrow">Produit</div><div class="page-title">Fiche produit</div><div class="page-sub">Présentation claire et premium.</div></div></section><section class="section"><div class="container" id="product-detail-content"></div></section></div>`;
+}
+function productCardHTML(p){
+  return `<div class="card solution" onclick="viewProduct(${p.id})">
+    <div class="solution-top"><div class="solution-icon">${p.img}</div><div class="solution-badge">${catLabel(p.category)}</div></div>
+    <div class="solution-body"><div class="solution-ref">${p.ref}</div><div class="solution-name">${p.name}</div><div style="color:#64748B">${p.brand}</div><div style="margin:12px 0;color:#F59E0B">${stars(p.rating)} <span style="font-size:13px;color:#64748B;margin-left:6px">${p.rating}</span></div><div class="solution-foot"><div class="price">${Number(p.price).toFixed(2)} <span>TND</span></div><button class="btn primary" style="padding:10px 14px" onclick="event.stopPropagation();alert('Ajouté à la demande de devis');">Ajouter</button></div></div>
+  </div>`;
+}
+function renderHomeProducts(){ document.getElementById('home-products').innerHTML = site.products.slice(0,3).map(productCardHTML).join(''); }
+function stars(r){ let s=''; for(let i=1;i<=5;i++) s += i <= Math.round(r) ? '★' : '☆'; return s; }
+function catLabel(cat){ return {oil:'Huile',air:'Air',fuel:'Carburant',cabin:'Habitacle'}[cat] || cat; }
+function setCat(cat, btn){ currentCat = cat; document.querySelectorAll('.cat-btn').forEach(x => x.classList.remove('active')); btn.classList.add('active'); filterProducts(); }
+function filterProducts(){
+  const q = (document.getElementById('search-input')?.value || '').toLowerCase();
+  const filtered = site.products.filter(p => {
+    const okSearch = p.name.toLowerCase().includes(q) || p.ref.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q);
+    const okCat = currentCat === 'all' || p.category === currentCat;
+    return okSearch && okCat;
+  });
+  const res = document.getElementById('results-count'); if(res) res.textContent = filtered.length + ' produit(s) trouvé(s)';
+  const grid = document.getElementById('catalog-products'); if(grid) grid.innerHTML = filtered.map(productCardHTML).join('');
+}
+function viewProduct(id){
+  const p = site.products.find(x => x.id === id); if(!p) return;
+  document.getElementById('product-detail-content').innerHTML = `<div class="product-detail"><div class="card" style="min-height:460px;display:flex;align-items:center;justify-content:center;font-size:180px">${p.img}</div><div class="card" style="padding:32px"><div class="eyebrow">${p.ref}</div><div class="page-title" style="font-size:40px">${p.name}</div><div style="color:#64748B;margin:12px 0">${p.brand}</div><div class="price" style="margin:18px 0">${Number(p.price).toFixed(2)} <span>TND</span></div><p style="color:#475569;line-height:1.8">${p.description}</p><div style="padding:18px;border-radius:20px;background:#F8FAFC;border:1px solid var(--line);margin:18px 0"><strong>Spécifications</strong><div style="margin-top:10px;color:#475569">${p.specs}</div><div style="margin-top:8px;color:#475569"><strong>Stock :</strong> ${p.stock}</div></div><button class="btn primary" style="padding:15px 18px;width:100%" onclick="showPage('contact')">Demander un devis</button></div></div>`;
+  showPage('product');
+}
+function showPage(slug){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+  const page = document.getElementById('page-' + slug);
+  if(page) page.classList.add('active');
+  const nav = document.getElementById('nav-' + slug);
+  if(nav) nav.classList.add('active');
+  document.getElementById('footer').style.display = slug === 'login' ? 'none' : 'block';
+  if(slug === 'catalog') filterProducts();
+  if(slug === 'admin' && !currentUser){ showPage('login'); return; }
+  if(slug === 'admin'){ renderAdmin(); fillAdminForms(); }
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function renderAdmin(){
+  document.getElementById('stat-products').textContent = site.products.length;
+  document.getElementById('stat-pages').textContent = site.pages.length + 1;
+  document.getElementById('stat-partners').textContent = site.partners.length;
+  document.getElementById('stat-stock').textContent = site.products.reduce((s,p) => s + Number(p.stock || 0), 0);
+  document.getElementById('admin-products-table').innerHTML = site.products.map(p => `<tr><td><div class="table-product"><div class="table-product-icon">${p.img}</div><div>${p.name}</div></div></td><td>${p.ref}</td><td>${catLabel(p.category)}</td><td>${Number(p.price).toFixed(2)} TND</td><td>${p.stock}</td><td><button class="btn white" onclick="openProductModal(${p.id})">Modifier</button> <button class="btn white" onclick="deleteProduct(${p.id})">Supprimer</button></td></tr>`).join('');
+  renderPagesEditor();
+  renderPartnersEditor();
+}
+function fillAdminForms(){
+  document.getElementById('brand-name-input').value = site.brand.name;
+  document.getElementById('brand-subtitle-input').value = site.brand.subtitle;
+  document.getElementById('brand-logo-type').value = site.brand.logoType;
+  document.getElementById('brand-logo-text').value = site.brand.logoText;
+  document.getElementById('brand-logo-image').value = site.brand.logoImageUrl;
+  document.getElementById('brand-primary').value = site.brand.primaryColor;
+  document.getElementById('brand-secondary').value = site.brand.secondaryColor;
+  document.getElementById('brand-accent').value = site.brand.accentColor;
+  document.getElementById('brand-bg').value = site.brand.backgroundColor;
+
+  document.getElementById('hero-badge-input').value = site.hero.badge;
+  document.getElementById('hero-title-input').value = site.hero.title;
+  document.getElementById('hero-highlight-input').value = site.hero.highlight;
+  document.getElementById('hero-text-input').value = site.hero.text;
+  document.getElementById('hero-panel-title-input').value = site.hero.panelTitle;
+  document.getElementById('hero-panel-value-input').value = site.hero.panelValue;
+  document.getElementById('hero-panel-text-input').value = site.hero.panelText;
+  document.getElementById('hero-card-title-input').value = site.hero.cardTitle;
+  document.getElementById('hero-card-text-input').value = site.hero.cardText;
+
+  document.getElementById('contact-address-input').value = site.contact.address;
+  document.getElementById('contact-phone-input').value = site.contact.phone;
+  document.getElementById('contact-email-input').value = site.contact.email;
+}
+function renderPagesEditor(){
+  const box = document.getElementById('pages-editor-list');
+  box.innerHTML = '';
+  site.pages.forEach((p, i) => {
+    box.innerHTML += `<div class="card" style="padding:18px;margin-bottom:14px">
+      <div class="editor-grid">
+        <div class="editor-field"><label>Slug</label><input class="form-input page-slug" data-i="${i}" value="${p.slug}"></div>
+        <div class="editor-field"><label>Menu</label><input class="form-input page-nav" data-i="${i}" value="${p.nav}"></div>
+        <div class="editor-field"><label>Eyebrow</label><input class="form-input page-eyebrow" data-i="${i}" value="${p.eyebrow}"></div>
+        <div class="editor-field full"><label>Titre</label><input class="form-input page-title" data-i="${i}" value="${p.title}"></div>
+        <div class="editor-field full"><label>Sous-titre</label><textarea class="form-input page-subtitle" data-i="${i}" rows="2">${p.subtitle}</textarea></div>
+        <div class="editor-field full"><label>Contenu</label><textarea class="form-input page-content" data-i="${i}" rows="4">${p.content || ''}</textarea></div>
+      </div>
+      <div class="editor-actions"><button class="btn white" onclick="removePage(${i})">Supprimer cette page</button></div>
+    </div>`;
+  });
+}
+function renderPartnersEditor(){
+  const box = document.getElementById('partners-editor');
+  box.innerHTML = '';
+  site.partners.forEach((name, i) => {
+    box.innerHTML += `<div class="editor-field"><label>Partenaire ${i+1}</label><input class="form-input partner-input" data-i="${i}" value="${name}"></div>`;
+  });
+}
+function addPage(){
+  site.pages.push({slug:'nouvelle-page', nav:'Nouvelle page', eyebrow:'Section', title:'Nouvelle page', subtitle:'Sous-titre...', content:'Contenu...'});
+  renderPagesEditor();
+}
+function removePage(i){ site.pages.splice(i,1); renderPagesEditor(); }
+function addPartner(){ site.partners.push('Nouveau partenaire'); renderPartnersEditor(); }
+async function saveBrand(){
+  site.brand.name = document.getElementById('brand-name-input').value.trim();
+  site.brand.subtitle = document.getElementById('brand-subtitle-input').value.trim();
+  site.brand.logoType = document.getElementById('brand-logo-type').value;
+  site.brand.logoText = document.getElementById('brand-logo-text').value.trim();
+  site.brand.logoImageUrl = document.getElementById('brand-logo-image').value.trim();
+  site.brand.primaryColor = document.getElementById('brand-primary').value.trim();
+  site.brand.secondaryColor = document.getElementById('brand-secondary').value.trim();
+  site.brand.accentColor = document.getElementById('brand-accent').value.trim();
+  site.brand.backgroundColor = document.getElementById('brand-bg').value.trim();
+  await apiSave(); initUI(); alert('Marque enregistrée.');
+}
+async function saveHero(){
+  site.hero.badge = document.getElementById('hero-badge-input').value.trim();
+  site.hero.title = document.getElementById('hero-title-input').value.trim();
+  site.hero.highlight = document.getElementById('hero-highlight-input').value.trim();
+  site.hero.text = document.getElementById('hero-text-input').value.trim();
+  site.hero.panelTitle = document.getElementById('hero-panel-title-input').value.trim();
+  site.hero.panelValue = document.getElementById('hero-panel-value-input').value.trim();
+  site.hero.panelText = document.getElementById('hero-panel-text-input').value.trim();
+  site.hero.cardTitle = document.getElementById('hero-card-title-input').value.trim();
+  site.hero.cardText = document.getElementById('hero-card-text-input').value.trim();
+  await apiSave(); initUI(); alert('Hero enregistré.');
+}
+async function savePages(){
+  site.pages = site.pages.map((p, i) => ({
+    slug: document.querySelector('.page-slug[data-i="'+i+'"]').value.trim().replace(/\s+/g,'-').toLowerCase(),
+    nav: document.querySelector('.page-nav[data-i="'+i+'"]').value.trim(),
+    eyebrow: document.querySelector('.page-eyebrow[data-i="'+i+'"]').value.trim(),
+    title: document.querySelector('.page-title[data-i="'+i+'"]').value.trim(),
+    subtitle: document.querySelector('.page-subtitle[data-i="'+i+'"]').value.trim(),
+    content: document.querySelector('.page-content[data-i="'+i+'"]').value.trim()
+  }));
+  await apiSave(); initUI(); alert('Pages enregistrées.');
+}
+async function savePartners(){
+  site.partners = Array.from(document.querySelectorAll('.partner-input')).map(x => x.value.trim()).filter(Boolean);
+  await apiSave(); initUI(); alert('Partenaires enregistrés.');
+}
+async function saveContact(){
+  site.contact.address = document.getElementById('contact-address-input').value.trim();
+  site.contact.phone = document.getElementById('contact-phone-input').value.trim();
+  site.contact.email = document.getElementById('contact-email-input').value.trim();
+  await apiSave(); initUI(); alert('Contact enregistré.');
+}
+function openProductModal(id=null){
+  editingProductId = id;
+  document.getElementById('product-modal').classList.add('show');
+  if(id){
+    const p = site.products.find(x => x.id === id);
+    document.getElementById('product-modal-title').textContent = 'Modifier le produit';
+    document.getElementById('m-name').value = p.name;
+    document.getElementById('m-ref').value = p.ref;
+    document.getElementById('m-price').value = p.price;
+    document.getElementById('m-cat').value = p.category;
+    document.getElementById('m-stock').value = p.stock;
+    document.getElementById('m-img').value = p.img;
+    document.getElementById('m-brand').value = p.brand;
+    document.getElementById('m-specs').value = p.specs;
+    document.getElementById('m-desc').value = p.description;
+  } else {
+    document.getElementById('product-modal-title').textContent = 'Ajouter un produit';
+    ['m-name','m-ref','m-price','m-stock','m-img','m-brand','m-specs','m-desc'].forEach(id => document.getElementById(id).value = '');
+    document.getElementById('m-cat').value = 'oil';
+  }
+}
+function closeProductModal(){ document.getElementById('product-modal').classList.remove('show'); }
+async function saveProduct(){
+  const p = {
+    id: editingProductId || Date.now(),
+    name: document.getElementById('m-name').value.trim(),
+    ref: document.getElementById('m-ref').value.trim(),
+    price: Number(document.getElementById('m-price').value || 0),
+    category: document.getElementById('m-cat').value,
+    stock: Number(document.getElementById('m-stock').value || 0),
+    img: document.getElementById('m-img').value.trim() || '📦',
+    brand: document.getElementById('m-brand').value.trim(),
+    specs: document.getElementById('m-specs').value.trim(),
+    description: document.getElementById('m-desc').value.trim(),
+    rating: 4.7
+  };
+  if(!p.name || !p.ref) return alert('Nom et référence requis');
+  const idx = site.products.findIndex(x => x.id === editingProductId);
+  if(idx >= 0) site.products[idx] = p; else site.products.push(p);
+  await apiSave(); initUI(); closeProductModal(); alert('Produit enregistré.');
+}
+async function deleteProduct(id){
+  if(!confirm('Supprimer ce produit ?')) return;
+  site.products = site.products.filter(x => x.id !== id);
+  await apiSave(); initUI();
+}
+function showAdminTab(tab, btn){
+  document.querySelectorAll('.admin-tab').forEach(x => x.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.admin-section').forEach(x => x.classList.remove('active'));
+  document.getElementById('admin-' + tab).classList.add('active');
+}
+function sendContact(){
+  const name = document.getElementById('c-name').value.trim();
+  const email = document.getElementById('c-email').value.trim();
+  const msg = document.getElementById('c-message').value.trim();
+  if(!name || !email || !msg) return alert('Veuillez remplir les champs requis');
+  document.getElementById('success-msg').classList.add('show');
+  ['c-name','c-email','c-subject','c-message'].forEach(id => document.getElementById(id).value = '');
+  setTimeout(() => document.getElementById('success-msg')?.classList.remove('show'), 2500);
+}
+function doLogin(){
+  const email = document.getElementById('l-email').value.trim();
+  const pass = document.getElementById('l-pass').value.trim();
+  const err = document.getElementById('login-error');
+  if(email === 'admin@misfat.tn' && pass === 'admin123'){
+    currentUser = {name: 'Admin ' + site.brand.name};
+    document.getElementById('login-btn').classList.add('hide');
+    document.getElementById('logout-btn').classList.remove('hide');
+    document.getElementById('user-badge').style.display = 'inline-flex';
+    document.getElementById('user-badge').textContent = '👤 ' + currentUser.name;
+    document.getElementById('nav-admin')?.classList.remove('hide');
+    showPage('admin');
+  } else {
+    err.classList.add('show');
+    setTimeout(() => err.classList.remove('show'), 2500);
+  }
+}
+function logout(){
+  currentUser = null;
+  document.getElementById('login-btn').classList.remove('hide');
+  document.getElementById('logout-btn').classList.add('hide');
+  document.getElementById('user-badge').style.display = 'none';
+  document.getElementById('nav-admin')?.classList.add('hide');
+  showPage('home');
+}
+async function resetSite(){
+  if(!confirm('Reset complet du site ?')) return;
+  await apiReset();
+  alert('Site réinitialisé.');
+}
+async function initUI(){
+  site = await apiGet();
+  applyBrandVars();
+  renderLogo();
+  renderNav();
+  renderHero();
+  renderPages();
+  renderHomeProducts();
+  renderPartners();
+  renderContactBlocks();
+  renderAdmin();
+  fillAdminForms();
+}
+initUI();
+</script>
+</body>
+</html>
