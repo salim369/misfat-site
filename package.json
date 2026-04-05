@@ -1,0 +1,10 @@
+{
+  "name": "misfat-full-admin-cms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "MISFAT full admin CMS",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
