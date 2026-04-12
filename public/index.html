@@ -190,7 +190,23 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
     <video autoplay muted loop playsinline class="hero-video"></video>
 
     <div class="container">
-      <div class="hero-wrap">
+      <div class="hero-wrap hero-clean">
+  <div class="hero-content">
+    <div class="badge">
+      <span class="badge-dot"></span>
+      <span id="hero-badge"></span>
+    </div>
+
+    <h1 id="hero-title"></h1>
+
+    <p id="hero-text"></p>
+
+    <div class="hero-actions">
+      <button class="btn primary" onclick="showPage('catalog')">Explorer le catalogue</button>
+      <button class="btn white" onclick="showPage('about')">Découvrir l’entreprise</button>
+    </div>
+  </div>
+</div>
         <div>
           <div class="badge"><span class="badge-dot"></span><span id="hero-badge"></span></div>
           <h1 id="hero-title"></h1>
@@ -826,3 +842,45 @@ initUI();
 </script>
 </body>
 </html>
+/* ===== HERO CLEAN (MANN STYLE) ===== */
+.hero-clean{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:left;
+  min-height:calc(100vh - 82px);
+}
+
+.hero-content{
+  max-width:900px;
+  margin:0 auto;
+  z-index:2;
+}
+
+.hero{
+  background:
+    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+    url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600');
+  background-size:cover;
+  background-position:center;
+  color:white;
+}
+
+.hero h1{
+  font-size:clamp(52px,6vw,90px);
+  line-height:1.05;
+  letter-spacing:-2px;
+  color:white;
+}
+
+.hero p{
+  color:rgba(255,255,255,0.85);
+  font-size:20px;
+  max-width:600px;
+}
+
+.hero .btn.white{
+  background:transparent;
+  border:1px solid rgba(255,255,255,0.4);
+  color:white;
+}
