@@ -40,7 +40,11 @@ a{text-decoration:none;color:inherit}
 .hero{
   position:relative;
   overflow:hidden;
-  background:linear-gradient(110deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.93) 54%,rgba(226,232,240,.86) 100%),radial-gradient(circle at top right,rgba(198,31,38,.12),transparent 35%);
+  min-height:calc(100vh - 82px);
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.58) 0%, rgba(0,0,0,.34) 42%, rgba(0,0,0,.18) 100%),
+    url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1800&auto=format&fit=crop') center center/cover no-repeat;
+  color:#fff;
 }
 
 /* PLACEHOLDER VIDEO: جاهز للمستقبل */
@@ -58,28 +62,88 @@ a{text-decoration:none;color:inherit}
   content:"";
   position:absolute;
   inset:0;
-  background:linear-gradient(135deg,transparent 0 65%,rgba(198,31,38,.05) 65% 100%);
+  background:linear-gradient(180deg,rgba(0,0,0,.08) 0%,rgba(0,0,0,.18) 100%);
+  z-index:1;
 }
 
-.hero-wrap{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:30px;align-items:center;min-height:calc(100vh - 82px);padding:54px 0 60px}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:8px 14px;border-radius:999px;background:#fff;border:1px solid rgba(198,31,38,.18);color:var(--brand);font-size:12px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase}
-.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
-.hero h1{font-size:clamp(48px,6vw,82px);line-height:.94;letter-spacing:-2.8px;font-weight:800;max-width:780px;margin:20px 0 18px}
-.hero h1 span{color:var(--brand)}
-.hero p{font-size:18px;line-height:1.8;color:#475569;max-width:650px;margin-bottom:26px}
+.hero-wrap{
+  position:relative;
+  display:flex;
+  align-items:center;
+  min-height:calc(100vh - 82px);
+  padding:70px 0 78px;
+  z-index:2;
+}
+
+.hero-content{
+  max-width:980px;
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 14px;
+  border-radius:999px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.22);
+  color:#fff;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.2px;
+  text-transform:uppercase;
+  backdrop-filter:blur(6px);
+}
+
+.badge-dot{width:8px;height:8px;border-radius:50%;background:#fff}
+
+.hero h1{
+  font-size:clamp(54px,6.4vw,92px);
+  line-height:1.02;
+  letter-spacing:-2.8px;
+  font-weight:800;
+  max-width:1100px;
+  margin:26px 0 20px;
+  color:#fff;
+}
+
+.hero h1 span{color:#fff}
+
+.hero p{
+  font-size:20px;
+  line-height:1.8;
+  color:rgba(255,255,255,.88);
+  max-width:700px;
+  margin-bottom:30px;
+}
+
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
 .hero-actions .btn{padding:16px 24px}
-.hero-visual{min-height:580px;border-radius:32px;overflow:hidden;position:relative;box-shadow:var(--shadow);background:linear-gradient(155deg,#2B313A 0%, #3A414B 40%, #D5DAE1 40%, #F5F7FA 100%)}
-.hero-band{position:absolute;inset:0 0 auto 0;height:88px;background:linear-gradient(90deg,var(--brand) 0 34%, rgba(255,255,255,.92) 34% 100%)}
-.hero-chip{position:absolute;top:26px;left:26px;background:#fff;border-radius:999px;padding:10px 14px;font-size:12px;font-weight:800;color:var(--brand);letter-spacing:1.2px}
-.hero-panel{position:absolute;right:24px;top:118px;width:300px;background:rgba(255,255,255,.98);border-radius:24px;padding:24px;box-shadow:var(--shadow)}
-.hero-panel .small{font-size:12px;text-transform:uppercase;color:#64748B;letter-spacing:1.7px;font-weight:800}
-.hero-panel .big{font-size:40px;line-height:1;color:var(--brand);font-weight:800;margin:10px 0}
-.hero-panel p{font-size:14px;color:#64748B;line-height:1.7}
-.hero-card{position:absolute;left:28px;right:110px;bottom:28px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);border-radius:28px;padding:28px;border:1px solid rgba(255,255,255,.7)}
-.hero-card h3{font-size:36px;line-height:1.03;letter-spacing:-1px;margin-bottom:10px}
-.hero-card p{font-size:15px;line-height:1.75;color:#566273}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:-38px;position:relative;z-index:5}
+.hero-actions .btn.white{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.32);
+  color:#fff;
+}
+.hero-actions .btn.white:hover{
+  background:rgba(255,255,255,.14);
+}
+
+.hero-visual,
+.hero-band,
+.hero-chip,
+.hero-panel,
+.hero-card{
+  display:none !important;
+}
+
+.kpis{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+  margin-top:-52px;
+  position:relative;
+  z-index:5;
+}
 .kpi,.card{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
 .kpi{padding:24px}
 .kpi .v{font-size:46px;line-height:1;font-weight:800;color:var(--brand)}
@@ -161,8 +225,17 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 .modal-box{max-width:640px;width:100%;padding:28px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
 .modal-box h3{font-size:30px;line-height:1;font-weight:800;margin-bottom:18px}
 .full{grid-column:1/-1}
-@media (max-width:1100px){.hero-wrap,.product-detail,.contact-grid,.grid-2,.footer-grid,.grid-4,.admin-stats,.partner-grid,.grid-3{grid-template-columns:1fr 1fr}}
-@media (max-width:860px){.nav-links{display:none}.hero-wrap,.product-detail,.contact-grid,.grid-2,.grid-3,.grid-4,.footer-grid,.admin-stats,.partner-grid,.editor-grid{grid-template-columns:1fr}.hero-visual{min-height:460px}.hero-card{right:28px}.kpis{grid-template-columns:1fr}.page-title{font-size:44px}.h2{font-size:34px}}
+@media (max-width:1100px){.product-detail,.contact-grid,.grid-2,.footer-grid,.grid-4,.admin-stats,.partner-grid,.grid-3{grid-template-columns:1fr 1fr}}
+@media (max-width:860px){
+  .nav-links{display:none}
+  .product-detail,.contact-grid,.grid-2,.grid-3,.grid-4,.footer-grid,.admin-stats,.partner-grid,.editor-grid{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr;margin-top:24px}
+  .page-title{font-size:44px}
+  .h2{font-size:34px}
+  .hero-wrap{padding:48px 0 52px}
+  .hero h1{font-size:clamp(42px,12vw,64px);letter-spacing:-1.8px}
+  .hero p{font-size:17px}
+}
 </style>
 </head>
 <body>
@@ -186,28 +259,11 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 
 <div class="page active" id="page-home">
   <section class="hero">
-    <!-- Placeholder video: من بعد تنجم تزيد source هنا -->
     <video autoplay muted loop playsinline class="hero-video"></video>
 
     <div class="container">
-      <div class="hero-wrap hero-clean">
-  <div class="hero-content">
-    <div class="badge">
-      <span class="badge-dot"></span>
-      <span id="hero-badge"></span>
-    </div>
-
-    <h1 id="hero-title"></h1>
-
-    <p id="hero-text"></p>
-
-    <div class="hero-actions">
-      <button class="btn primary" onclick="showPage('catalog')">Explorer le catalogue</button>
-      <button class="btn white" onclick="showPage('about')">Découvrir l’entreprise</button>
-    </div>
-  </div>
-</div>
-        <div>
+      <div class="hero-wrap">
+        <div class="hero-content">
           <div class="badge"><span class="badge-dot"></span><span id="hero-badge"></span></div>
           <h1 id="hero-title"></h1>
           <p id="hero-text"></p>
@@ -216,20 +272,8 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
             <button class="btn white" onclick="showPage('about')">Découvrir l’entreprise</button>
           </div>
         </div>
-        <div class="hero-visual">
-          <div class="hero-band"></div>
-          <div class="hero-chip" id="hero-chip">Corporate Platform</div>
-          <div class="hero-panel">
-            <div class="small" id="hero-panel-title"></div>
-            <div class="big" id="hero-panel-value"></div>
-            <p id="hero-panel-text"></p>
-          </div>
-          <div class="hero-card">
-            <h3 id="hero-card-title"></h3>
-            <p id="hero-card-text"></p>
-          </div>
-        </div>
       </div>
+
       <div class="kpis">
         <div class="kpi"><div class="v" id="kpi1">850+</div><div class="t">Références</div></div>
         <div class="kpi"><div class="v" id="kpi2">12</div><div class="t">Marchés</div></div>
@@ -517,12 +561,18 @@ function renderHero(){
   }
   document.getElementById('hero-title').innerHTML = title;
   document.getElementById('hero-text').textContent = site.hero.text;
-  document.getElementById('hero-panel-title').textContent = site.hero.panelTitle;
-  document.getElementById('hero-panel-value').textContent = site.hero.panelValue;
-  document.getElementById('hero-panel-text').textContent = site.hero.panelText;
-  document.getElementById('hero-card-title').textContent = site.hero.cardTitle;
-  document.getElementById('hero-card-text').textContent = site.hero.cardText;
-  document.getElementById('hero-chip').textContent = site.brand.name + ' Corporate Platform';
+  const panelTitle = document.getElementById('hero-panel-title');
+  const panelValue = document.getElementById('hero-panel-value');
+  const panelText = document.getElementById('hero-panel-text');
+  const cardTitle = document.getElementById('hero-card-title');
+  const cardText = document.getElementById('hero-card-text');
+  const heroChip = document.getElementById('hero-chip');
+  if(panelTitle) panelTitle.textContent = site.hero.panelTitle;
+  if(panelValue) panelValue.textContent = site.hero.panelValue;
+  if(panelText) panelText.textContent = site.hero.panelText;
+  if(cardTitle) cardTitle.textContent = site.hero.cardTitle;
+  if(cardText) cardText.textContent = site.hero.cardText;
+  if(heroChip) heroChip.textContent = site.brand.name + ' Corporate Platform';
 }
 function renderPartners(){
   document.getElementById('partner-grid').innerHTML = site.partners.map(p => `<div class="card partner">${p}</div>`).join('');
@@ -842,45 +892,3 @@ initUI();
 </script>
 </body>
 </html>
-/* ===== HERO CLEAN (MANN STYLE) ===== */
-.hero-clean{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:left;
-  min-height:calc(100vh - 82px);
-}
-
-.hero-content{
-  max-width:900px;
-  margin:0 auto;
-  z-index:2;
-}
-
-.hero{
-  background:
-    linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-    url('https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600');
-  background-size:cover;
-  background-position:center;
-  color:white;
-}
-
-.hero h1{
-  font-size:clamp(52px,6vw,90px);
-  line-height:1.05;
-  letter-spacing:-2px;
-  color:white;
-}
-
-.hero p{
-  color:rgba(255,255,255,0.85);
-  font-size:20px;
-  max-width:600px;
-}
-
-.hero .btn.white{
-  background:transparent;
-  border:1px solid rgba(255,255,255,0.4);
-  color:white;
-}
