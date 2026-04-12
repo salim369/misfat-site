@@ -36,13 +36,16 @@ a{text-decoration:none;color:inherit}
 .page{display:none;padding-top:82px;min-height:100vh}
 .page.active{display:block}
 
-/* HERO MODIFIE POUR VIDEO */
+/* HERO */
 .hero{
   position:relative;
-  background:none;
   overflow:hidden;
+  background:linear-gradient(110deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.93) 54%,rgba(226,232,240,.86) 100%),radial-gradient(circle at top right,rgba(198,31,38,.12),transparent 35%);
 }
+
+/* PLACEHOLDER VIDEO: جاهز للمستقبل */
 .hero-video{
+  display:none;
   position:absolute;
   inset:0;
   width:100%;
@@ -50,19 +53,12 @@ a{text-decoration:none;color:inherit}
   object-fit:cover;
   z-index:0;
 }
+
 .hero:before{
   content:"";
   position:absolute;
   inset:0;
-  z-index:1;
-  background:
-    linear-gradient(110deg,rgba(255,255,255,.90) 0%,rgba(255,255,255,.82) 54%,rgba(226,232,240,.62) 100%),
-    radial-gradient(circle at top right,rgba(198,31,38,.16),transparent 35%),
-    linear-gradient(135deg,transparent 0 65%,rgba(198,31,38,.05) 65% 100%);
-}
-.hero .container{
-  position:relative;
-  z-index:2;
+  background:linear-gradient(135deg,transparent 0 65%,rgba(198,31,38,.05) 65% 100%);
 }
 
 .hero-wrap{position:relative;display:grid;grid-template-columns:1.12fr .88fr;gap:30px;align-items:center;min-height:calc(100vh - 82px);padding:54px 0 60px}
@@ -190,9 +186,8 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 
 <div class="page active" id="page-home">
   <section class="hero">
-    <video autoplay muted loop playsinline class="hero-video">
-      <source src="/videos/hero.mp4" type="video/mp4">
-    </video>
+    <!-- Placeholder video: من بعد تنجم تزيد source هنا -->
+    <video autoplay muted loop playsinline class="hero-video"></video>
 
     <div class="container">
       <div class="hero-wrap">
