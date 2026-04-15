@@ -769,7 +769,7 @@ function isAboutPage(p){
 function renderNav(){
   const nav = document.getElementById('nav-links');
   const aboutPage = site.pages.find(isAboutPage);
-  const otherPages = site.pages.filter(p => !isAboutPage(p));
+  const otherPages = site.pages.filter(p => !isAboutPage(p) && !['qse','catalog','contact'].includes(p.slug));
 
   nav.innerHTML = `
     <div class="nav-dropdown">
