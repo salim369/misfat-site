@@ -42,7 +42,7 @@ a{text-decoration:none;color:inherit}
 .logo-mark img{width:100%;height:100%;object-fit:cover}
 .logo-name{font-family:Barlow,Inter,sans-serif;font-size:30px;line-height:1;font-weight:800;color:var(--brand)}
 .logo-sub{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:#64748B;margin-top:5px}
-.nav-links{display:flex;gap:6px;flex-wrap:wrap}
+.nav-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
 .nav-link{
   background:none;border:none;padding:10px 12px;cursor:pointer;font-size:13px;
   font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:#334155;position:relative
@@ -50,6 +50,47 @@ a{text-decoration:none;color:inherit}
 .nav-link.active,.nav-link:hover{color:var(--brand)}
 .nav-link.active:after,.nav-link:hover:after{
   content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;background:var(--brand)
+}
+.nav-dropdown{position:relative}
+.nav-dropdown-toggle{
+  display:flex;align-items:center;gap:8px
+}
+.nav-caret{
+  font-size:11px;
+  line-height:1;
+  transform:translateY(-1px)
+}
+.nav-dropdown-menu{
+  position:absolute;
+  top:calc(100% + 12px);
+  left:0;
+  min-width:290px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:20px;
+  box-shadow:0 18px 40px rgba(2,6,23,.10);
+  padding:10px;
+  display:none;
+  z-index:1200;
+}
+.nav-dropdown:hover .nav-dropdown-menu{display:block}
+.nav-sub-link{
+  width:100%;
+  text-align:left;
+  background:none;
+  border:none;
+  padding:12px 14px;
+  border-radius:14px;
+  cursor:pointer;
+  color:#334155;
+  font-size:13px;
+  font-weight:700;
+  line-height:1.4;
+}
+.nav-sub-link:hover,
+.nav-sub-link.active{
+  background:#F8FAFC;
+  color:var(--brand);
 }
 .nav-right{display:flex;gap:10px;align-items:center}
 .btn{border:none;border-radius:16px;cursor:pointer;font-weight:700;transition:.25s;padding:12px 18px}
@@ -813,6 +854,23 @@ let currentCat = 'all';
 let editingProductId = null;
 let countersAnimated = false;
 
+const filtrationSubPages = [
+  { slug:'mobilite-durable', nav:'Mobilité Durable', eyebrow:'Filtration', title:'Mobilité Durable', subtitle:'Page en préparation.', content:'' },
+  { slug:'air-sante', nav:'Air & Santé', eyebrow:'Filtration', title:'Air & Santé', subtitle:'Page en préparation.', content:'' },
+  { slug:'protection-moteur', nav:'Protection Moteur', eyebrow:'Filtration', title:'Protection Moteur', subtitle:'Page en préparation.', content:'' },
+  { slug:'solutions-industrielles', nav:'Solutions Industrielles', eyebrow:'Filtration', title:'Solutions Industrielles', subtitle:'Page en préparation.', content:'' }
+];
+
+const sectorsSubPages = [
+  { slug:'automobile-vehicules-legers', nav:'Automobile (Véhicules Légers)', eyebrow:'Nos Secteurs', title:'Automobile (Véhicules Légers)', subtitle:'Page en préparation.', content:'' },
+  { slug:'poids-lourds-bus', nav:'Poids Lourds & Bus', eyebrow:'Nos Secteurs', title:'Poids Lourds & Bus', subtitle:'Page en préparation.', content:'' },
+  { slug:'agriculture-travaux-publics', nav:'Agriculture & Travaux Publics', eyebrow:'Nos Secteurs', title:'Agriculture & Travaux Publics', subtitle:'Page en préparation.', content:'' },
+  { slug:'marine-energie', nav:'Marine & Énergie', eyebrow:'Nos Secteurs', title:'Marine & Énergie', subtitle:'Page en préparation.', content:'' },
+  { slug:'maintenance-industrielle', nav:'Maintenance Industrielle', eyebrow:'Nos Secteurs', title:'Maintenance Industrielle', subtitle:'Page en préparation.', content:'' }
+];
+
+const groupedSubPages = [...filtrationSubPages, ...sectorsSubPages];
+
 async function apiGet(){ const r = await fetch('/api/site-data'); return await r.json(); }
 async function apiSave(){ await fetch('/api/site-data', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(site)}); }
 async function apiReset(){ await fetch('/api/reset', {method:'POST'}); site = await apiGet(); initUI(); }
@@ -837,17 +895,58 @@ function renderLogo(){
   document.getElementById('footer-copy-name').textContent = '© 2026 ' + site.brand.name;
 }
 
+function isAboutPage(p){
+  const label = (p.nav || '').toLowerCase();
+  const slug = (p.slug || '').toLowerCase();
+  return label.includes('propos') || slug === 'about' || slug === 'a-propos';
+}
+
 function renderNav(){
   const nav = document.getElementById('nav-links');
-  nav.innerHTML = '<button class="nav-link active" id="nav-home" onclick="showPage(\'home\')">Accueil</button>';
-  site.pages.forEach(p => {
+  const aboutPage = site.pages.find(isAboutPage);
+  const otherPages = site.pages.filter(p => !isAboutPage(p));
+
+  nav.innerHTML = `
+    <div class="nav-dropdown">
+      <button class="nav-link nav-dropdown-toggle active" id="nav-home" onclick="showPage('home')">
+        <span>Filtration</span>
+        <span class="nav-caret">▾</span>
+      </button>
+      <div class="nav-dropdown-menu">
+        ${filtrationSubPages.map(p => `<button class="nav-sub-link" id="nav-${p.slug}" onclick="showPage('${p.slug}')">${p.nav}</button>`).join('')}
+      </div>
+    </div>
+  `;
+
+  if(aboutPage){
+    nav.innerHTML += `
+      <div class="nav-dropdown">
+        <button class="nav-link nav-dropdown-toggle" id="nav-${aboutPage.slug}" onclick="showPage('${aboutPage.slug}')">
+          <span>Nos Secteurs</span>
+          <span class="nav-caret">▾</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          ${sectorsSubPages.map(p => `<button class="nav-sub-link" id="nav-${p.slug}" onclick="showPage('${p.slug}')">${p.nav}</button>`).join('')}
+        </div>
+      </div>
+    `;
+  }
+
+  otherPages.forEach(p => {
     nav.innerHTML += `<button class="nav-link" id="nav-${p.slug}" onclick="showPage('${p.slug}')">${p.nav}</button>`;
   });
+
   nav.innerHTML += '<button class="nav-link hide" id="nav-admin" onclick="showPage(\'admin\')">Admin</button>';
 
   const footerNav = document.getElementById('footer-nav');
   footerNav.innerHTML = '';
-  site.pages.slice(0,4).forEach(p => {
+  footerNav.innerHTML += `<button class="footer-link" onclick="showPage('home')">Filtration</button>`;
+
+  if(aboutPage){
+    footerNav.innerHTML += `<button class="footer-link" onclick="showPage('${aboutPage.slug}')">Nos Secteurs</button>`;
+  }
+
+  otherPages.slice(0,3).forEach(p => {
     footerNav.innerHTML += `<button class="footer-link" onclick="showPage('${p.slug}')">${p.nav}</button>`;
   });
 }
@@ -872,6 +971,25 @@ function renderPartners(){
 function renderContactBlocks(){
   const ids = [['footer-address','address'],['footer-phone','phone'],['footer-email','email']];
   ids.forEach(([id,k]) => document.getElementById(id).textContent = site.contact[k]);
+}
+
+function renderPlaceholderPage(p){
+  return `
+    <div class="page" id="page-${p.slug}">
+      <section class="page-top">
+        <div class="container">
+          <div class="eyebrow">${p.eyebrow}</div>
+          <div class="page-title">${p.title}</div>
+          <div class="page-sub">${p.subtitle}</div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="container">
+          <div class="card story"><p>${p.content || ''}</p></div>
+        </div>
+      </section>
+    </div>
+  `;
 }
 
 function renderPages(){
@@ -955,6 +1073,10 @@ function renderPages(){
         </section>
       </div>`;
     }
+  });
+
+  groupedSubPages.forEach(p => {
+    wrap.innerHTML += renderPlaceholderPage(p);
   });
 
   wrap.innerHTML += `
@@ -1097,15 +1219,40 @@ function setupHeroVideo(){
   tryPlay();
 }
 
+function markActiveNav(slug){
+  document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-sub-link').forEach(n => n.classList.remove('active'));
+
+  const subNav = document.getElementById('nav-' + slug);
+  const topNav = document.getElementById('nav-' + slug);
+
+  if(filtrationSubPages.some(p => p.slug === slug)){
+    document.getElementById('nav-home')?.classList.add('active');
+    subNav?.classList.add('active');
+    return;
+  }
+
+  if(sectorsSubPages.some(p => p.slug === slug)){
+    const aboutPage = site.pages.find(isAboutPage);
+    if(aboutPage) document.getElementById('nav-' + aboutPage.slug)?.classList.add('active');
+    subNav?.classList.add('active');
+    return;
+  }
+
+  if(slug === 'home'){
+    document.getElementById('nav-home')?.classList.add('active');
+    return;
+  }
+
+  topNav?.classList.add('active');
+}
+
 function showPage(slug){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+  markActiveNav(slug);
 
   const page = document.getElementById('page-' + slug);
   if(page) page.classList.add('active');
-
-  const nav = document.getElementById('nav-' + slug);
-  if(nav) nav.classList.add('active');
 
   document.getElementById('footer').style.display = slug === 'login' ? 'none' : 'block';
 
