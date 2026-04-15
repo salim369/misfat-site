@@ -51,21 +51,9 @@ a{text-decoration:none;color:inherit}
 .nav-link.active:after,.nav-link:hover:after{
   content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;background:var(--brand)
 }
-.nav-dropdown{position:relative}
-  .nav-dropdown{
-  position:relative;
-  padding-bottom:6px;
-}
-.nav-dropdown-toggle{
-  display:flex;
-  align-items:center;
-  gap:8px;
-}
-.nav-caret{
-  font-size:11px;
-  line-height:1;
-  transform:translateY(-1px);
-}
+.nav-dropdown{position:relative;padding-bottom:6px}
+.nav-dropdown-toggle{display:flex;align-items:center;gap:8px}
+.nav-caret{font-size:11px;line-height:1;transform:translateY(-1px)}
 .nav-dropdown-menu{
   position:absolute;
   top:100%;
@@ -80,9 +68,7 @@ a{text-decoration:none;color:inherit}
   z-index:1200;
 }
 .nav-dropdown:hover .nav-dropdown-menu,
-.nav-dropdown-menu:hover{
-  display:block;
-}
+.nav-dropdown-menu:hover{display:block}
 .nav-sub-link{
   width:100%;
   text-align:left;
@@ -96,43 +82,7 @@ a{text-decoration:none;color:inherit}
   font-weight:700;
   line-height:1.4;
 }
-.nav-sub-link:hover,
-.nav-sub-link.active{
-  background:#F8FAFC;
-  color:var(--brand);
-.nav-dropdown-toggle{display:flex;align-items:center;gap:8px}
-.nav-caret{font-size:11px;line-height:1;transform:translateY(-1px)}
-.nav-dropdown-menu{
-  position:absolute;
-  top:calc(100% + 12px);
-  left:0;
-  min-width:300px;
-  background:#fff;
-  border:1px solid rgba(15,23,42,.08);
-  border-radius:20px;
-  box-shadow:0 18px 40px rgba(2,6,23,.10);
-  padding:10px;
-  display:none;
-  z-index:1200;
-}
-.nav-dropdown:hover .nav-dropdown-menu{display:block}
-.nav-sub-link{
-  width:100%;
-  text-align:left;
-  background:none;
-  border:none;
-  padding:12px 14px;
-  border-radius:14px;
-  cursor:pointer;
-  color:#334155;
-  font-size:13px;
-  font-weight:700;
-  line-height:1.4;
-}
-.nav-sub-link:hover,.nav-sub-link.active{
-  background:#F8FAFC;
-  color:var(--brand);
-}
+.nav-sub-link:hover,.nav-sub-link.active{background:#F8FAFC;color:var(--brand)}
 .nav-right{display:flex;gap:10px;align-items:center}
 .btn{border:none;border-radius:16px;cursor:pointer;font-weight:700;transition:.25s;padding:12px 18px}
 .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
@@ -145,7 +95,6 @@ a{text-decoration:none;color:inherit}
 .page{display:none;padding-top:82px;min-height:100vh}
 .page.active{display:block}
 
-/* HERO */
 .hero{
   position:relative;
   min-height:calc(100vh - 82px);
@@ -166,8 +115,7 @@ a{text-decoration:none;color:inherit}
   content:"";
   position:absolute;
   inset:0;
-  background:
-    linear-gradient(90deg, rgba(8,12,18,.76) 0%, rgba(8,12,18,.54) 34%, rgba(8,12,18,.28) 68%, rgba(8,12,18,.16) 100%);
+  background:linear-gradient(90deg, rgba(8,12,18,.76) 0%, rgba(8,12,18,.54) 34%, rgba(8,12,18,.28) 68%, rgba(8,12,18,.16) 100%);
   z-index:1;
 }
 .hero:after{
@@ -219,11 +167,7 @@ a{text-decoration:none;color:inherit}
 }
 .hero-actions .btn.white:hover{background:rgba(255,255,255,.16)}
 
-.kpis-wrap{
-  position:relative;
-  z-index:5;
-  margin-top:-56px;
-}
+.kpis-wrap{position:relative;z-index:5;margin-top:-56px}
 .kpis{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -234,216 +178,51 @@ a{text-decoration:none;color:inherit}
   overflow:hidden;
   box-shadow:0 18px 40px rgba(2,6,23,.08);
 }
-.kpi{
-  padding:34px 28px;
-  border-right:1px solid #EDF2F7;
-  background:#fff;
-}
+.kpi{padding:34px 28px;border-right:1px solid #EDF2F7;background:#fff}
 .kpi:last-child{border-right:none}
-.kpi .v{
-  font-size:56px;
-  line-height:1;
-  font-weight:800;
-  color:#111827;
-  letter-spacing:-2px;
-}
-.kpi .t{
-  margin-top:10px;
-  font-size:12px;
-  text-transform:uppercase;
-  letter-spacing:1.5px;
-  color:#64748B;
-  font-weight:800;
-}
+.kpi .v{font-size:56px;line-height:1;font-weight:800;color:#111827;letter-spacing:-2px}
+.kpi .t{margin-top:10px;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#64748B;font-weight:800}
 
 .section{padding:110px 0}
 .section-tight{padding:84px 0}
 .section-dark{background:#fff}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:34px}
-.eyebrow{
-  font-size:12px;
-  font-weight:800;
-  letter-spacing:2.6px;
-  text-transform:uppercase;
-  color:var(--brand);
-  margin-bottom:14px
-}
-.h2{
-  font-size:clamp(38px,4vw,66px);
-  line-height:1.02;
-  letter-spacing:-2.2px;
-  font-weight:800;
-  max-width:960px
-}
-.lead{
-  max-width:760px;
-  color:var(--muted);
-  font-size:18px;
-  line-height:1.85
-}
+.eyebrow{font-size:12px;font-weight:800;letter-spacing:2.6px;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+.h2{font-size:clamp(38px,4vw,66px);line-height:1.02;letter-spacing:-2.2px;font-weight:800;max-width:960px}
+.lead{max-width:760px;color:var(--muted);font-size:18px;line-height:1.85}
 
-.intro-grid{
-  display:grid;
-  grid-template-columns:1.08fr .92fr;
-  gap:36px;
-  align-items:end;
-}
-.intro-text{
-  font-size:19px;
-  line-height:1.95;
-  color:#475569;
-  max-width:760px;
-}
-.intro-side{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:28px;
-  padding:34px;
-  box-shadow:var(--shadow)
-}
-.intro-side .mini{
-  font-size:12px;
-  color:#64748B;
-  text-transform:uppercase;
-  letter-spacing:1.8px;
-  font-weight:800;
-  margin-bottom:12px;
-}
-.intro-side .big{
-  font-size:44px;
-  line-height:1;
-  font-weight:800;
-  letter-spacing:-1.5px;
-  margin-bottom:12px;
-}
-.intro-side p{
-  color:#64748B;
-  line-height:1.8;
-}
+.intro-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:36px;align-items:end}
+.intro-text{font-size:19px;line-height:1.95;color:#475569;max-width:760px}
+.editorial-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.editorial-card{min-height:620px;position:relative;border-radius:30px;overflow:hidden;background:#111827;color:#fff}
+.editorial-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.editorial-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.66) 76%, rgba(0,0,0,.78) 100%);z-index:1}
+.editorial-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:36px}
+.editorial-tag{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.6px;color:rgba(255,255,255,.8);margin-bottom:12px}
+.editorial-title{font-size:40px;line-height:1.02;letter-spacing:-1.5px;font-weight:800;margin-bottom:14px}
+.editorial-text{font-size:16px;line-height:1.85;color:rgba(255,255,255,.88);max-width:520px}
 
-.editorial-grid{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-}
-.editorial-card{
-  min-height:620px;
-  position:relative;
-  border-radius:30px;
-  overflow:hidden;
-  background:#111827;
-  color:#fff;
-}
-.editorial-card img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.editorial-card:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.66) 76%, rgba(0,0,0,.78) 100%);
-  z-index:1;
-}
-.editorial-body{
-  position:absolute;
-  left:0;right:0;bottom:0;
-  z-index:2;
-  padding:36px;
-}
-.editorial-tag{
-  font-size:11px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:1.6px;
-  color:rgba(255,255,255,.8);
-  margin-bottom:12px;
-}
-.editorial-title{
-  font-size:40px;
-  line-height:1.02;
-  letter-spacing:-1.5px;
-  font-weight:800;
-  margin-bottom:14px;
-}
-.editorial-text{
-  font-size:16px;
-  line-height:1.85;
-  color:rgba(255,255,255,.88);
-  max-width:520px;
-}
+.story-band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center}
+.story-left{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#64748B}
+.story-right{font-size:32px;line-height:1.32;letter-spacing:-1.1px;font-weight:700;color:#111827}
 
-.story-band{
-  background:#fff;
-  border-top:1px solid var(--line);
-  border-bottom:1px solid var(--line);
-}
-.story-grid{
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:34px;
-  align-items:center;
-}
-.story-left{
-  font-size:13px;
-  font-weight:800;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  color:#64748B;
-}
-.story-right{
-  font-size:32px;
-  line-height:1.32;
-  letter-spacing:-1.1px;
-  font-weight:700;
-  color:#111827;
-}
-
-.catalog-shell{
-  display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:32px;
-  align-items:start;
-}
-.catalog-side{
-  position:sticky;
-  top:112px;
-}
-.catalog-side p{
-  font-size:18px;
-  line-height:1.9;
-  color:#64748B;
-  max-width:520px;
-}
+.catalog-shell{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:start}
+.catalog-side{position:sticky;top:112px}
+.catalog-side p{font-size:18px;line-height:1.9;color:#64748B;max-width:520px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.tile,.qse-card,.story,.info-card,.contact-panel,.login-panel,.editor-panel,.admin-panel,.content-card{padding:26px}
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tile,.story,.contact-panel,.login-panel,.editor-panel,.admin-panel,.content-card{padding:26px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
-.tile-icon{
-  width:56px;height:56px;border-radius:18px;background:rgba(198,31,38,.08);
-  display:flex;align-items:center;justify-content:center;font-size:25px;color:var(--brand);margin-bottom:18px
-}
 .tile h3{font-size:21px;line-height:1.15;margin-bottom:10px}
-.tile p,.story p,.qse-card p,.info-card p,.contact-panel p,.editor-panel p,.content-card p{font-size:15px;line-height:1.75;color:var(--muted)}
+.tile p,.story p,.contact-panel p,.editor-panel p,.content-card p{font-size:15px;line-height:1.75;color:var(--muted)}
 
-.solution{
-  padding:0;overflow:hidden;cursor:pointer;border-radius:26px;
-  transition:transform .25s ease, box-shadow .25s ease;
-}
+.solution{padding:0;overflow:hidden;cursor:pointer;border-radius:26px;transition:transform .25s ease, box-shadow .25s ease}
 .solution:hover{transform:translateY(-4px)}
-.solution-top{
-  height:220px;background:linear-gradient(150deg,#E2E8F0 0%,#F8FAFC 56%, #D4DCE4 56%, #EFF4F9 100%);
-  position:relative;padding:24px;display:flex;align-items:end
-}
+.solution-top{height:220px;background:linear-gradient(150deg,#E2E8F0 0%,#F8FAFC 56%, #D4DCE4 56%, #EFF4F9 100%);position:relative;padding:24px;display:flex;align-items:end}
 .solution-icon{font-size:88px;line-height:1}
-.solution-badge{
-  position:absolute;top:18px;right:18px;padding:8px 12px;background:var(--brand);color:#fff;border-radius:999px;
-  font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase
-}
+.solution-badge{position:absolute;top:18px;right:18px;padding:8px 12px;background:var(--brand);color:#fff;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
 .solution-body{padding:24px}
 .solution-ref{font-size:12px;color:var(--brand);font-weight:800;letter-spacing:1.6px;margin-bottom:8px}
 .solution-name{font-size:24px;font-weight:800;line-height:1.14;margin-bottom:10px}
@@ -452,10 +231,7 @@ a{text-decoration:none;color:inherit}
 .price span{font-size:13px;color:#64748B;font-weight:700}
 
 .partner-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.partner{
-  height:100px;display:flex;align-items:center;justify-content:center;font-size:20px;
-  font-weight:800;color:#7C8593;background:#fff;border:1px solid var(--line);border-radius:22px
-}
+.partner{height:100px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#7C8593;background:#fff;border:1px solid var(--line);border-radius:22px}
 
 .page-top{background:linear-gradient(180deg,#fff 0%,#F3F6F9 100%);border-bottom:1px solid var(--line)}
 .page-title{font-size:58px;line-height:1;letter-spacing:-1.6px;font-weight:800;margin-bottom:12px}
@@ -464,39 +240,18 @@ a{text-decoration:none;color:inherit}
 .filters{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
 .search-wrap{flex:1;min-width:300px;position:relative}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#64748B}
-.search-input,.form-input{
-  width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--text);outline:none
-}
+.search-input,.form-input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--text);outline:none}
 .search-input{padding-left:42px}
 .cat-filters{display:flex;flex-wrap:wrap;gap:8px}
-.cat-btn{
-  border:none;background:#fff;border:1px solid var(--line);padding:11px 16px;border-radius:999px;cursor:pointer;font-weight:800;color:#475569
-}
+.cat-btn{border:none;background:#fff;border:1px solid var(--line);padding:11px 16px;border-radius:999px;cursor:pointer;font-weight:800;color:#475569}
 .cat-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
 
 .contact-grid,.product-detail,.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .info-row{display:flex;gap:14px;margin-bottom:18px}
-.info-icon{
-  width:48px;height:48px;border-radius:16px;background:rgba(198,31,38,.08);
-  display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--brand);flex:0 0 48px
-}
-.map-box{
-  min-height:190px;border:1px dashed rgba(198,31,38,.32);border-radius:20px;
-  background:linear-gradient(135deg,rgba(198,31,38,.05),rgba(15,23,42,.02));
-  display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#475569
-}
-.content-card h3{
-  font-size:22px;
-  line-height:1.15;
-  margin-bottom:12px;
-}
-.content-cta{
-  margin-top:28px;
-  display:flex;
-  gap:12px;
-  flex-wrap:wrap;
-}
+.info-icon{width:48px;height:48px;border-radius:16px;background:rgba(198,31,38,.08);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--brand);flex:0 0 48px}
+.map-box{min-height:190px;border:1px dashed rgba(198,31,38,.32);border-radius:20px;background:linear-gradient(135deg,rgba(198,31,38,.05),rgba(15,23,42,.02));display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#475569}
+.content-card h3{font-size:22px;line-height:1.15;margin-bottom:12px}
+.content-cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
 
 .login-wrap{min-height:calc(100vh - 82px);display:flex;align-items:center;justify-content:center;padding:26px}
 .success-msg,.error-msg{display:none;padding:13px 16px;border-radius:16px;font-size:14px;font-weight:700;margin-bottom:14px}
@@ -516,9 +271,7 @@ a{text-decoration:none;color:inherit}
 .admin-section.active{display:block}
 .editor-field{margin-bottom:12px}
 .editor-field.full{grid-column:1/-1}
-.editor-field label,.form-label{
-  display:block;margin-bottom:8px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#64748B
-}
+.editor-field label,.form-label{display:block;margin-bottom:8px;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:#64748B}
 .editor-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
 .table-wrap{overflow:auto}
 table{width:100%;border-collapse:collapse}
@@ -532,30 +285,21 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:28px}
 .footer-title{font-size:13px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:14px}
 .footer-link{display:block;background:none;border:none;color:#D1D5DB;cursor:pointer;text-align:left;margin:10px 0}
-.footer-copy{
-  margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);
-  display:flex;justify-content:space-between;gap:16px;font-size:13px;color:#CBD5E1
-}
+.footer-copy{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;font-size:13px;color:#CBD5E1}
 
-.modal{
-  display:none;position:fixed;inset:0;background:rgba(15,23,42,.58);z-index:2000;
-  align-items:center;justify-content:center;padding:22px
-}
+.modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.58);z-index:2000;align-items:center;justify-content:center;padding:22px}
 .modal.show{display:flex}
-.modal-box{
-  max-width:640px;width:100%;padding:28px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)
-}
+.modal-box{max-width:640px;width:100%;padding:28px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
 .modal-box h3{font-size:30px;line-height:1;font-weight:800;margin-bottom:18px}
-.full{grid-column:1/-1}
 
 @media (max-width:1180px){
-  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.contact-grid,.product-detail,.grid-2,.footer-grid,.grid-4,.admin-stats,.partner-grid,.grid-3,.content-grid{
+  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.contact-grid,.product-detail,.grid-2,.footer-grid,.admin-stats,.partner-grid,.grid-3,.content-grid{
     grid-template-columns:1fr 1fr
   }
 }
 @media (max-width:860px){
   .nav-links{display:none}
-  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.product-detail,.contact-grid,.grid-2,.grid-3,.grid-4,.footer-grid,.admin-stats,.partner-grid,.editor-grid,.content-grid{
+  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.product-detail,.contact-grid,.grid-2,.grid-3,.footer-grid,.admin-stats,.partner-grid,.editor-grid,.content-grid{
     grid-template-columns:1fr
   }
   .hero-wrap{padding:50px 0 64px;align-items:flex-end}
@@ -596,7 +340,6 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
     <video autoplay muted loop playsinline class="hero-video" id="hero-video" poster="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1600&auto=format&fit=crop">
       <source src="/videos/hero-misfat.mp4" type="video/mp4">
     </video>
-
     <div class="container">
       <div class="hero-wrap">
         <div class="hero-content">
@@ -615,9 +358,9 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   <div class="container kpis-wrap">
     <div class="kpis">
       <div class="kpi"><div class="v counter" id="kpi1" data-target="850" data-suffix="+">0</div><div class="t">Références</div></div>
-      <div class="kpi"><div class="v counter" id="kpi2" data-target="12" data-suffix="">0</div><div class="t">Marchés</div></div>
-      <div class="kpi"><div class="v counter" id="kpi3" data-target="19" data-suffix="">0</div><div class="t">Années</div></div>
-      <div class="kpi"><div class="v counter" id="kpi4" data-target="25" data-suffix="">0</div><div class="t">Partenaires</div></div>
+      <div class="kpi"><div class="v counter" id="kpi2" data-target="12">0</div><div class="t">Marchés</div></div>
+      <div class="kpi"><div class="v counter" id="kpi3" data-target="19">0</div><div class="t">Années</div></div>
+      <div class="kpi"><div class="v counter" id="kpi4" data-target="25">0</div><div class="t">Partenaires</div></div>
     </div>
   </div>
 
@@ -654,27 +397,21 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
           <div class="h2">Where MISFAT filtration creates value.</div>
         </div>
       </div>
-
       <div class="editorial-grid">
         <div class="editorial-card">
           <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?q=80&w=1400&auto=format&fit=crop" alt="">
           <div class="editorial-body">
             <div class="editorial-tag">Automotive</div>
             <div class="editorial-title">Performance-oriented filtration for demanding vehicle environments.</div>
-            <div class="editorial-text">
-              Cleaner air, cleaner oil and cleaner fuel paths with a premium visual identity aligned to the automotive market.
-            </div>
+            <div class="editorial-text">Cleaner air, cleaner oil and cleaner fuel paths with a premium visual identity aligned to the automotive market.</div>
           </div>
         </div>
-
         <div class="editorial-card">
           <img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?q=80&w=1400&auto=format&fit=crop" alt="">
           <div class="editorial-body">
             <div class="editorial-tag">Industry</div>
             <div class="editorial-title">Industrial reliability built on consistency, control and efficiency.</div>
-            <div class="editorial-text">
-              A more institutional homepage structure inspired by leading industrial brands, adapted to MISFAT positioning.
-            </div>
+            <div class="editorial-text">A more institutional homepage structure inspired by leading industrial brands, adapted to MISFAT positioning.</div>
           </div>
         </div>
       </div>
@@ -687,12 +424,8 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
         <div class="catalog-side">
           <div class="eyebrow">Solutions</div>
           <div class="h2">Our filtration portfolio.</div>
-          <p style="margin-top:20px">
-            Explore the product range through a more premium catalogue experience while keeping the same CMS logic, server-side saving and current project architecture.
-          </p>
-          <div style="margin-top:24px">
-            <button class="btn primary" onclick="showPage('catalog')">Open catalogue</button>
-          </div>
+          <p style="margin-top:20px">Explore the product range through a more premium catalogue experience while keeping the same CMS logic, server-side saving and current project architecture.</p>
+          <div style="margin-top:24px"><button class="btn primary" onclick="showPage('catalog')">Open catalogue</button></div>
         </div>
         <div class="grid-3" id="home-products"></div>
       </div>
@@ -876,9 +609,7 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
     <div class="footer-grid">
       <div>
         <div class="logo-name" id="footer-name"></div>
-        <div style="max-width:380px;color:#D1D5DB;line-height:1.8;margin-top:10px">
-          Site corporate premium avec CMS simple pour tout modifier.
-        </div>
+        <div style="max-width:380px;color:#D1D5DB;line-height:1.8;margin-top:10px">Site corporate premium avec CMS simple pour tout modifier.</div>
       </div>
       <div>
         <div class="footer-title">Navigation</div>
@@ -909,204 +640,96 @@ let countersAnimated = false;
 
 const filtrationSubPages = [
   {
-    slug:'mobilite-durable',
-    nav:'Mobilité Durable',
-    eyebrow:'Filtration',
-    title:'Mobilité Durable',
+    slug:'mobilite-durable', nav:'Mobilité Durable', eyebrow:'Filtration', title:'Mobilité Durable',
     subtitle:'Des solutions de filtration conçues pour accompagner une mobilité plus fiable, plus propre et plus durable.',
     intro:'MISFAT développe des solutions de filtration adaptées aux exigences actuelles de la mobilité, avec un accent sur la performance, la durée de vie des composants et la régularité de fonctionnement.',
     blocks:[
-      {
-        title:'Fiabilité au quotidien',
-        text:'Des filtres pensés pour maintenir la qualité des flux et protéger les systèmes dans des environnements de roulage variés.'
-      },
-      {
-        title:'Performance opérationnelle',
-        text:'Une approche produit qui soutient l’efficacité du moteur, la maîtrise des intervalles d’entretien et la constance de rendement.'
-      },
-      {
-        title:'Vision long terme',
-        text:'Une filtration intégrée à une logique de mobilité durable, de maîtrise technique et de continuité d’usage.'
-      }
+      { title:'Fiabilité au quotidien', text:'Des filtres pensés pour maintenir la qualité des flux et protéger les systèmes dans des environnements de roulage variés.' },
+      { title:'Performance opérationnelle', text:'Une approche produit qui soutient l’efficacité du moteur, la maîtrise des intervalles d’entretien et la constance de rendement.' },
+      { title:'Vision long terme', text:'Une filtration intégrée à une logique de mobilité durable, de maîtrise technique et de continuité d’usage.' }
     ]
   },
   {
-    slug:'air-sante',
-    nav:'Air & Santé',
-    eyebrow:'Filtration',
-    title:'Air & Santé',
+    slug:'air-sante', nav:'Air & Santé', eyebrow:'Filtration', title:'Air & Santé',
     subtitle:'Une filtration pensée pour améliorer la qualité de l’air et soutenir des environnements plus sains.',
     intro:'L’air filtré joue un rôle clé dans le confort, la protection et la qualité de l’environnement. MISFAT structure son offre autour d’une vision plus claire des usages liés à l’air et à la santé.',
     blocks:[
-      {
-        title:'Qualité de l’air',
-        text:'Des solutions destinées à limiter les particules et à améliorer la propreté des flux d’air dans différents contextes d’utilisation.'
-      },
-      {
-        title:'Confort et protection',
-        text:'Une attention particulière portée au bien-être des utilisateurs, au maintien d’un environnement plus sain et à la cohérence fonctionnelle du système.'
-      },
-      {
-        title:'Positionnement premium',
-        text:'Une présentation corporate qui valorise la filtration de l’air comme un levier de qualité, de confiance et de sérieux industriel.'
-      }
+      { title:'Qualité de l’air', text:'Des solutions destinées à limiter les particules et à améliorer la propreté des flux d’air dans différents contextes d’utilisation.' },
+      { title:'Confort et protection', text:'Une attention particulière portée au bien-être des utilisateurs, au maintien d’un environnement plus sain et à la cohérence fonctionnelle du système.' },
+      { title:'Positionnement premium', text:'Une présentation corporate qui valorise la filtration de l’air comme un levier de qualité, de confiance et de sérieux industriel.' }
     ]
   },
   {
-    slug:'protection-moteur',
-    nav:'Protection Moteur',
-    eyebrow:'Filtration',
-    title:'Protection Moteur',
+    slug:'protection-moteur', nav:'Protection Moteur', eyebrow:'Filtration', title:'Protection Moteur',
     subtitle:'La filtration au service de la protection, de la continuité et de la performance moteur.',
     intro:'La protection moteur reste au cœur de l’expertise MISFAT. Cette page met en avant une logique de filtration centrée sur la robustesse, la maîtrise technique et la durée de vie.',
     blocks:[
-      {
-        title:'Protection des composants',
-        text:'Des solutions pensées pour préserver les organes critiques et limiter l’impact des impuretés sur le fonctionnement mécanique.'
-      },
-      {
-        title:'Régularité de performance',
-        text:'Une filtration fiable contribue à maintenir un comportement moteur stable, un meilleur niveau d’efficacité et une exploitation plus sereine.'
-      },
-      {
-        title:'Exigence industrielle',
-        text:'MISFAT valorise ici une approche rigoureuse fondée sur la qualité produit, la constance et la maîtrise des besoins du terrain.'
-      }
+      { title:'Protection des composants', text:'Des solutions pensées pour préserver les organes critiques et limiter l’impact des impuretés sur le fonctionnement mécanique.' },
+      { title:'Régularité de performance', text:'Une filtration fiable contribue à maintenir un comportement moteur stable, un meilleur niveau d’efficacité et une exploitation plus sereine.' },
+      { title:'Exigence industrielle', text:'MISFAT valorise ici une approche rigoureuse fondée sur la qualité produit, la constance et la maîtrise des besoins du terrain.' }
     ]
   },
   {
-    slug:'solutions-industrielles',
-    nav:'Solutions Industrielles',
-    eyebrow:'Filtration',
-    title:'Solutions Industrielles',
+    slug:'solutions-industrielles', nav:'Solutions Industrielles', eyebrow:'Filtration', title:'Solutions Industrielles',
     subtitle:'Des solutions de filtration développées pour les environnements industriels, les contraintes techniques et la continuité d’exploitation.',
     intro:'Au-delà de la mobilité, MISFAT s’inscrit dans une logique industrielle plus large, avec une vision orientée fiabilité, efficacité et maîtrise des usages professionnels.',
     blocks:[
-      {
-        title:'Adaptation aux contraintes',
-        text:'Des solutions capables de répondre à des contextes où la régularité, la stabilité et la sécurité opérationnelle sont prioritaires.'
-      },
-      {
-        title:'Efficacité des systèmes',
-        text:'La filtration contribue à l’optimisation des performances globales et à une meilleure continuité des opérations industrielles.'
-      },
-      {
-        title:'Image institutionnelle',
-        text:'Une page construite pour donner plus de poids au positionnement industriel de MISFAT dans un cadre corporate plus premium.'
-      }
+      { title:'Adaptation aux contraintes', text:'Des solutions capables de répondre à des contextes où la régularité, la stabilité et la sécurité opérationnelle sont prioritaires.' },
+      { title:'Efficacité des systèmes', text:'La filtration contribue à l’optimisation des performances globales et à une meilleure continuité des opérations industrielles.' },
+      { title:'Image institutionnelle', text:'Une page construite pour donner plus de poids au positionnement industriel de MISFAT dans un cadre corporate plus premium.' }
     ]
   }
 ];
 
 const sectorsSubPages = [
   {
-    slug:'automobile-vehicules-legers',
-    nav:'Automobile (Véhicules Légers)',
-    eyebrow:'Nos Secteurs',
-    title:'Automobile (Véhicules Légers)',
+    slug:'automobile-vehicules-legers', nav:'Automobile (Véhicules Légers)', eyebrow:'Nos Secteurs', title:'Automobile (Véhicules Légers)',
     subtitle:'Une offre pensée pour les besoins du marché automobile léger, avec une approche claire, fiable et structurée.',
     intro:'MISFAT accompagne le secteur automobile à travers des solutions de filtration conçues pour répondre aux besoins de performance, de maintenance et de confiance sur le long terme.',
     blocks:[
-      {
-        title:'Usage quotidien',
-        text:'Des solutions adaptées aux besoins des véhicules légers, avec une attention portée à la continuité d’usage et au niveau d’exigence du marché.'
-      },
-      {
-        title:'Fiabilité produit',
-        text:'Une logique de filtration orientée constance, protection et cohérence de performance dans les conditions habituelles d’exploitation.'
-      },
-      {
-        title:'Présence marché',
-        text:'Cette page valorise le rôle de MISFAT dans un secteur clé, avec une présentation plus premium et plus institutionnelle.'
-      }
+      { title:'Usage quotidien', text:'Des solutions adaptées aux besoins des véhicules légers, avec une attention portée à la continuité d’usage et au niveau d’exigence du marché.' },
+      { title:'Fiabilité produit', text:'Une logique de filtration orientée constance, protection et cohérence de performance dans les conditions habituelles d’exploitation.' },
+      { title:'Présence marché', text:'Cette page valorise le rôle de MISFAT dans un secteur clé, avec une présentation plus premium et plus institutionnelle.' }
     ]
   },
   {
-    slug:'poids-lourds-bus',
-    nav:'Poids Lourds & Bus',
-    eyebrow:'Nos Secteurs',
-    title:'Poids Lourds & Bus',
+    slug:'poids-lourds-bus', nav:'Poids Lourds & Bus', eyebrow:'Nos Secteurs', title:'Poids Lourds & Bus',
     subtitle:'Des solutions de filtration adaptées aux usages intensifs, aux longues durées d’exploitation et aux environnements exigeants.',
     intro:'Dans le secteur des poids lourds et des bus, la filtration participe à la continuité des opérations, à la protection des systèmes et à la maîtrise des cycles d’entretien.',
     blocks:[
-      {
-        title:'Usage intensif',
-        text:'Une approche pensée pour les contextes d’exploitation prolongée, les volumes élevés et les contraintes quotidiennes du transport.'
-      },
-      {
-        title:'Continuité de service',
-        text:'La filtration soutient la stabilité des équipements et contribue à sécuriser les performances sur la durée.'
-      },
-      {
-        title:'Positionnement robuste',
-        text:'MISFAT présente ici une offre alignée avec les attentes du transport professionnel et des usages exigeants.'
-      }
+      { title:'Usage intensif', text:'Une approche pensée pour les contextes d’exploitation prolongée, les volumes élevés et les contraintes quotidiennes du transport.' },
+      { title:'Continuité de service', text:'La filtration soutient la stabilité des équipements et contribue à sécuriser les performances sur la durée.' },
+      { title:'Positionnement robuste', text:'MISFAT présente ici une offre alignée avec les attentes du transport professionnel et des usages exigeants.' }
     ]
   },
   {
-    slug:'agriculture-travaux-publics',
-    nav:'Agriculture & Travaux Publics',
-    eyebrow:'Nos Secteurs',
-    title:'Agriculture & Travaux Publics',
+    slug:'agriculture-travaux-publics', nav:'Agriculture & Travaux Publics', eyebrow:'Nos Secteurs', title:'Agriculture & Travaux Publics',
     subtitle:'Une filtration conçue pour les environnements poussiéreux, intensifs et fortement exposés aux contraintes terrain.',
     intro:'Les secteurs de l’agriculture et des travaux publics exigent des solutions de filtration capables d’accompagner des machines soumises à des conditions d’usage particulièrement difficiles.',
     blocks:[
-      {
-        title:'Contraintes terrain',
-        text:'Des environnements marqués par la poussière, les charges de travail élevées et la nécessité d’une grande fiabilité mécanique.'
-      },
-      {
-        title:'Protection durable',
-        text:'La filtration joue un rôle essentiel dans la préservation des équipements et dans la régularité des cycles d’exploitation.'
-      },
-      {
-        title:'Approche métier',
-        text:'Une page sectorielle qui traduit le sérieux industriel de MISFAT au service des applications terrain.'
-      }
+      { title:'Contraintes terrain', text:'Des environnements marqués par la poussière, les charges de travail élevées et la nécessité d’une grande fiabilité mécanique.' },
+      { title:'Protection durable', text:'La filtration joue un rôle essentiel dans la préservation des équipements et dans la régularité des cycles d’exploitation.' },
+      { title:'Approche métier', text:'Une page sectorielle qui traduit le sérieux industriel de MISFAT au service des applications terrain.' }
     ]
   },
   {
-    slug:'marine-energie',
-    nav:'Marine & Énergie',
-    eyebrow:'Nos Secteurs',
-    title:'Marine & Énergie',
+    slug:'marine-energie', nav:'Marine & Énergie', eyebrow:'Nos Secteurs', title:'Marine & Énergie',
     subtitle:'Des applications de filtration destinées à des environnements techniques où la fiabilité et la maîtrise sont essentielles.',
     intro:'Dans les univers marine et énergie, les attentes portent sur la solidité, la continuité et la maîtrise des systèmes. MISFAT valorise ici un positionnement professionnel et structuré.',
     blocks:[
-      {
-        title:'Environnements critiques',
-        text:'Des usages où la stabilité des systèmes et la qualité des composants ont un impact direct sur l’exploitation.'
-      },
-      {
-        title:'Maîtrise technique',
-        text:'La filtration s’inscrit dans une logique de contrôle, de protection et d’efficacité durable.'
-      },
-      {
-        title:'Image professionnelle',
-        text:'Une présentation claire qui renforce la crédibilité de MISFAT dans des secteurs techniques à forte exigence.'
-      }
+      { title:'Environnements critiques', text:'Des usages où la stabilité des systèmes et la qualité des composants ont un impact direct sur l’exploitation.' },
+      { title:'Maîtrise technique', text:'La filtration s’inscrit dans une logique de contrôle, de protection et d’efficacité durable.' },
+      { title:'Image professionnelle', text:'Une présentation claire qui renforce la crédibilité de MISFAT dans des secteurs techniques à forte exigence.' }
     ]
   },
   {
-    slug:'maintenance-industrielle',
-    nav:'Maintenance Industrielle',
-    eyebrow:'Nos Secteurs',
-    title:'Maintenance Industrielle',
+    slug:'maintenance-industrielle', nav:'Maintenance Industrielle', eyebrow:'Nos Secteurs', title:'Maintenance Industrielle',
     subtitle:'Une filtration qui soutient les démarches de maintenance, de continuité opérationnelle et de fiabilité des installations.',
     intro:'La maintenance industrielle a besoin de solutions cohérentes, disponibles et techniquement fiables. MISFAT met en avant ici une lecture plus institutionnelle de sa contribution à ce secteur.',
     blocks:[
-      {
-        title:'Disponibilité des systèmes',
-        text:'Des solutions de filtration qui participent à la stabilité des équipements et à la réduction des interruptions non souhaitées.'
-      },
-      {
-        title:'Support à la maintenance',
-        text:'Une offre qui s’intègre dans une logique de prévention, d’entretien maîtrisé et de régularité opérationnelle.'
-      },
-      {
-        title:'Crédibilité industrielle',
-        text:'Cette page renforce la perception de MISFAT comme acteur sérieux, structuré et orienté performance terrain.'
-      }
+      { title:'Disponibilité des systèmes', text:'Des solutions de filtration qui participent à la stabilité des équipements et à la réduction des interruptions non souhaitées.' },
+      { title:'Support à la maintenance', text:'Une offre qui s’intègre dans une logique de prévention, d’entretien maîtrisé et de régularité opérationnelle.' },
+      { title:'Crédibilité industrielle', text:'Cette page renforce la perception de MISFAT comme acteur sérieux, structuré et orienté performance terrain.' }
     ]
   }
 ];
@@ -1193,7 +816,6 @@ function renderNav(){
 
 function renderHero(){
   document.getElementById('hero-badge').textContent = site.hero.badge;
-
   let title = site.hero.title;
   if(site.hero.highlight && title.includes(site.hero.highlight)){
     title = title.replace(site.hero.highlight, `<span>${site.hero.highlight}</span>`);
@@ -1203,9 +825,7 @@ function renderHero(){
 }
 
 function renderPartners(){
-  document.getElementById('partner-grid').innerHTML = site.partners
-    .map(p => `<div class="partner">${p}</div>`)
-    .join('');
+  document.getElementById('partner-grid').innerHTML = site.partners.map(p => `<div class="partner">${p}</div>`).join('');
 }
 
 function renderContactBlocks(){
@@ -1223,7 +843,6 @@ function renderRichSubPage(p){
           <div class="page-sub">${p.subtitle}</div>
         </div>
       </section>
-
       <section class="section">
         <div class="container">
           <div class="intro-grid">
@@ -1235,7 +854,6 @@ function renderRichSubPage(p){
           </div>
         </div>
       </section>
-
       <section class="section-tight">
         <div class="container">
           <div class="content-grid">
@@ -1246,7 +864,6 @@ function renderRichSubPage(p){
               </div>
             `).join('')}
           </div>
-
           <div class="content-cta">
             <button class="btn primary" onclick="showPage('contact')">Contacter MISFAT</button>
             <button class="btn white" onclick="showPage('catalog')">Voir le catalogue</button>
@@ -1265,13 +882,7 @@ function renderPages(){
     if(p.slug === 'catalog'){
       wrap.innerHTML += `
       <div class="page" id="page-catalog">
-        <section class="page-top">
-          <div class="container">
-            <div class="eyebrow">${p.eyebrow}</div>
-            <div class="page-title">${p.title}</div>
-            <div class="page-sub">${p.subtitle}</div>
-          </div>
-        </section>
+        <section class="page-top"><div class="container"><div class="eyebrow">${p.eyebrow}</div><div class="page-title">${p.title}</div><div class="page-sub">${p.subtitle}</div></div></section>
         <section class="section">
           <div class="container">
             <div class="filters">
@@ -1295,13 +906,7 @@ function renderPages(){
     } else if(p.slug === 'contact'){
       wrap.innerHTML += `
       <div class="page" id="page-contact">
-        <section class="page-top">
-          <div class="container">
-            <div class="eyebrow">${p.eyebrow}</div>
-            <div class="page-title">${p.title}</div>
-            <div class="page-sub">${p.subtitle}</div>
-          </div>
-        </section>
+        <section class="page-top"><div class="container"><div class="eyebrow">${p.eyebrow}</div><div class="page-title">${p.title}</div><div class="page-sub">${p.subtitle}</div></div></section>
         <section class="section">
           <div class="container contact-grid">
             <div class="card contact-panel">
@@ -1324,47 +929,24 @@ function renderPages(){
     } else {
       wrap.innerHTML += `
       <div class="page" id="page-${p.slug}">
-        <section class="page-top">
-          <div class="container">
-            <div class="eyebrow">${p.eyebrow}</div>
-            <div class="page-title">${p.title}</div>
-            <div class="page-sub">${p.subtitle}</div>
-          </div>
-        </section>
-        <section class="section">
-          <div class="container">
-            <div class="card story"><p>${p.content || ''}</p></div>
-          </div>
-        </section>
+        <section class="page-top"><div class="container"><div class="eyebrow">${p.eyebrow}</div><div class="page-title">${p.title}</div><div class="page-sub">${p.subtitle}</div></div></section>
+        <section class="section"><div class="container"><div class="card story"><p>${p.content || ''}</p></div></div></section>
       </div>`;
     }
   });
 
-  groupedSubPages.forEach(p => {
-    wrap.innerHTML += renderRichSubPage(p);
-  });
+  groupedSubPages.forEach(p => { wrap.innerHTML += renderRichSubPage(p); });
 
   wrap.innerHTML += `
   <div class="page" id="page-product">
-    <section class="page-top">
-      <div class="container">
-        <div class="eyebrow">Produit</div>
-        <div class="page-title">Fiche produit</div>
-        <div class="page-sub">Présentation claire et premium.</div>
-      </div>
-    </section>
-    <section class="section">
-      <div class="container" id="product-detail-content"></div>
-    </section>
+    <section class="page-top"><div class="container"><div class="eyebrow">Produit</div><div class="page-title">Fiche produit</div><div class="page-sub">Présentation claire et premium.</div></div></section>
+    <section class="section"><div class="container" id="product-detail-content"></div></section>
   </div>`;
 }
 
 function productCardHTML(p){
   return `<div class="card solution" onclick="viewProduct(${p.id})">
-    <div class="solution-top">
-      <div class="solution-icon">${p.img}</div>
-      <div class="solution-badge">${catLabel(p.category)}</div>
-    </div>
+    <div class="solution-top"><div class="solution-icon">${p.img}</div><div class="solution-badge">${catLabel(p.category)}</div></div>
     <div class="solution-body">
       <div class="solution-ref">${p.ref}</div>
       <div class="solution-name">${p.name}</div>
@@ -1378,19 +960,9 @@ function productCardHTML(p){
   </div>`;
 }
 
-function renderHomeProducts(){
-  document.getElementById('home-products').innerHTML = site.products.slice(0,3).map(productCardHTML).join('');
-}
-
-function stars(r){
-  let s='';
-  for(let i=1;i<=5;i++) s += i <= Math.round(r) ? '★' : '☆';
-  return s;
-}
-
-function catLabel(cat){
-  return {oil:'Huile',air:'Air',fuel:'Carburant',cabin:'Habitacle'}[cat] || cat;
-}
+function renderHomeProducts(){ document.getElementById('home-products').innerHTML = site.products.slice(0,3).map(productCardHTML).join(''); }
+function stars(r){ let s=''; for(let i=1;i<=5;i++) s += i <= Math.round(r) ? '★' : '☆'; return s; }
+function catLabel(cat){ return {oil:'Huile',air:'Air',fuel:'Carburant',cabin:'Habitacle'}[cat] || cat; }
 
 function setCat(cat, btn){
   currentCat = cat;
@@ -1438,13 +1010,11 @@ function viewProduct(id){
 function animateCounters(){
   if(countersAnimated) return;
   countersAnimated = true;
-
   document.querySelectorAll('.counter').forEach(el => {
     const target = Number(el.dataset.target || 0);
     const suffix = el.dataset.suffix || '';
     const duration = 1500;
     const start = performance.now();
-
     function update(now){
       const progress = Math.min((now - start) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
@@ -1462,10 +1032,7 @@ function setupCounterObserver(){
   if(!wrap) return;
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-      if(entry.isIntersecting){
-        animateCounters();
-        observer.disconnect();
-      }
+      if(entry.isIntersecting){ animateCounters(); observer.disconnect(); }
     });
   }, {threshold:.35});
   observer.observe(wrap);
@@ -1474,20 +1041,13 @@ function setupCounterObserver(){
 function setupHeroVideo(){
   const video = document.getElementById('hero-video');
   if(!video) return;
-  const tryPlay = () => {
-    const p = video.play();
-    if(p && typeof p.catch === 'function'){ p.catch(() => {}); }
-  };
-  video.muted = true;
-  video.defaultMuted = true;
-  video.playsInline = true;
-  tryPlay();
+  const p = video.play();
+  if(p && typeof p.catch === 'function') p.catch(() => {});
 }
 
 function markActiveNav(slug){
   document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
   document.querySelectorAll('.nav-sub-link').forEach(n => n.classList.remove('active'));
-
   const subNav = document.getElementById('nav-' + slug);
   const topNav = document.getElementById('nav-' + slug);
 
@@ -1496,40 +1056,29 @@ function markActiveNav(slug){
     subNav?.classList.add('active');
     return;
   }
-
   if(sectorsSubPages.some(p => p.slug === slug)){
     const aboutPage = site.pages.find(isAboutPage);
     if(aboutPage) document.getElementById('nav-' + aboutPage.slug)?.classList.add('active');
     subNav?.classList.add('active');
     return;
   }
-
   if(slug === 'home'){
     document.getElementById('nav-home')?.classList.add('active');
     return;
   }
-
   topNav?.classList.add('active');
 }
 
 function showPage(slug){
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   markActiveNav(slug);
-
   const page = document.getElementById('page-' + slug);
   if(page) page.classList.add('active');
-
   document.getElementById('footer').style.display = slug === 'login' ? 'none' : 'block';
-
   if(slug === 'catalog') filterProducts();
   if(slug === 'admin' && !currentUser){ showPage('login'); return; }
   if(slug === 'admin'){ renderAdmin(); fillAdminForms(); }
-
-  if(slug === 'home'){
-    setupCounterObserver();
-    setupHeroVideo();
-  }
-
+  if(slug === 'home'){ setupCounterObserver(); setupHeroVideo(); }
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
@@ -1566,7 +1115,6 @@ function fillAdminForms(){
   document.getElementById('brand-secondary').value = site.brand.secondaryColor;
   document.getElementById('brand-accent').value = site.brand.accentColor;
   document.getElementById('brand-bg').value = site.brand.backgroundColor;
-
   document.getElementById('hero-badge-input').value = site.hero.badge;
   document.getElementById('hero-title-input').value = site.hero.title;
   document.getElementById('hero-highlight-input').value = site.hero.highlight;
@@ -1576,7 +1124,6 @@ function fillAdminForms(){
   document.getElementById('hero-panel-text-input').value = site.hero.panelText;
   document.getElementById('hero-card-title-input').value = site.hero.cardTitle;
   document.getElementById('hero-card-text-input').value = site.hero.cardText;
-
   document.getElementById('contact-address-input').value = site.contact.address;
   document.getElementById('contact-phone-input').value = site.contact.phone;
   document.getElementById('contact-email-input').value = site.contact.email;
@@ -1609,10 +1156,7 @@ function renderPartnersEditor(){
   });
 }
 
-function addPage(){
-  site.pages.push({slug:'nouvelle-page', nav:'Nouvelle page', eyebrow:'Section', title:'Nouvelle page', subtitle:'Sous-titre...', content:'Contenu...'});
-  renderPagesEditor();
-}
+function addPage(){ site.pages.push({slug:'nouvelle-page', nav:'Nouvelle page', eyebrow:'Section', title:'Nouvelle page', subtitle:'Sous-titre...', content:'Contenu...'}); renderPagesEditor(); }
 function removePage(i){ site.pages.splice(i,1); renderPagesEditor(); }
 function addPartner(){ site.partners.push('Nouveau partenaire'); renderPartnersEditor(); }
 
@@ -1626,9 +1170,7 @@ async function saveBrand(){
   site.brand.secondaryColor = document.getElementById('brand-secondary').value.trim();
   site.brand.accentColor = document.getElementById('brand-accent').value.trim();
   site.brand.backgroundColor = document.getElementById('brand-bg').value.trim();
-  await apiSave();
-  initUI();
-  alert('Marque enregistrée.');
+  await apiSave(); initUI(); alert('Marque enregistrée.');
 }
 
 async function saveHero(){
@@ -1641,9 +1183,7 @@ async function saveHero(){
   site.hero.panelText = document.getElementById('hero-panel-text-input').value.trim();
   site.hero.cardTitle = document.getElementById('hero-card-title-input').value.trim();
   site.hero.cardText = document.getElementById('hero-card-text-input').value.trim();
-  await apiSave();
-  initUI();
-  alert('Hero enregistré.');
+  await apiSave(); initUI(); alert('Hero enregistré.');
 }
 
 async function savePages(){
@@ -1655,25 +1195,19 @@ async function savePages(){
     subtitle: document.querySelector('.page-subtitle[data-i="'+i+'"]').value.trim(),
     content: document.querySelector('.page-content[data-i="'+i+'"]').value.trim()
   }));
-  await apiSave();
-  initUI();
-  alert('Pages enregistrées.');
+  await apiSave(); initUI(); alert('Pages enregistrées.');
 }
 
 async function savePartners(){
   site.partners = Array.from(document.querySelectorAll('.partner-input')).map(x => x.value.trim()).filter(Boolean);
-  await apiSave();
-  initUI();
-  alert('Partenaires enregistrés.');
+  await apiSave(); initUI(); alert('Partenaires enregistrés.');
 }
 
 async function saveContact(){
   site.contact.address = document.getElementById('contact-address-input').value.trim();
   site.contact.phone = document.getElementById('contact-phone-input').value.trim();
   site.contact.email = document.getElementById('contact-email-input').value.trim();
-  await apiSave();
-  initUI();
-  alert('Contact enregistré.');
+  await apiSave(); initUI(); alert('Contact enregistré.');
 }
 
 function openProductModal(id=null){
@@ -1715,22 +1249,15 @@ async function saveProduct(){
     rating: 4.7
   };
   if(!p.name || !p.ref) return alert('Nom et référence requis');
-
   const idx = site.products.findIndex(x => x.id === editingProductId);
-  if(idx >= 0) site.products[idx] = p;
-  else site.products.push(p);
-
-  await apiSave();
-  initUI();
-  closeProductModal();
-  alert('Produit enregistré.');
+  if(idx >= 0) site.products[idx] = p; else site.products.push(p);
+  await apiSave(); initUI(); closeProductModal(); alert('Produit enregistré.');
 }
 
 async function deleteProduct(id){
   if(!confirm('Supprimer ce produit ?')) return;
   site.products = site.products.filter(x => x.id !== id);
-  await apiSave();
-  initUI();
+  await apiSave(); initUI();
 }
 
 function showAdminTab(tab, btn){
@@ -1745,7 +1272,6 @@ function sendContact(){
   const email = document.getElementById('c-email').value.trim();
   const msg = document.getElementById('c-message').value.trim();
   if(!name || !email || !msg) return alert('Veuillez remplir les champs requis');
-
   document.getElementById('success-msg').classList.add('show');
   ['c-name','c-email','c-subject','c-message'].forEach(id => document.getElementById(id).value = '');
   setTimeout(() => document.getElementById('success-msg')?.classList.remove('show'), 2500);
@@ -1778,60 +1304,7 @@ function logout(){
   showPage('home');
 }
 
-async function resetSite(){
-  if(!confirm('Reset complet du site ?')) return;
-  await apiReset();
-  alert('Site réinitialisé.');
-}
-
-function markActiveNav(slug){
-  document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
-  document.querySelectorAll('.nav-sub-link').forEach(n => n.classList.remove('active'));
-
-  const subNav = document.getElementById('nav-' + slug);
-  const topNav = document.getElementById('nav-' + slug);
-
-  if(filtrationSubPages.some(p => p.slug === slug)){
-    document.getElementById('nav-home')?.classList.add('active');
-    subNav?.classList.add('active');
-    return;
-  }
-
-  if(sectorsSubPages.some(p => p.slug === slug)){
-    const aboutPage = site.pages.find(isAboutPage);
-    if(aboutPage) document.getElementById('nav-' + aboutPage.slug)?.classList.add('active');
-    subNav?.classList.add('active');
-    return;
-  }
-
-  if(slug === 'home'){
-    document.getElementById('nav-home')?.classList.add('active');
-    return;
-  }
-
-  topNav?.classList.add('active');
-}
-
-function showPage(slug){
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-  markActiveNav(slug);
-
-  const page = document.getElementById('page-' + slug);
-  if(page) page.classList.add('active');
-
-  document.getElementById('footer').style.display = slug === 'login' ? 'none' : 'block';
-
-  if(slug === 'catalog') filterProducts();
-  if(slug === 'admin' && !currentUser){ showPage('login'); return; }
-  if(slug === 'admin'){ renderAdmin(); fillAdminForms(); }
-
-  if(slug === 'home'){
-    setupCounterObserver();
-    setupHeroVideo();
-  }
-
-  window.scrollTo({top:0, behavior:'smooth'});
-}
+async function resetSite(){ if(!confirm('Reset complet du site ?')) return; await apiReset(); alert('Site réinitialisé.'); }
 
 async function initUI(){
   site = await apiGet();
