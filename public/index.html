@@ -52,19 +52,13 @@ a{text-decoration:none;color:inherit}
   content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;background:var(--brand)
 }
 .nav-dropdown{position:relative}
-.nav-dropdown-toggle{
-  display:flex;align-items:center;gap:8px
-}
-.nav-caret{
-  font-size:11px;
-  line-height:1;
-  transform:translateY(-1px)
-}
+.nav-dropdown-toggle{display:flex;align-items:center;gap:8px}
+.nav-caret{font-size:11px;line-height:1;transform:translateY(-1px)}
 .nav-dropdown-menu{
   position:absolute;
   top:calc(100% + 12px);
   left:0;
-  min-width:290px;
+  min-width:300px;
   background:#fff;
   border:1px solid rgba(15,23,42,.08);
   border-radius:20px;
@@ -87,8 +81,7 @@ a{text-decoration:none;color:inherit}
   font-weight:700;
   line-height:1.4;
 }
-.nav-sub-link:hover,
-.nav-sub-link.active{
+.nav-sub-link:hover,.nav-sub-link.active{
   background:#F8FAFC;
   color:var(--brand);
 }
@@ -380,14 +373,14 @@ a{text-decoration:none;color:inherit}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
-.tile,.qse-card,.story,.info-card,.contact-panel,.login-panel,.editor-panel,.admin-panel{padding:26px}
+.tile,.qse-card,.story,.info-card,.contact-panel,.login-panel,.editor-panel,.admin-panel,.content-card{padding:26px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
 .tile-icon{
   width:56px;height:56px;border-radius:18px;background:rgba(198,31,38,.08);
   display:flex;align-items:center;justify-content:center;font-size:25px;color:var(--brand);margin-bottom:18px
 }
 .tile h3{font-size:21px;line-height:1.15;margin-bottom:10px}
-.tile p,.story p,.qse-card p,.info-card p,.contact-panel p,.editor-panel p{font-size:15px;line-height:1.75;color:var(--muted)}
+.tile p,.story p,.qse-card p,.info-card p,.contact-panel p,.editor-panel p,.content-card p{font-size:15px;line-height:1.75;color:var(--muted)}
 
 .solution{
   padding:0;overflow:hidden;cursor:pointer;border-radius:26px;
@@ -434,6 +427,7 @@ a{text-decoration:none;color:inherit}
 .cat-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
 
 .contact-grid,.product-detail,.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .info-row{display:flex;gap:14px;margin-bottom:18px}
 .info-icon{
   width:48px;height:48px;border-radius:16px;background:rgba(198,31,38,.08);
@@ -443,6 +437,17 @@ a{text-decoration:none;color:inherit}
   min-height:190px;border:1px dashed rgba(198,31,38,.32);border-radius:20px;
   background:linear-gradient(135deg,rgba(198,31,38,.05),rgba(15,23,42,.02));
   display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#475569
+}
+.content-card h3{
+  font-size:22px;
+  line-height:1.15;
+  margin-bottom:12px;
+}
+.content-cta{
+  margin-top:28px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
 }
 
 .login-wrap{min-height:calc(100vh - 82px);display:flex;align-items:center;justify-content:center;padding:26px}
@@ -496,13 +501,13 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 .full{grid-column:1/-1}
 
 @media (max-width:1180px){
-  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.contact-grid,.product-detail,.grid-2,.footer-grid,.grid-4,.admin-stats,.partner-grid,.grid-3{
+  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.contact-grid,.product-detail,.grid-2,.footer-grid,.grid-4,.admin-stats,.partner-grid,.grid-3,.content-grid{
     grid-template-columns:1fr 1fr
   }
 }
 @media (max-width:860px){
   .nav-links{display:none}
-  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.product-detail,.contact-grid,.grid-2,.grid-3,.grid-4,.footer-grid,.admin-stats,.partner-grid,.editor-grid{
+  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.product-detail,.contact-grid,.grid-2,.grid-3,.grid-4,.footer-grid,.admin-stats,.partner-grid,.editor-grid,.content-grid{
     grid-template-columns:1fr
   }
   .hero-wrap{padding:50px 0 64px;align-items:flex-end}
@@ -855,18 +860,207 @@ let editingProductId = null;
 let countersAnimated = false;
 
 const filtrationSubPages = [
-  { slug:'mobilite-durable', nav:'Mobilité Durable', eyebrow:'Filtration', title:'Mobilité Durable', subtitle:'Page en préparation.', content:'' },
-  { slug:'air-sante', nav:'Air & Santé', eyebrow:'Filtration', title:'Air & Santé', subtitle:'Page en préparation.', content:'' },
-  { slug:'protection-moteur', nav:'Protection Moteur', eyebrow:'Filtration', title:'Protection Moteur', subtitle:'Page en préparation.', content:'' },
-  { slug:'solutions-industrielles', nav:'Solutions Industrielles', eyebrow:'Filtration', title:'Solutions Industrielles', subtitle:'Page en préparation.', content:'' }
+  {
+    slug:'mobilite-durable',
+    nav:'Mobilité Durable',
+    eyebrow:'Filtration',
+    title:'Mobilité Durable',
+    subtitle:'Des solutions de filtration conçues pour accompagner une mobilité plus fiable, plus propre et plus durable.',
+    intro:'MISFAT développe des solutions de filtration adaptées aux exigences actuelles de la mobilité, avec un accent sur la performance, la durée de vie des composants et la régularité de fonctionnement.',
+    blocks:[
+      {
+        title:'Fiabilité au quotidien',
+        text:'Des filtres pensés pour maintenir la qualité des flux et protéger les systèmes dans des environnements de roulage variés.'
+      },
+      {
+        title:'Performance opérationnelle',
+        text:'Une approche produit qui soutient l’efficacité du moteur, la maîtrise des intervalles d’entretien et la constance de rendement.'
+      },
+      {
+        title:'Vision long terme',
+        text:'Une filtration intégrée à une logique de mobilité durable, de maîtrise technique et de continuité d’usage.'
+      }
+    ]
+  },
+  {
+    slug:'air-sante',
+    nav:'Air & Santé',
+    eyebrow:'Filtration',
+    title:'Air & Santé',
+    subtitle:'Une filtration pensée pour améliorer la qualité de l’air et soutenir des environnements plus sains.',
+    intro:'L’air filtré joue un rôle clé dans le confort, la protection et la qualité de l’environnement. MISFAT structure son offre autour d’une vision plus claire des usages liés à l’air et à la santé.',
+    blocks:[
+      {
+        title:'Qualité de l’air',
+        text:'Des solutions destinées à limiter les particules et à améliorer la propreté des flux d’air dans différents contextes d’utilisation.'
+      },
+      {
+        title:'Confort et protection',
+        text:'Une attention particulière portée au bien-être des utilisateurs, au maintien d’un environnement plus sain et à la cohérence fonctionnelle du système.'
+      },
+      {
+        title:'Positionnement premium',
+        text:'Une présentation corporate qui valorise la filtration de l’air comme un levier de qualité, de confiance et de sérieux industriel.'
+      }
+    ]
+  },
+  {
+    slug:'protection-moteur',
+    nav:'Protection Moteur',
+    eyebrow:'Filtration',
+    title:'Protection Moteur',
+    subtitle:'La filtration au service de la protection, de la continuité et de la performance moteur.',
+    intro:'La protection moteur reste au cœur de l’expertise MISFAT. Cette page met en avant une logique de filtration centrée sur la robustesse, la maîtrise technique et la durée de vie.',
+    blocks:[
+      {
+        title:'Protection des composants',
+        text:'Des solutions pensées pour préserver les organes critiques et limiter l’impact des impuretés sur le fonctionnement mécanique.'
+      },
+      {
+        title:'Régularité de performance',
+        text:'Une filtration fiable contribue à maintenir un comportement moteur stable, un meilleur niveau d’efficacité et une exploitation plus sereine.'
+      },
+      {
+        title:'Exigence industrielle',
+        text:'MISFAT valorise ici une approche rigoureuse fondée sur la qualité produit, la constance et la maîtrise des besoins du terrain.'
+      }
+    ]
+  },
+  {
+    slug:'solutions-industrielles',
+    nav:'Solutions Industrielles',
+    eyebrow:'Filtration',
+    title:'Solutions Industrielles',
+    subtitle:'Des solutions de filtration développées pour les environnements industriels, les contraintes techniques et la continuité d’exploitation.',
+    intro:'Au-delà de la mobilité, MISFAT s’inscrit dans une logique industrielle plus large, avec une vision orientée fiabilité, efficacité et maîtrise des usages professionnels.',
+    blocks:[
+      {
+        title:'Adaptation aux contraintes',
+        text:'Des solutions capables de répondre à des contextes où la régularité, la stabilité et la sécurité opérationnelle sont prioritaires.'
+      },
+      {
+        title:'Efficacité des systèmes',
+        text:'La filtration contribue à l’optimisation des performances globales et à une meilleure continuité des opérations industrielles.'
+      },
+      {
+        title:'Image institutionnelle',
+        text:'Une page construite pour donner plus de poids au positionnement industriel de MISFAT dans un cadre corporate plus premium.'
+      }
+    ]
+  }
 ];
 
 const sectorsSubPages = [
-  { slug:'automobile-vehicules-legers', nav:'Automobile (Véhicules Légers)', eyebrow:'Nos Secteurs', title:'Automobile (Véhicules Légers)', subtitle:'Page en préparation.', content:'' },
-  { slug:'poids-lourds-bus', nav:'Poids Lourds & Bus', eyebrow:'Nos Secteurs', title:'Poids Lourds & Bus', subtitle:'Page en préparation.', content:'' },
-  { slug:'agriculture-travaux-publics', nav:'Agriculture & Travaux Publics', eyebrow:'Nos Secteurs', title:'Agriculture & Travaux Publics', subtitle:'Page en préparation.', content:'' },
-  { slug:'marine-energie', nav:'Marine & Énergie', eyebrow:'Nos Secteurs', title:'Marine & Énergie', subtitle:'Page en préparation.', content:'' },
-  { slug:'maintenance-industrielle', nav:'Maintenance Industrielle', eyebrow:'Nos Secteurs', title:'Maintenance Industrielle', subtitle:'Page en préparation.', content:'' }
+  {
+    slug:'automobile-vehicules-legers',
+    nav:'Automobile (Véhicules Légers)',
+    eyebrow:'Nos Secteurs',
+    title:'Automobile (Véhicules Légers)',
+    subtitle:'Une offre pensée pour les besoins du marché automobile léger, avec une approche claire, fiable et structurée.',
+    intro:'MISFAT accompagne le secteur automobile à travers des solutions de filtration conçues pour répondre aux besoins de performance, de maintenance et de confiance sur le long terme.',
+    blocks:[
+      {
+        title:'Usage quotidien',
+        text:'Des solutions adaptées aux besoins des véhicules légers, avec une attention portée à la continuité d’usage et au niveau d’exigence du marché.'
+      },
+      {
+        title:'Fiabilité produit',
+        text:'Une logique de filtration orientée constance, protection et cohérence de performance dans les conditions habituelles d’exploitation.'
+      },
+      {
+        title:'Présence marché',
+        text:'Cette page valorise le rôle de MISFAT dans un secteur clé, avec une présentation plus premium et plus institutionnelle.'
+      }
+    ]
+  },
+  {
+    slug:'poids-lourds-bus',
+    nav:'Poids Lourds & Bus',
+    eyebrow:'Nos Secteurs',
+    title:'Poids Lourds & Bus',
+    subtitle:'Des solutions de filtration adaptées aux usages intensifs, aux longues durées d’exploitation et aux environnements exigeants.',
+    intro:'Dans le secteur des poids lourds et des bus, la filtration participe à la continuité des opérations, à la protection des systèmes et à la maîtrise des cycles d’entretien.',
+    blocks:[
+      {
+        title:'Usage intensif',
+        text:'Une approche pensée pour les contextes d’exploitation prolongée, les volumes élevés et les contraintes quotidiennes du transport.'
+      },
+      {
+        title:'Continuité de service',
+        text:'La filtration soutient la stabilité des équipements et contribue à sécuriser les performances sur la durée.'
+      },
+      {
+        title:'Positionnement robuste',
+        text:'MISFAT présente ici une offre alignée avec les attentes du transport professionnel et des usages exigeants.'
+      }
+    ]
+  },
+  {
+    slug:'agriculture-travaux-publics',
+    nav:'Agriculture & Travaux Publics',
+    eyebrow:'Nos Secteurs',
+    title:'Agriculture & Travaux Publics',
+    subtitle:'Une filtration conçue pour les environnements poussiéreux, intensifs et fortement exposés aux contraintes terrain.',
+    intro:'Les secteurs de l’agriculture et des travaux publics exigent des solutions de filtration capables d’accompagner des machines soumises à des conditions d’usage particulièrement difficiles.',
+    blocks:[
+      {
+        title:'Contraintes terrain',
+        text:'Des environnements marqués par la poussière, les charges de travail élevées et la nécessité d’une grande fiabilité mécanique.'
+      },
+      {
+        title:'Protection durable',
+        text:'La filtration joue un rôle essentiel dans la préservation des équipements et dans la régularité des cycles d’exploitation.'
+      },
+      {
+        title:'Approche métier',
+        text:'Une page sectorielle qui traduit le sérieux industriel de MISFAT au service des applications terrain.'
+      }
+    ]
+  },
+  {
+    slug:'marine-energie',
+    nav:'Marine & Énergie',
+    eyebrow:'Nos Secteurs',
+    title:'Marine & Énergie',
+    subtitle:'Des applications de filtration destinées à des environnements techniques où la fiabilité et la maîtrise sont essentielles.',
+    intro:'Dans les univers marine et énergie, les attentes portent sur la solidité, la continuité et la maîtrise des systèmes. MISFAT valorise ici un positionnement professionnel et structuré.',
+    blocks:[
+      {
+        title:'Environnements critiques',
+        text:'Des usages où la stabilité des systèmes et la qualité des composants ont un impact direct sur l’exploitation.'
+      },
+      {
+        title:'Maîtrise technique',
+        text:'La filtration s’inscrit dans une logique de contrôle, de protection et d’efficacité durable.'
+      },
+      {
+        title:'Image professionnelle',
+        text:'Une présentation claire qui renforce la crédibilité de MISFAT dans des secteurs techniques à forte exigence.'
+      }
+    ]
+  },
+  {
+    slug:'maintenance-industrielle',
+    nav:'Maintenance Industrielle',
+    eyebrow:'Nos Secteurs',
+    title:'Maintenance Industrielle',
+    subtitle:'Une filtration qui soutient les démarches de maintenance, de continuité opérationnelle et de fiabilité des installations.',
+    intro:'La maintenance industrielle a besoin de solutions cohérentes, disponibles et techniquement fiables. MISFAT met en avant ici une lecture plus institutionnelle de sa contribution à ce secteur.',
+    blocks:[
+      {
+        title:'Disponibilité des systèmes',
+        text:'Des solutions de filtration qui participent à la stabilité des équipements et à la réduction des interruptions non souhaitées.'
+      },
+      {
+        title:'Support à la maintenance',
+        text:'Une offre qui s’intègre dans une logique de prévention, d’entretien maîtrisé et de régularité opérationnelle.'
+      },
+      {
+        title:'Crédibilité industrielle',
+        text:'Cette page renforce la perception de MISFAT comme acteur sérieux, structuré et orienté performance terrain.'
+      }
+    ]
+  }
 ];
 
 const groupedSubPages = [...filtrationSubPages, ...sectorsSubPages];
@@ -941,11 +1135,9 @@ function renderNav(){
   const footerNav = document.getElementById('footer-nav');
   footerNav.innerHTML = '';
   footerNav.innerHTML += `<button class="footer-link" onclick="showPage('home')">Filtration</button>`;
-
   if(aboutPage){
     footerNav.innerHTML += `<button class="footer-link" onclick="showPage('${aboutPage.slug}')">Nos Secteurs</button>`;
   }
-
   otherPages.slice(0,3).forEach(p => {
     footerNav.innerHTML += `<button class="footer-link" onclick="showPage('${p.slug}')">${p.nav}</button>`;
   });
@@ -973,7 +1165,7 @@ function renderContactBlocks(){
   ids.forEach(([id,k]) => document.getElementById(id).textContent = site.contact[k]);
 }
 
-function renderPlaceholderPage(p){
+function renderRichSubPage(p){
   return `
     <div class="page" id="page-${p.slug}">
       <section class="page-top">
@@ -983,9 +1175,34 @@ function renderPlaceholderPage(p){
           <div class="page-sub">${p.subtitle}</div>
         </div>
       </section>
+
       <section class="section">
         <div class="container">
-          <div class="card story"><p>${p.content || ''}</p></div>
+          <div class="intro-grid">
+            <div>
+              <div class="eyebrow">${p.eyebrow}</div>
+              <div class="h2">${p.title}</div>
+            </div>
+            <div class="intro-text">${p.intro}</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-tight">
+        <div class="container">
+          <div class="content-grid">
+            ${p.blocks.map(b => `
+              <div class="card content-card">
+                <h3>${b.title}</h3>
+                <p>${b.text}</p>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="content-cta">
+            <button class="btn primary" onclick="showPage('contact')">Contacter MISFAT</button>
+            <button class="btn white" onclick="showPage('catalog')">Voir le catalogue</button>
+          </div>
         </div>
       </section>
     </div>
@@ -1076,7 +1293,7 @@ function renderPages(){
   });
 
   groupedSubPages.forEach(p => {
-    wrap.innerHTML += renderPlaceholderPage(p);
+    wrap.innerHTML += renderRichSubPage(p);
   });
 
   wrap.innerHTML += `
@@ -1517,6 +1734,55 @@ async function resetSite(){
   if(!confirm('Reset complet du site ?')) return;
   await apiReset();
   alert('Site réinitialisé.');
+}
+
+function markActiveNav(slug){
+  document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
+  document.querySelectorAll('.nav-sub-link').forEach(n => n.classList.remove('active'));
+
+  const subNav = document.getElementById('nav-' + slug);
+  const topNav = document.getElementById('nav-' + slug);
+
+  if(filtrationSubPages.some(p => p.slug === slug)){
+    document.getElementById('nav-home')?.classList.add('active');
+    subNav?.classList.add('active');
+    return;
+  }
+
+  if(sectorsSubPages.some(p => p.slug === slug)){
+    const aboutPage = site.pages.find(isAboutPage);
+    if(aboutPage) document.getElementById('nav-' + aboutPage.slug)?.classList.add('active');
+    subNav?.classList.add('active');
+    return;
+  }
+
+  if(slug === 'home'){
+    document.getElementById('nav-home')?.classList.add('active');
+    return;
+  }
+
+  topNav?.classList.add('active');
+}
+
+function showPage(slug){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  markActiveNav(slug);
+
+  const page = document.getElementById('page-' + slug);
+  if(page) page.classList.add('active');
+
+  document.getElementById('footer').style.display = slug === 'login' ? 'none' : 'block';
+
+  if(slug === 'catalog') filterProducts();
+  if(slug === 'admin' && !currentUser){ showPage('login'); return; }
+  if(slug === 'admin'){ renderAdmin(); fillAdminForms(); }
+
+  if(slug === 'home'){
+    setupCounterObserver();
+    setupHeroVideo();
+  }
+
+  window.scrollTo({top:0, behavior:'smooth'});
 }
 
 async function initUI(){
