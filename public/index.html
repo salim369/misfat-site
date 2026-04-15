@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MISFAT CMS</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow:wght@700;800&display=swap" rel="stylesheet">
+<title>MISFAT</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
 :root{
   --brand:#C61F26;
@@ -26,11 +26,12 @@ a{text-decoration:none;color:inherit}
 .container{max-width:1320px;margin:0 auto;padding:0 28px}
 .hide{display:none!important}
 
+/* ─── NAV ─────────────────────────────────────────────── */
 .nav{
   position:fixed;top:0;left:0;right:0;height:82px;
-  background:rgba(255,255,255,.94);
+  background:rgba(255,255,255,.96);
   backdrop-filter:blur(14px);
-  border-bottom:1px solid rgba(15,23,42,.06);
+  border-bottom:1px solid rgba(15,23,42,.07);
   z-index:1000
 }
 .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
@@ -40,98 +41,106 @@ a{text-decoration:none;color:inherit}
   display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--brand);background:#fff;overflow:hidden
 }
 .logo-mark img{width:100%;height:100%;object-fit:cover}
-.logo-name{font-family:Barlow,Inter,sans-serif;font-size:30px;line-height:1;font-weight:800;color:var(--brand)}
+.logo-name{font-family:'Barlow Condensed',Inter,sans-serif;font-size:30px;line-height:1;font-weight:900;color:var(--brand);letter-spacing:1px}
 .logo-sub{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:#64748B;margin-top:5px}
-.nav-links{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+
+/* Top-level nav links area */
+.nav-links{display:flex;gap:2px;flex-wrap:nowrap;align-items:stretch}
+
+/* Top-level link button */
 .nav-link{
-  background:none;border:none;padding:10px 12px;cursor:pointer;font-size:13px;
-  font-weight:800;letter-spacing:1.1px;text-transform:uppercase;color:#334155;position:relative
+  background:none;border:none;padding:10px 14px;cursor:pointer;font-size:12.5px;
+  font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:#334155;
+  position:relative;white-space:nowrap;height:82px;display:flex;align-items:center;gap:6px;
+  transition:color .2s
 }
-.nav-link.active,.nav-link:hover{color:var(--brand)}
+.nav-link:hover,.nav-link.active{color:var(--brand)}
 .nav-link.active:after,.nav-link:hover:after{
-  content:"";position:absolute;left:12px;right:12px;bottom:4px;height:2px;background:var(--brand)
+  content:"";position:absolute;left:14px;right:14px;bottom:0;height:3px;background:var(--brand);border-radius:3px 3px 0 0
 }
-.nav-dropdown{position:relative;padding-bottom:6px}
-.nav-dropdown-toggle{display:flex;align-items:center;gap:8px}
-.nav-caret{font-size:11px;line-height:1;transform:translateY(-1px)}
+
+/* Dropdown wrapper */
+.nav-dropdown{position:relative;display:flex;align-items:stretch}
+.nav-caret{font-size:9px;opacity:.7;transition:transform .2s}
+.nav-dropdown:hover .nav-caret{transform:rotate(180deg)}
+
+/* Level 1 dropdown menu */
 .nav-dropdown-menu{
   position:absolute;
   top:100%;
   left:0;
-  min-width:300px;
+  min-width:260px;
   background:#fff;
   border:1px solid rgba(15,23,42,.08);
-  border-radius:20px;
-  box-shadow:0 18px 40px rgba(2,6,23,.10);
-  padding:10px;
+  border-radius:18px;
+  box-shadow:0 20px 48px rgba(2,6,23,.12);
+  padding:8px;
   display:none;
   z-index:1200;
 }
 .nav-dropdown:hover .nav-dropdown-menu,
 .nav-dropdown-menu:hover{display:block}
+
+/* Level 1 sub-link */
 .nav-sub-link{
-  width:100%;
-  text-align:left;
-  background:none;
-  border:none;
-  padding:12px 14px;
-  border-radius:14px;
-  cursor:pointer;
-  color:#334155;
-  font-size:13px;
-  font-weight:700;
-  line-height:1.4;
+  width:100%;text-align:left;background:none;border:none;
+  padding:11px 14px;border-radius:12px;cursor:pointer;
+  color:#334155;font-size:13px;font-weight:700;line-height:1.3;
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  transition:background .15s,color .15s
 }
-.nav-sub-link:hover,.nav-sub-link.active{background:#F8FAFC;color:var(--brand)}
+.nav-sub-link:hover,.nav-sub-link.active{background:#FEF2F2;color:var(--brand)}
+
+/* Level 2 nested dropdown */
+.nav-nested{position:relative}
+.nav-nested-menu{
+  position:absolute;
+  top:0;
+  left:100%;
+  margin-left:6px;
+  min-width:220px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.08);
+  border-radius:18px;
+  box-shadow:0 20px 48px rgba(2,6,23,.12);
+  padding:8px;
+  display:none;
+  z-index:1300;
+}
+.nav-nested:hover .nav-nested-menu{display:block}
+.nav-nested-arrow{font-size:10px;color:var(--brand);opacity:.8}
+
 .nav-right{display:flex;gap:10px;align-items:center}
-.btn{border:none;border-radius:16px;cursor:pointer;font-weight:700;transition:.25s;padding:12px 18px}
+.btn{border:none;border-radius:14px;cursor:pointer;font-weight:700;transition:.25s;padding:12px 18px;font-size:13px}
 .btn.primary{background:linear-gradient(135deg,var(--brand),var(--brand2));color:#fff}
-.btn.primary:hover{transform:translateY(-1px)}
+.btn.primary:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(198,31,38,.3)}
 .btn.white{background:#fff;border:1px solid var(--line);color:#334155}
+.btn.white:hover{border-color:var(--brand);color:var(--brand)}
 .user-badge{
   display:none;background:#fff;border:1px solid rgba(198,31,38,.2);padding:9px 13px;border-radius:999px;
   font-size:12px;font-weight:700;color:var(--brand)
 }
+
+/* ─── PAGES ────────────────────────────────────────────── */
 .page{display:none;padding-top:82px;min-height:100vh}
 .page.active{display:block}
 
+/* ─── HERO ─────────────────────────────────────────────── */
 .hero{
-  position:relative;
-  min-height:calc(100vh - 82px);
-  overflow:hidden;
-  background:#0b0f14;
-  color:#fff;
+  position:relative;min-height:calc(100vh - 82px);overflow:hidden;
+  background:#0b0f14;color:#fff;
 }
 .hero-video{
-  display:block;
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  z-index:0;
+  display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
 }
 .hero:before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(90deg, rgba(8,12,18,.76) 0%, rgba(8,12,18,.54) 34%, rgba(8,12,18,.28) 68%, rgba(8,12,18,.16) 100%);
-  z-index:1;
-}
-.hero:after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.12) 100%);
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(8,12,18,.78) 0%,rgba(8,12,18,.54) 36%,rgba(8,12,18,.28) 70%,rgba(8,12,18,.14) 100%);
   z-index:1;
 }
 .hero-wrap{
-  position:relative;
-  z-index:2;
-  min-height:calc(100vh - 82px);
-  display:flex;
-  align-items:flex-end;
-  padding:72px 0 96px;
+  position:relative;z-index:2;min-height:calc(100vh - 82px);
+  display:flex;align-items:flex-end;padding:72px 0 96px;
 }
 .hero-content{max-width:920px}
 .badge{
@@ -140,73 +149,55 @@ a{text-decoration:none;color:inherit}
   color:#fff;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;
   backdrop-filter:blur(8px)
 }
-.badge-dot{width:8px;height:8px;border-radius:50%;background:#fff}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
 .hero h1{
-  font-size:clamp(56px,7vw,108px);
-  line-height:.96;
-  letter-spacing:-3px;
-  font-weight:800;
-  max-width:1050px;
-  margin:24px 0 20px;
-  text-transform:none;
+  font-family:'Barlow Condensed',Inter,sans-serif;
+  font-size:clamp(56px,7vw,108px);line-height:.96;letter-spacing:-1px;font-weight:900;
+  max-width:1050px;margin:24px 0 20px;text-transform:none;
 }
-.hero h1 span{color:#fff}
-.hero p{
-  font-size:20px;
-  line-height:1.8;
-  color:rgba(255,255,255,.88);
-  max-width:680px;
-  margin-bottom:30px;
-}
+.hero h1 span{color:var(--brand)}
+.hero p{font-size:20px;line-height:1.8;color:rgba(255,255,255,.88);max-width:680px;margin-bottom:30px}
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap}
-.hero-actions .btn{padding:16px 24px}
+.hero-actions .btn{padding:16px 24px;font-size:14px}
 .hero-actions .btn.white{
-  background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.24);
-  color:#fff;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.24);color:#fff;
 }
 .hero-actions .btn.white:hover{background:rgba(255,255,255,.16)}
 
+/* ─── KPIs ─────────────────────────────────────────────── */
 .kpis-wrap{position:relative;z-index:5;margin-top:-56px}
 .kpis{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:0;
-  background:#fff;
-  border:1px solid rgba(15,23,42,.06);
-  border-radius:28px;
-  overflow:hidden;
-  box-shadow:0 18px 40px rgba(2,6,23,.08);
+  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  background:#fff;border:1px solid rgba(15,23,42,.06);
+  border-radius:28px;overflow:hidden;box-shadow:0 18px 40px rgba(2,6,23,.08);
 }
 .kpi{padding:34px 28px;border-right:1px solid #EDF2F7;background:#fff}
 .kpi:last-child{border-right:none}
-.kpi .v{font-size:56px;line-height:1;font-weight:800;color:#111827;letter-spacing:-2px}
+.kpi .v{font-family:'Barlow Condensed',Inter,sans-serif;font-size:60px;line-height:1;font-weight:900;color:#111827;letter-spacing:-1px}
 .kpi .t{margin-top:10px;font-size:12px;text-transform:uppercase;letter-spacing:1.5px;color:#64748B;font-weight:800}
 
+/* ─── SECTIONS ──────────────────────────────────────────── */
 .section{padding:110px 0}
 .section-tight{padding:84px 0}
 .section-dark{background:#fff}
 .section-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:34px}
-.eyebrow{font-size:12px;font-weight:800;letter-spacing:2.6px;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
-.h2{font-size:clamp(38px,4vw,66px);line-height:1.02;letter-spacing:-2.2px;font-weight:800;max-width:960px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:2.8px;text-transform:uppercase;color:var(--brand);margin-bottom:14px}
+.h2{font-family:'Barlow Condensed',Inter,sans-serif;font-size:clamp(38px,4vw,66px);line-height:1;letter-spacing:.5px;font-weight:900;max-width:960px}
 .lead{max-width:760px;color:var(--muted);font-size:18px;line-height:1.85}
-
 .intro-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:36px;align-items:end}
 .intro-text{font-size:19px;line-height:1.95;color:#475569;max-width:760px}
 .editorial-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .editorial-card{min-height:620px;position:relative;border-radius:30px;overflow:hidden;background:#111827;color:#fff}
 .editorial-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.editorial-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.66) 76%, rgba(0,0,0,.78) 100%);z-index:1}
+.editorial-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06) 0%,rgba(0,0,0,.66) 76%,rgba(0,0,0,.80) 100%);z-index:1}
 .editorial-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:36px}
 .editorial-tag{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.6px;color:rgba(255,255,255,.8);margin-bottom:12px}
-.editorial-title{font-size:40px;line-height:1.02;letter-spacing:-1.5px;font-weight:800;margin-bottom:14px}
+.editorial-title{font-family:'Barlow Condensed',Inter,sans-serif;font-size:40px;line-height:1;letter-spacing:.5px;font-weight:900;margin-bottom:14px}
 .editorial-text{font-size:16px;line-height:1.85;color:rgba(255,255,255,.88);max-width:520px}
-
 .story-band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center}
 .story-left{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#64748B}
-.story-right{font-size:32px;line-height:1.32;letter-spacing:-1.1px;font-weight:700;color:#111827}
-
+.story-right{font-size:32px;line-height:1.32;letter-spacing:-.5px;font-weight:700;color:#111827}
 .catalog-shell{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:start}
 .catalog-side{position:sticky;top:112px}
 .catalog-side p{font-size:18px;line-height:1.9;color:#64748B;max-width:520px}
@@ -218,41 +209,50 @@ a{text-decoration:none;color:inherit}
 .tile h3{font-size:21px;line-height:1.15;margin-bottom:10px}
 .tile p,.story p,.contact-panel p,.editor-panel p,.content-card p{font-size:15px;line-height:1.75;color:var(--muted)}
 
-.solution{padding:0;overflow:hidden;cursor:pointer;border-radius:26px;transition:transform .25s ease, box-shadow .25s ease}
-.solution:hover{transform:translateY(-4px)}
-.solution-top{height:220px;background:linear-gradient(150deg,#E2E8F0 0%,#F8FAFC 56%, #D4DCE4 56%, #EFF4F9 100%);position:relative;padding:24px;display:flex;align-items:end}
+/* ─── PRODUCT CARDS ─────────────────────────────────────── */
+.solution{padding:0;overflow:hidden;cursor:pointer;border-radius:26px;transition:transform .25s ease,box-shadow .25s ease}
+.solution:hover{transform:translateY(-4px);box-shadow:0 24px 48px rgba(2,6,23,.12)}
+.solution-top{height:220px;background:linear-gradient(150deg,#E2E8F0 0%,#F8FAFC 56%,#D4DCE4 56%,#EFF4F9 100%);position:relative;padding:24px;display:flex;align-items:end}
 .solution-icon{font-size:88px;line-height:1}
 .solution-badge{position:absolute;top:18px;right:18px;padding:8px 12px;background:var(--brand);color:#fff;border-radius:999px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase}
 .solution-body{padding:24px}
 .solution-ref{font-size:12px;color:var(--brand);font-weight:800;letter-spacing:1.6px;margin-bottom:8px}
-.solution-name{font-size:24px;font-weight:800;line-height:1.14;margin-bottom:10px}
+.solution-name{font-size:22px;font-weight:800;line-height:1.14;margin-bottom:10px}
 .solution-foot{display:flex;align-items:center;justify-content:space-between;margin-top:18px}
-.price{font-size:34px;color:var(--brand);font-weight:800;line-height:1}
+.price{font-family:'Barlow Condensed',Inter,sans-serif;font-size:36px;color:var(--brand);font-weight:900;line-height:1}
 .price span{font-size:13px;color:#64748B;font-weight:700}
 
+/* ─── PARTNERS ───────────────────────────────────────────── */
 .partner-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
-.partner{height:100px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800;color:#7C8593;background:#fff;border:1px solid var(--line);border-radius:22px}
+.partner{height:100px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;color:#7C8593;background:#fff;border:1px solid var(--line);border-radius:22px;transition:border-color .2s}
+.partner:hover{border-color:var(--brand);color:var(--brand)}
 
+/* ─── PAGE TOP ───────────────────────────────────────────── */
 .page-top{background:linear-gradient(180deg,#fff 0%,#F3F6F9 100%);border-bottom:1px solid var(--line)}
-.page-title{font-size:58px;line-height:1;letter-spacing:-1.6px;font-weight:800;margin-bottom:12px}
+.page-title{font-family:'Barlow Condensed',Inter,sans-serif;font-size:58px;line-height:1;letter-spacing:.5px;font-weight:900;margin-bottom:12px}
 .page-sub{font-size:17px;line-height:1.75;color:var(--muted);max-width:800px}
 .page-top .container{padding-top:42px;padding-bottom:40px}
+
+/* ─── FILTERS ────────────────────────────────────────────── */
 .filters{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:22px}
 .search-wrap{flex:1;min-width:300px;position:relative}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#64748B}
-.search-input,.form-input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--text);outline:none}
+.search-input,.form-input{width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:#fff;color:var(--text);outline:none;transition:border-color .2s}
+.search-input:focus,.form-input:focus{border-color:var(--brand)}
 .search-input{padding-left:42px}
 .cat-filters{display:flex;flex-wrap:wrap;gap:8px}
-.cat-btn{border:none;background:#fff;border:1px solid var(--line);padding:11px 16px;border-radius:999px;cursor:pointer;font-weight:800;color:#475569}
+.cat-btn{border:none;background:#fff;border:1px solid var(--line);padding:11px 16px;border-radius:999px;cursor:pointer;font-weight:800;color:#475569;transition:.2s}
 .cat-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
 
+/* ─── CONTACT ────────────────────────────────────────────── */
 .contact-grid,.product-detail,.editor-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
 .info-row{display:flex;gap:14px;margin-bottom:18px}
 .info-icon{width:48px;height:48px;border-radius:16px;background:rgba(198,31,38,.08);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--brand);flex:0 0 48px}
 .map-box{min-height:190px;border:1px dashed rgba(198,31,38,.32);border-radius:20px;background:linear-gradient(135deg,rgba(198,31,38,.05),rgba(15,23,42,.02));display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;color:#475569}
-.content-card h3{font-size:22px;line-height:1.15;margin-bottom:12px}
+.content-card h3{font-size:22px;font-weight:800;line-height:1.15;margin-bottom:12px}
 .content-cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
 
+/* ─── LOGIN ──────────────────────────────────────────────── */
 .login-wrap{min-height:calc(100vh - 82px);display:flex;align-items:center;justify-content:center;padding:26px}
 .success-msg,.error-msg{display:none;padding:13px 16px;border-radius:16px;font-size:14px;font-weight:700;margin-bottom:14px}
 .success-msg.show,.error-msg.show{display:block}
@@ -260,12 +260,13 @@ a{text-decoration:none;color:inherit}
 .error-msg{background:#FEF2F2;color:#B91C1C;border:1px solid #FECACA}
 .demo-box{margin-top:18px;padding:16px;border-radius:18px;background:#F8FAFC;border:1px dashed var(--line);line-height:1.8;color:#475569}
 
+/* ─── ADMIN ──────────────────────────────────────────────── */
 .admin-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:20px}
 .admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:20px}
-.admin-panel .n{font-size:42px;line-height:1;font-weight:800;color:var(--brand)}
+.admin-panel .n{font-family:'Barlow Condensed',Inter,sans-serif;font-size:46px;line-height:1;font-weight:900;color:var(--brand)}
 .admin-panel .t{margin-top:6px;font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;font-weight:800}
-.admin-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
-.admin-tab{border:none;background:#fff;border:1px solid var(--line);padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800;color:#475569}
+.admin-tabs{display:flex;flex-wrap:wrap;gap:8px}
+.admin-tab{border:1px solid var(--line);background:#fff;padding:10px 14px;border-radius:999px;cursor:pointer;font-weight:800;color:#475569;transition:.2s}
 .admin-tab.active{background:var(--brand);border-color:var(--brand);color:#fff}
 .admin-section{display:none}
 .admin-section.active{display:block}
@@ -280,35 +281,37 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 .table-product{display:flex;align-items:center;gap:12px}
 .table-product-icon{width:44px;height:44px;border-radius:14px;background:#F1F5F9;display:flex;align-items:center;justify-content:center;font-size:22px}
 
+/* ─── FOOTER ─────────────────────────────────────────────── */
 .footer{background:#111827;color:#E5E7EB}
 .footer-inner{padding:70px 0 34px}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:28px}
 .footer-title{font-size:13px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:14px}
-.footer-link{display:block;background:none;border:none;color:#D1D5DB;cursor:pointer;text-align:left;margin:10px 0}
+.footer-link{display:block;background:none;border:none;color:#D1D5DB;cursor:pointer;text-align:left;margin:10px 0;transition:color .2s}
+.footer-link:hover{color:#fff}
 .footer-copy{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;font-size:13px;color:#CBD5E1}
 
+/* ─── MODAL ──────────────────────────────────────────────── */
 .modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.58);z-index:2000;align-items:center;justify-content:center;padding:22px}
 .modal.show{display:flex}
 .modal-box{max-width:640px;width:100%;padding:28px;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
 .modal-box h3{font-size:30px;line-height:1;font-weight:800;margin-bottom:18px}
 
-@media (max-width:1180px){
-  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.contact-grid,.product-detail,.grid-2,.footer-grid,.admin-stats,.partner-grid,.grid-3,.content-grid{
-    grid-template-columns:1fr 1fr
-  }
+/* ─── RESPONSIVE ─────────────────────────────────────────── */
+@media (max-width:1280px){
+  .nav-link{padding:10px 10px;font-size:11.5px}
+}
+@media (max-width:1100px){
+  .nav-links{display:none}
+  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.contact-grid,.product-detail,.grid-2,.footer-grid,.admin-stats,.partner-grid,.grid-3,.content-grid{grid-template-columns:1fr 1fr}
 }
 @media (max-width:860px){
-  .nav-links{display:none}
-  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.product-detail,.contact-grid,.grid-2,.grid-3,.footer-grid,.admin-stats,.partner-grid,.editor-grid,.content-grid{
-    grid-template-columns:1fr
-  }
-  .hero-wrap{padding:50px 0 64px;align-items:flex-end}
-  .hero h1{font-size:clamp(42px,12vw,70px);letter-spacing:-1.8px}
+  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.product-detail,.contact-grid,.grid-2,.grid-3,.footer-grid,.admin-stats,.partner-grid,.editor-grid,.content-grid{grid-template-columns:1fr}
+  .hero-wrap{padding:50px 0 64px}
+  .hero h1{font-size:clamp(42px,12vw,70px)}
   .hero p{font-size:17px}
   .kpis-wrap{margin-top:20px}
-  .kpis{grid-template-columns:1fr}
+  .kpis{grid-template-columns:1fr 1fr}
   .kpi{border-right:none;border-bottom:1px solid #EDF2F7}
-  .kpi:last-child{border-bottom:none}
   .page-title{font-size:44px}
   .h2{font-size:34px}
   .editorial-card{min-height:460px}
@@ -317,6 +320,8 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 </style>
 </head>
 <body>
+
+<!-- ═══ NAVBAR ═══════════════════════════════════════════════════════ -->
 <div class="nav">
   <div class="container nav-inner">
     <button class="logo" onclick="showPage('home')">
@@ -326,7 +331,93 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
         <div class="logo-sub" id="brand-subtitle"></div>
       </div>
     </button>
-    <div class="nav-links" id="nav-links"></div>
+
+    <div class="nav-links" id="nav-links">
+
+      <!-- 1. Filtration -->
+      <div class="nav-dropdown">
+        <button class="nav-link" id="nav-home" onclick="showPage('home')">
+          Filtration <span class="nav-caret">▾</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          <button class="nav-sub-link" id="nav-mobilite-durable"    onclick="showPage('mobilite-durable')">Mobilité Durable</button>
+          <button class="nav-sub-link" id="nav-air-sante"           onclick="showPage('air-sante')">Air &amp; Santé</button>
+          <button class="nav-sub-link" id="nav-protection-moteur"   onclick="showPage('protection-moteur')">Protection Moteur</button>
+          <button class="nav-sub-link" id="nav-solutions-industrielles" onclick="showPage('solutions-industrielles')">Solutions Industrielles</button>
+        </div>
+      </div>
+
+      <!-- 2. Nos Secteurs -->
+      <div class="nav-dropdown">
+        <button class="nav-link" id="nav-nos-secteurs" onclick="showPage('nos-secteurs')">
+          Nos Secteurs <span class="nav-caret">▾</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          <button class="nav-sub-link" id="nav-automobile-vehicules-legers"    onclick="showPage('automobile-vehicules-legers')">Automobile (Véhicules Légers)</button>
+          <button class="nav-sub-link" id="nav-poids-lourds-bus"               onclick="showPage('poids-lourds-bus')">Poids Lourds &amp; Bus</button>
+          <button class="nav-sub-link" id="nav-agriculture-travaux-publics"    onclick="showPage('agriculture-travaux-publics')">Agriculture &amp; Travaux Publics</button>
+          <button class="nav-sub-link" id="nav-marine-energie"                 onclick="showPage('marine-energie')">Marine &amp; Énergie</button>
+          <button class="nav-sub-link" id="nav-maintenance-industrielle"       onclick="showPage('maintenance-industrielle')">Maintenance Industrielle</button>
+        </div>
+      </div>
+
+      <!-- 3. Solutions -->
+      <div class="nav-dropdown">
+        <button class="nav-link" id="nav-solutions" onclick="showPage('solutions')">
+          Solutions <span class="nav-caret">▾</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          <button class="nav-sub-link" id="nav-filtre-air"       onclick="showPage('filtre-air')">Filtre Air</button>
+          <button class="nav-sub-link" id="nav-filtre-huile"     onclick="showPage('filtre-huile')">Filtre Huile</button>
+          <button class="nav-sub-link" id="nav-filtre-carburant" onclick="showPage('filtre-carburant')">Filtre Carburant</button>
+          <button class="nav-sub-link" id="nav-filtre-habitacle" onclick="showPage('filtre-habitacle')">Filtre Habitacle</button>
+        </div>
+      </div>
+
+      <!-- 4. Marques (no submenu) -->
+      <button class="nav-link" id="nav-marques" onclick="showPage('marques')">Marques</button>
+
+      <!-- 5. Leadership -->
+      <div class="nav-dropdown">
+        <button class="nav-link" id="nav-leadership" onclick="showPage('leadership')">
+          Leadership <span class="nav-caret">▾</span>
+        </button>
+        <div class="nav-dropdown-menu">
+          <button class="nav-sub-link" id="nav-succes-reconnaissances" onclick="showPage('succes-reconnaissances')">Succès &amp; Reconnaissances</button>
+          <button class="nav-sub-link" id="nav-innovation-qualite"     onclick="showPage('innovation-qualite')">Innovation &amp; Qualité</button>
+        </div>
+      </div>
+
+      <!-- 6. Le Groupe -->
+      <div class="nav-dropdown">
+        <button class="nav-link" id="nav-le-groupe" onclick="showPage('le-groupe')">
+          Le Groupe <span class="nav-caret">▾</span>
+        </button>
+        <div class="nav-dropdown-menu">
+
+          <!-- Notre ADN (level 2 nested) -->
+          <div class="nav-nested">
+            <button class="nav-sub-link" id="nav-notre-adn" onclick="showPage('notre-adn')">
+              Notre ADN <span class="nav-nested-arrow">▸</span>
+            </button>
+            <div class="nav-nested-menu">
+              <button class="nav-sub-link" id="nav-identite"  onclick="showPage('identite')">Identité</button>
+              <button class="nav-sub-link" id="nav-mission"   onclick="showPage('mission')">Mission</button>
+              <button class="nav-sub-link" id="nav-vision"    onclick="showPage('vision')">Vision</button>
+              <button class="nav-sub-link" id="nav-valeurs"   onclick="showPage('valeurs')">Valeurs</button>
+            </div>
+          </div>
+
+          <button class="nav-sub-link" id="nav-notre-histoire"  onclick="showPage('notre-histoire')">Notre Histoire</button>
+          <button class="nav-sub-link" id="nav-presence-mondiale" onclick="showPage('presence-mondiale')">Présence Mondiale</button>
+        </div>
+      </div>
+
+      <!-- Admin (hidden until logged in) -->
+      <button class="nav-link hide" id="nav-admin" onclick="showPage('admin')">Admin</button>
+
+    </div>
+
     <div class="nav-right">
       <span class="user-badge" id="user-badge"></span>
       <button class="btn white" id="login-btn" onclick="showPage('login')">Connexion</button>
@@ -335,9 +426,11 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   </div>
 </div>
 
+<!-- ═══ HOME ══════════════════════════════════════════════════════════ -->
 <div class="page active" id="page-home">
   <section class="hero">
-    <video autoplay muted loop playsinline class="hero-video" id="hero-video" poster="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1600&auto=format&fit=crop">
+    <video autoplay muted loop playsinline class="hero-video" id="hero-video"
+      poster="https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1600&auto=format&fit=crop">
       <source src="/videos/hero-misfat.mp4" type="video/mp4">
     </video>
     <div class="container">
@@ -347,8 +440,8 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
           <h1 id="hero-title"></h1>
           <p id="hero-text"></p>
           <div class="hero-actions">
-            <button class="btn primary" onclick="showPage('catalog')">Explorer le catalogue</button>
-            <button class="btn white" onclick="showPage('about')">Découvrir l’entreprise</button>
+            <button class="btn primary" onclick="showPage('solutions')">Explorer les solutions</button>
+            <button class="btn white" onclick="showPage('le-groupe')">Découvrir le groupe</button>
           </div>
         </div>
       </div>
@@ -357,10 +450,10 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 
   <div class="container kpis-wrap">
     <div class="kpis">
-      <div class="kpi"><div class="v counter" id="kpi1" data-target="850" data-suffix="+">0</div><div class="t">Références</div></div>
-      <div class="kpi"><div class="v counter" id="kpi2" data-target="12">0</div><div class="t">Marchés</div></div>
-      <div class="kpi"><div class="v counter" id="kpi3" data-target="19">0</div><div class="t">Années</div></div>
-      <div class="kpi"><div class="v counter" id="kpi4" data-target="25">0</div><div class="t">Partenaires</div></div>
+      <div class="kpi"><div class="v counter" data-target="850" data-suffix="+">0</div><div class="t">Références</div></div>
+      <div class="kpi"><div class="v counter" data-target="12">0</div><div class="t">Marchés</div></div>
+      <div class="kpi"><div class="v counter" data-target="19">0</div><div class="t">Années</div></div>
+      <div class="kpi"><div class="v counter" data-target="25">0</div><div class="t">Partenaires</div></div>
     </div>
   </div>
 
@@ -422,10 +515,10 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
     <div class="container">
       <div class="catalog-shell">
         <div class="catalog-side">
-          <div class="eyebrow">Solutions</div>
-          <div class="h2">Our filtration portfolio.</div>
-          <p style="margin-top:20px">Explore the product range through a more premium catalogue experience while keeping the same CMS logic, server-side saving and current project architecture.</p>
-          <div style="margin-top:24px"><button class="btn primary" onclick="showPage('catalog')">Open catalogue</button></div>
+          <div class="eyebrow">Nos Solutions</div>
+          <div class="h2">Notre portefeuille de filtration.</div>
+          <p style="margin-top:20px">Explorez la gamme de produits à travers une expérience catalogue premium tout en gardant la même logique CMS.</p>
+          <div style="margin-top:24px"><button class="btn primary" onclick="showPage('solutions')">Voir les solutions</button></div>
         </div>
         <div class="grid-3" id="home-products"></div>
       </div>
@@ -436,9 +529,9 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
     <div class="container">
       <div class="section-head">
         <div>
-          <div class="eyebrow">Partners</div>
-          <div class="h2">Trusted network and market presence.</div>
-          <p class="lead">This block remains editable from the admin while keeping a more corporate visual structure.</p>
+          <div class="eyebrow">Partenaires</div>
+          <div class="h2">Réseau de confiance et présence marché.</div>
+          <p class="lead">Ce bloc reste éditable depuis l'admin.</p>
         </div>
       </div>
       <div class="partner-grid" id="partner-grid"></div>
@@ -446,29 +539,32 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   </section>
 </div>
 
+<!-- ═══ DYNAMIC PAGES CONTAINER ══════════════════════════════════════ -->
 <div id="dynamic-pages"></div>
 
+<!-- ═══ LOGIN ═════════════════════════════════════════════════════════ -->
 <div class="page" id="page-login">
   <div class="login-wrap">
-    <div class="card login-panel">
+    <div class="card login-panel" style="max-width:480px;width:100%">
       <div class="eyebrow">Admin</div>
-      <div class="page-title" style="font-size:42px">Connexion</div>
-      <p class="lead" style="font-size:15px;margin-bottom:18px">Accède à l’espace admin pour tout modifier. Les changements sont enregistrés sur le serveur et visibles depuis d’autres navigateurs.</p>
+      <div class="page-title" style="font-size:42px;margin-bottom:8px">Connexion</div>
+      <p style="color:#64748B;font-size:15px;margin-bottom:20px">Accède à l'espace admin pour tout modifier.</p>
       <div class="error-msg" id="login-error">Identifiants incorrects.</div>
       <div class="editor-field"><label class="form-label">Email</label><input class="form-input" id="l-email" placeholder="admin@misfat.tn"></div>
       <div class="editor-field"><label class="form-label">Mot de passe</label><input class="form-input" id="l-pass" type="password" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()"></div>
-      <button class="btn primary" style="width:100%;padding:14px 18px" onclick="doLogin()">Se connecter</button>
+      <button class="btn primary" style="width:100%;padding:14px 18px;margin-top:4px" onclick="doLogin()">Se connecter</button>
       <div class="demo-box"><strong>Compte admin :</strong><br>admin@misfat.tn / admin123</div>
     </div>
   </div>
 </div>
 
+<!-- ═══ ADMIN ══════════════════════════════════════════════════════════ -->
 <div class="page" id="page-admin">
   <section class="page-top">
     <div class="container">
       <div class="eyebrow">Administration</div>
       <div class="page-title">CMS total</div>
-      <div class="page-sub">Tout ce que tu enregistres ici est sauvegardé côté serveur. Donc les modifications apparaissent dans les autres navigateurs qui ouvrent le site.</div>
+      <div class="page-sub">Tout ce que tu enregistres ici est sauvegardé côté serveur.</div>
     </div>
   </section>
   <section class="section">
@@ -494,7 +590,7 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 
       <div class="admin-section active" id="admin-brand">
         <div class="card editor-panel">
-          <div class="eyebrow">Marque & design</div>
+          <div class="eyebrow">Marque &amp; design</div>
           <div class="editor-grid">
             <div class="editor-field"><label>Nom</label><input class="form-input" id="brand-name-input"></div>
             <div class="editor-field"><label>Sous-titre</label><input class="form-input" id="brand-subtitle-input"></div>
@@ -522,12 +618,7 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
             <div class="editor-field full"><label>Badge</label><input class="form-input" id="hero-badge-input"></div>
             <div class="editor-field full"><label>Titre</label><input class="form-input" id="hero-title-input"></div>
             <div class="editor-field"><label>Mot en surbrillance</label><input class="form-input" id="hero-highlight-input"></div>
-            <div class="editor-field"><label>Panel title</label><input class="form-input" id="hero-panel-title-input"></div>
-            <div class="editor-field"><label>Panel value</label><input class="form-input" id="hero-panel-value-input"></div>
             <div class="editor-field full"><label>Texte hero</label><textarea class="form-input" id="hero-text-input" rows="3"></textarea></div>
-            <div class="editor-field full"><label>Panel text</label><textarea class="form-input" id="hero-panel-text-input" rows="3"></textarea></div>
-            <div class="editor-field full"><label>Card title</label><input class="form-input" id="hero-card-title-input"></div>
-            <div class="editor-field full"><label>Card text</label><textarea class="form-input" id="hero-card-text-input" rows="3"></textarea></div>
           </div>
           <div class="editor-actions"><button class="btn primary" onclick="saveHero()">Enregistrer le hero</button></div>
         </div>
@@ -535,8 +626,8 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 
       <div class="admin-section" id="admin-pages">
         <div class="card editor-panel">
-          <div class="eyebrow">Pages</div>
-          <p>Tu peux modifier le menu, les titres et le contenu de toutes les pages.</p>
+          <div class="eyebrow">Pages CMS</div>
+          <p>Modifie les pages éditables depuis l'admin.</p>
           <div id="pages-editor-list" style="margin-top:18px"></div>
           <div class="editor-actions">
             <button class="btn white" onclick="addPage()">Ajouter une page</button>
@@ -583,6 +674,7 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   </section>
 </div>
 
+<!-- ═══ PRODUCT MODAL ════════════════════════════════════════════════ -->
 <div class="modal" id="product-modal">
   <div class="modal-box">
     <h3 id="product-modal-title">Ajouter un produit</h3>
@@ -590,7 +682,14 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
       <div class="editor-field full"><label>Nom</label><input class="form-input" id="m-name"></div>
       <div class="editor-field"><label>Référence</label><input class="form-input" id="m-ref"></div>
       <div class="editor-field"><label>Prix</label><input class="form-input" id="m-price" type="number"></div>
-      <div class="editor-field"><label>Catégorie</label><select class="form-input" id="m-cat"><option value="oil">Huile</option><option value="air">Air</option><option value="fuel">Carburant</option><option value="cabin">Habitacle</option></select></div>
+      <div class="editor-field"><label>Catégorie</label>
+        <select class="form-input" id="m-cat">
+          <option value="oil">Huile</option>
+          <option value="air">Air</option>
+          <option value="fuel">Carburant</option>
+          <option value="cabin">Habitacle</option>
+        </select>
+      </div>
       <div class="editor-field"><label>Stock</label><input class="form-input" id="m-stock" type="number"></div>
       <div class="editor-field"><label>Icône</label><input class="form-input" id="m-img"></div>
       <div class="editor-field full"><label>Marques</label><input class="form-input" id="m-brand"></div>
@@ -604,16 +703,22 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   </div>
 </div>
 
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
 <footer class="footer" id="footer">
   <div class="container footer-inner">
     <div class="footer-grid">
       <div>
-        <div class="logo-name" id="footer-name"></div>
-        <div style="max-width:380px;color:#D1D5DB;line-height:1.8;margin-top:10px">Site corporate premium avec CMS simple pour tout modifier.</div>
+        <div class="logo-name" id="footer-name" style="color:#fff"></div>
+        <div style="max-width:380px;color:#D1D5DB;line-height:1.8;margin-top:10px">
+          Solutions de filtration premium pour l'industrie, la mobilité et la performance.
+        </div>
       </div>
       <div>
         <div class="footer-title">Navigation</div>
-        <div id="footer-nav"></div>
+        <button class="footer-link" onclick="showPage('home')">Filtration</button>
+        <button class="footer-link" onclick="showPage('nos-secteurs')">Nos Secteurs</button>
+        <button class="footer-link" onclick="showPage('solutions')">Solutions</button>
+        <button class="footer-link" onclick="showPage('le-groupe')">Le Groupe</button>
       </div>
       <div>
         <div class="footer-title">Contact</div>
@@ -627,355 +732,604 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
         <button class="footer-link" onclick="showPage('admin')">Dashboard</button>
       </div>
     </div>
-    <div class="footer-copy"><div id="footer-copy-name"></div><div>CMS Node server-side</div></div>
+    <div class="footer-copy">
+      <div id="footer-copy-name"></div>
+      <div>CMS Node server-side</div>
+    </div>
   </div>
 </footer>
 
+<!-- ═══ JAVASCRIPT ════════════════════════════════════════════════════ -->
 <script>
+'use strict';
+
 let site = null;
 let currentUser = null;
 let currentCat = 'all';
 let editingProductId = null;
 let countersAnimated = false;
 
-const filtrationSubPages = [
-  {
-    slug:'mobilite-durable', nav:'Mobilité Durable', eyebrow:'Filtration', title:'Mobilité Durable',
-    subtitle:'Des solutions de filtration conçues pour accompagner une mobilité plus fiable, plus propre et plus durable.',
-    intro:'MISFAT développe des solutions de filtration adaptées aux exigences actuelles de la mobilité, avec un accent sur la performance, la durée de vie des composants et la régularité de fonctionnement.',
-    blocks:[
-      { title:'Fiabilité au quotidien', text:'Des filtres pensés pour maintenir la qualité des flux et protéger les systèmes dans des environnements de roulage variés.' },
-      { title:'Performance opérationnelle', text:'Une approche produit qui soutient l’efficacité du moteur, la maîtrise des intervalles d’entretien et la constance de rendement.' },
-      { title:'Vision long terme', text:'Une filtration intégrée à une logique de mobilité durable, de maîtrise technique et de continuité d’usage.' }
-    ]
-  },
-  {
-    slug:'air-sante', nav:'Air & Santé', eyebrow:'Filtration', title:'Air & Santé',
-    subtitle:'Une filtration pensée pour améliorer la qualité de l’air et soutenir des environnements plus sains.',
-    intro:'L’air filtré joue un rôle clé dans le confort, la protection et la qualité de l’environnement. MISFAT structure son offre autour d’une vision plus claire des usages liés à l’air et à la santé.',
-    blocks:[
-      { title:'Qualité de l’air', text:'Des solutions destinées à limiter les particules et à améliorer la propreté des flux d’air dans différents contextes d’utilisation.' },
-      { title:'Confort et protection', text:'Une attention particulière portée au bien-être des utilisateurs, au maintien d’un environnement plus sain et à la cohérence fonctionnelle du système.' },
-      { title:'Positionnement premium', text:'Une présentation corporate qui valorise la filtration de l’air comme un levier de qualité, de confiance et de sérieux industriel.' }
-    ]
-  },
-  {
-    slug:'protection-moteur', nav:'Protection Moteur', eyebrow:'Filtration', title:'Protection Moteur',
-    subtitle:'La filtration au service de la protection, de la continuité et de la performance moteur.',
-    intro:'La protection moteur reste au cœur de l’expertise MISFAT. Cette page met en avant une logique de filtration centrée sur la robustesse, la maîtrise technique et la durée de vie.',
-    blocks:[
-      { title:'Protection des composants', text:'Des solutions pensées pour préserver les organes critiques et limiter l’impact des impuretés sur le fonctionnement mécanique.' },
-      { title:'Régularité de performance', text:'Une filtration fiable contribue à maintenir un comportement moteur stable, un meilleur niveau d’efficacité et une exploitation plus sereine.' },
-      { title:'Exigence industrielle', text:'MISFAT valorise ici une approche rigoureuse fondée sur la qualité produit, la constance et la maîtrise des besoins du terrain.' }
-    ]
-  },
-  {
-    slug:'solutions-industrielles', nav:'Solutions Industrielles', eyebrow:'Filtration', title:'Solutions Industrielles',
-    subtitle:'Des solutions de filtration développées pour les environnements industriels, les contraintes techniques et la continuité d’exploitation.',
-    intro:'Au-delà de la mobilité, MISFAT s’inscrit dans une logique industrielle plus large, avec une vision orientée fiabilité, efficacité et maîtrise des usages professionnels.',
-    blocks:[
-      { title:'Adaptation aux contraintes', text:'Des solutions capables de répondre à des contextes où la régularité, la stabilité et la sécurité opérationnelle sont prioritaires.' },
-      { title:'Efficacité des systèmes', text:'La filtration contribue à l’optimisation des performances globales et à une meilleure continuité des opérations industrielles.' },
-      { title:'Image institutionnelle', text:'Une page construite pour donner plus de poids au positionnement industriel de MISFAT dans un cadre corporate plus premium.' }
-    ]
+/* ── API ──────────────────────────────────────────────── */
+async function apiGet(){
+  try {
+    const r = await fetch('/api/site-data');
+    if(!r.ok) throw new Error('api');
+    return await r.json();
+  } catch(e) {
+    return getDefaultData();
   }
-];
-
-const sectorsSubPages = [
-  {
-    slug:'automobile-vehicules-legers', nav:'Automobile (Véhicules Légers)', eyebrow:'Nos Secteurs', title:'Automobile (Véhicules Légers)',
-    subtitle:'Une offre pensée pour les besoins du marché automobile léger, avec une approche claire, fiable et structurée.',
-    intro:'MISFAT accompagne le secteur automobile à travers des solutions de filtration conçues pour répondre aux besoins de performance, de maintenance et de confiance sur le long terme.',
-    blocks:[
-      { title:'Usage quotidien', text:'Des solutions adaptées aux besoins des véhicules légers, avec une attention portée à la continuité d’usage et au niveau d’exigence du marché.' },
-      { title:'Fiabilité produit', text:'Une logique de filtration orientée constance, protection et cohérence de performance dans les conditions habituelles d’exploitation.' },
-      { title:'Présence marché', text:'Cette page valorise le rôle de MISFAT dans un secteur clé, avec une présentation plus premium et plus institutionnelle.' }
-    ]
-  },
-  {
-    slug:'poids-lourds-bus', nav:'Poids Lourds & Bus', eyebrow:'Nos Secteurs', title:'Poids Lourds & Bus',
-    subtitle:'Des solutions de filtration adaptées aux usages intensifs, aux longues durées d’exploitation et aux environnements exigeants.',
-    intro:'Dans le secteur des poids lourds et des bus, la filtration participe à la continuité des opérations, à la protection des systèmes et à la maîtrise des cycles d’entretien.',
-    blocks:[
-      { title:'Usage intensif', text:'Une approche pensée pour les contextes d’exploitation prolongée, les volumes élevés et les contraintes quotidiennes du transport.' },
-      { title:'Continuité de service', text:'La filtration soutient la stabilité des équipements et contribue à sécuriser les performances sur la durée.' },
-      { title:'Positionnement robuste', text:'MISFAT présente ici une offre alignée avec les attentes du transport professionnel et des usages exigeants.' }
-    ]
-  },
-  {
-    slug:'agriculture-travaux-publics', nav:'Agriculture & Travaux Publics', eyebrow:'Nos Secteurs', title:'Agriculture & Travaux Publics',
-    subtitle:'Une filtration conçue pour les environnements poussiéreux, intensifs et fortement exposés aux contraintes terrain.',
-    intro:'Les secteurs de l’agriculture et des travaux publics exigent des solutions de filtration capables d’accompagner des machines soumises à des conditions d’usage particulièrement difficiles.',
-    blocks:[
-      { title:'Contraintes terrain', text:'Des environnements marqués par la poussière, les charges de travail élevées et la nécessité d’une grande fiabilité mécanique.' },
-      { title:'Protection durable', text:'La filtration joue un rôle essentiel dans la préservation des équipements et dans la régularité des cycles d’exploitation.' },
-      { title:'Approche métier', text:'Une page sectorielle qui traduit le sérieux industriel de MISFAT au service des applications terrain.' }
-    ]
-  },
-  {
-    slug:'marine-energie', nav:'Marine & Énergie', eyebrow:'Nos Secteurs', title:'Marine & Énergie',
-    subtitle:'Des applications de filtration destinées à des environnements techniques où la fiabilité et la maîtrise sont essentielles.',
-    intro:'Dans les univers marine et énergie, les attentes portent sur la solidité, la continuité et la maîtrise des systèmes. MISFAT valorise ici un positionnement professionnel et structuré.',
-    blocks:[
-      { title:'Environnements critiques', text:'Des usages où la stabilité des systèmes et la qualité des composants ont un impact direct sur l’exploitation.' },
-      { title:'Maîtrise technique', text:'La filtration s’inscrit dans une logique de contrôle, de protection et d’efficacité durable.' },
-      { title:'Image professionnelle', text:'Une présentation claire qui renforce la crédibilité de MISFAT dans des secteurs techniques à forte exigence.' }
-    ]
-  },
-  {
-    slug:'maintenance-industrielle', nav:'Maintenance Industrielle', eyebrow:'Nos Secteurs', title:'Maintenance Industrielle',
-    subtitle:'Une filtration qui soutient les démarches de maintenance, de continuité opérationnelle et de fiabilité des installations.',
-    intro:'La maintenance industrielle a besoin de solutions cohérentes, disponibles et techniquement fiables. MISFAT met en avant ici une lecture plus institutionnelle de sa contribution à ce secteur.',
-    blocks:[
-      { title:'Disponibilité des systèmes', text:'Des solutions de filtration qui participent à la stabilité des équipements et à la réduction des interruptions non souhaitées.' },
-      { title:'Support à la maintenance', text:'Une offre qui s’intègre dans une logique de prévention, d’entretien maîtrisé et de régularité opérationnelle.' },
-      { title:'Crédibilité industrielle', text:'Cette page renforce la perception de MISFAT comme acteur sérieux, structuré et orienté performance terrain.' }
-    ]
+}
+async function apiSave(){
+  try {
+    await fetch('/api/site-data', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(site)
+    });
+  } catch(e) { /* offline graceful */ }
+}
+async function apiReset(){
+  try {
+    await fetch('/api/reset', {method:'POST'});
+    site = await apiGet();
+    initUI();
+  } catch(e) {
+    site = getDefaultData();
+    initUI();
   }
-];
+}
 
-const groupedSubPages = [...filtrationSubPages, ...sectorsSubPages];
+function getDefaultData(){
+  return {
+    brand:{
+      name:'MISFAT',
+      subtitle:'Filtration Solutions',
+      logoType:'text',
+      logoText:'M',
+      logoImageUrl:'',
+      primaryColor:'#C61F26',
+      secondaryColor:'#9F171C',
+      accentColor:'#1E293B',
+      backgroundColor:'#F7F8FA'
+    },
+    hero:{
+      badge:'Solutions de Filtration Premium',
+      title:'Performance. Fiabilité. Précision.',
+      highlight:'Précision.',
+      text:'MISFAT développe des solutions de filtration conçues pour les environnements les plus exigeants — automobile, industrie, mobilité durable.'
+    },
+    contact:{
+      address:'Zone Industrielle, Tunis, Tunisie',
+      phone:'+216 71 000 000',
+      email:'contact@misfat.tn'
+    },
+    partners:['MANN+HUMMEL','Bosch','Mahle','Fram','Wix','Fleetguard','Parker','Donaldson','Pall','Baldwin'],
+    pages:[
+      {slug:'about',nav:'À Propos',eyebrow:'Notre Entreprise',title:'À Propos de MISFAT',subtitle:'Leader tunisien de la filtration industrielle et automobile.',content:'MISFAT est une entreprise tunisienne spécialisée dans la distribution et la commercialisation de filtres pour les secteurs automobile et industriel. Fondée il y a 19 ans, la société s\'est imposée comme un acteur de référence sur le marché tunisien et régional.'},
+      {slug:'catalog',nav:'Catalogue',eyebrow:'Catalogue',title:'Catalogue Produits',subtitle:'Toute notre gamme de filtration.'},
+      {slug:'contact',nav:'Contact',eyebrow:'Contact',title:'Nous Contacter',subtitle:'Notre équipe est à votre disposition.'}
+    ],
+    products:[
+      {id:1,name:'Filtre à Huile Premium',ref:'MF-H-2041',price:18.5,category:'oil',stock:240,img:'🛢️',brand:'Compatible : Peugeot, Citroën, Renault',specs:'Hauteur : 76mm | Filetage : M20x1.5 | Media : Cellulose haute densité',description:'Filtre à huile haute performance pour moteurs essence et diesel modernes. Efficacité de filtration >99% pour les particules >10µm.',rating:4.8},
+      {id:2,name:'Filtre à Air Sport',ref:'MF-A-3082',price:22.0,category:'air',stock:185,img:'💨',brand:'Compatible : BMW, Mercedes, Audi',specs:'Longueur : 320mm | Largeur : 180mm | Hauteur : 50mm | Débit : 520 m³/h',description:'Filtre à air haute performance pour une respiration optimale du moteur et une puissance maximale.',rating:4.7},
+      {id:3,name:'Filtre à Carburant',ref:'MF-F-1023',price:14.9,category:'fuel',stock:310,img:'⛽',brand:'Compatible : Toyota, Honda, Nissan',specs:'Pression max : 8 bar | Micronage : 10µm | Raccords : 8mm IN/OUT',description:'Filtre à carburant haute filtration pour protéger l\'injection et prolonger la durée de vie du moteur.',rating:4.6},
+      {id:4,name:'Filtre Habitacle Carbon',ref:'MF-C-4015',price:12.5,category:'cabin',stock:420,img:'🌬️',brand:'Compatible : VW, Skoda, Seat',specs:'Dimensions : 247x133x35mm | Efficacité : 99.5% PM2.5 | Traitement : Charbon actif',description:'Filtre habitacle au charbon actif pour une qualité d\'air intérieur optimale, bloquant pollens, bactéries et odeurs.',rating:4.9}
+    ]
+  };
+}
 
-async function apiGet(){ const r = await fetch('/api/site-data'); return await r.json(); }
-async function apiSave(){ await fetch('/api/site-data', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(site)}); }
-async function apiReset(){ await fetch('/api/reset', {method:'POST'}); site = await apiGet(); initUI(); }
-
+/* ── BRAND ────────────────────────────────────────────── */
 function applyBrandVars(){
-  document.documentElement.style.setProperty('--brand', site.brand.primaryColor);
-  document.documentElement.style.setProperty('--brand2', site.brand.secondaryColor);
-  document.documentElement.style.setProperty('--accent', site.brand.accentColor);
-  document.documentElement.style.setProperty('--bg', site.brand.backgroundColor);
+  const r = document.documentElement.style;
+  r.setProperty('--brand',  site.brand.primaryColor);
+  r.setProperty('--brand2', site.brand.secondaryColor);
+  r.setProperty('--accent', site.brand.accentColor);
+  r.setProperty('--bg',     site.brand.backgroundColor);
 }
 
 function renderLogo(){
   const mark = document.getElementById('logo-mark');
   if(site.brand.logoType === 'image' && site.brand.logoImageUrl){
-    mark.innerHTML = `<img src="${site.brand.logoImageUrl}" alt="logo">`;
+    mark.innerHTML = `<img src="${esc(site.brand.logoImageUrl)}" alt="logo">`;
   } else {
     mark.textContent = site.brand.logoText || 'M';
   }
-  document.getElementById('brand-name').textContent = site.brand.name;
-  document.getElementById('brand-subtitle').textContent = site.brand.subtitle;
-  document.getElementById('footer-name').textContent = site.brand.name;
-  document.getElementById('footer-copy-name').textContent = '© 2026 ' + site.brand.name;
-}
-
-function isAboutPage(p){
-  const label = (p.nav || '').toLowerCase();
-  const slug = (p.slug || '').toLowerCase();
-  return label.includes('propos') || slug === 'about' || slug === 'a-propos';
-}
-
-function renderNav(){
-  const nav = document.getElementById('nav-links');
-  const aboutPage = site.pages.find(isAboutPage);
-  const otherPages = site.pages.filter(p => !isAboutPage(p) && !['qse','catalog','contact'].includes(p.slug));
-
-  nav.innerHTML = `
-    <div class="nav-dropdown">
-      <button class="nav-link nav-dropdown-toggle active" id="nav-home" onclick="showPage('home')">
-        <span>Filtration</span>
-        <span class="nav-caret">▾</span>
-      </button>
-      <div class="nav-dropdown-menu">
-        ${filtrationSubPages.map(p => `<button class="nav-sub-link" id="nav-${p.slug}" onclick="showPage('${p.slug}')">${p.nav}</button>`).join('')}
-      </div>
-    </div>
-  `;
-
-  if(aboutPage){
-    nav.innerHTML += `
-      <div class="nav-dropdown">
-        <button class="nav-link nav-dropdown-toggle" id="nav-${aboutPage.slug}" onclick="showPage('${aboutPage.slug}')">
-          <span>Nos Secteurs</span>
-          <span class="nav-caret">▾</span>
-        </button>
-        <div class="nav-dropdown-menu">
-          ${sectorsSubPages.map(p => `<button class="nav-sub-link" id="nav-${p.slug}" onclick="showPage('${p.slug}')">${p.nav}</button>`).join('')}
-        </div>
-      </div>
-    `;
-  }
-
-  otherPages.forEach(p => {
-    nav.innerHTML += `<button class="nav-link" id="nav-${p.slug}" onclick="showPage('${p.slug}')">${p.nav}</button>`;
-  });
-
-  nav.innerHTML += '<button class="nav-link hide" id="nav-admin" onclick="showPage(\'admin\')">Admin</button>';
-
-  const footerNav = document.getElementById('footer-nav');
-  footerNav.innerHTML = '';
-  footerNav.innerHTML += `<button class="footer-link" onclick="showPage('home')">Filtration</button>`;
-  if(aboutPage){
-    footerNav.innerHTML += `<button class="footer-link" onclick="showPage('${aboutPage.slug}')">Nos Secteurs</button>`;
-  }
-  otherPages.slice(0,3).forEach(p => {
-    footerNav.innerHTML += `<button class="footer-link" onclick="showPage('${p.slug}')">${p.nav}</button>`;
-  });
+  setTxt('brand-name',    site.brand.name);
+  setTxt('brand-subtitle',site.brand.subtitle);
+  setTxt('footer-name',   site.brand.name);
+  setTxt('footer-copy-name','© 2026 ' + site.brand.name);
 }
 
 function renderHero(){
-  document.getElementById('hero-badge').textContent = site.hero.badge;
-  let title = site.hero.title;
-  if(site.hero.highlight && title.includes(site.hero.highlight)){
-    title = title.replace(site.hero.highlight, `<span>${site.hero.highlight}</span>`);
+  setTxt('hero-badge', site.hero.badge);
+  let title = esc(site.hero.title);
+  if(site.hero.highlight){
+    const h = esc(site.hero.highlight);
+    title = title.replace(h, `<span>${h}</span>`);
   }
   document.getElementById('hero-title').innerHTML = title;
-  document.getElementById('hero-text').textContent = site.hero.text;
+  setTxt('hero-text', site.hero.text);
 }
 
 function renderPartners(){
-  document.getElementById('partner-grid').innerHTML = site.partners.map(p => `<div class="partner">${p}</div>`).join('');
+  const grid = document.getElementById('partner-grid');
+  if(grid) grid.innerHTML = (site.partners || []).map(p => `<div class="partner">${esc(p)}</div>`).join('');
 }
 
 function renderContactBlocks(){
-  const ids = [['footer-address','address'],['footer-phone','phone'],['footer-email','email']];
-  ids.forEach(([id,k]) => document.getElementById(id).textContent = site.contact[k]);
+  setTxt('footer-address', site.contact.address);
+  setTxt('footer-phone',   site.contact.phone);
+  setTxt('footer-email',   site.contact.email);
 }
 
-function renderRichSubPage(p){
+/* ── HELPERS ──────────────────────────────────────────── */
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+function setTxt(id,v){ const el=document.getElementById(id); if(el) el.textContent=v||''; }
+
+/* ── STATIC PAGES DATA ────────────────────────────────── */
+const staticPages = [
+  /* ── Filtration sub-pages ── */
+  {
+    slug:'mobilite-durable', eyebrow:'Filtration', title:'Mobilité Durable',
+    subtitle:'Des solutions de filtration conçues pour accompagner une mobilité plus fiable, plus propre et plus durable.',
+    intro:'MISFAT développe des solutions de filtration adaptées aux exigences actuelles de la mobilité, avec un accent sur la performance, la durée de vie des composants et la régularité de fonctionnement.',
+    blocks:[
+      {title:'Fiabilité au quotidien', text:'Des filtres pensés pour maintenir la qualité des flux et protéger les systèmes dans des environnements de roulage variés.'},
+      {title:'Performance opérationnelle', text:'Une approche produit qui soutient l\'efficacité du moteur, la maîtrise des intervalles d\'entretien et la constance de rendement.'},
+      {title:'Vision long terme', text:'Une filtration intégrée à une logique de mobilité durable, de maîtrise technique et de continuité d\'usage.'}
+    ]
+  },
+  {
+    slug:'air-sante', eyebrow:'Filtration', title:'Air & Santé',
+    subtitle:'Une filtration pensée pour améliorer la qualité de l\'air et soutenir des environnements plus sains.',
+    intro:'L\'air filtré joue un rôle clé dans le confort, la protection et la qualité de l\'environnement. MISFAT structure son offre autour d\'une vision plus claire des usages liés à l\'air et à la santé.',
+    blocks:[
+      {title:'Qualité de l\'air', text:'Des solutions destinées à limiter les particules et à améliorer la propreté des flux d\'air dans différents contextes d\'utilisation.'},
+      {title:'Confort et protection', text:'Une attention particulière portée au bien-être des utilisateurs, au maintien d\'un environnement plus sain et à la cohérence fonctionnelle du système.'},
+      {title:'Positionnement premium', text:'Une présentation corporate qui valorise la filtration de l\'air comme un levier de qualité, de confiance et de sérieux industriel.'}
+    ]
+  },
+  {
+    slug:'protection-moteur', eyebrow:'Filtration', title:'Protection Moteur',
+    subtitle:'La filtration au service de la protection, de la continuité et de la performance moteur.',
+    intro:'La protection moteur reste au cœur de l\'expertise MISFAT. Cette page met en avant une logique de filtration centrée sur la robustesse, la maîtrise technique et la durée de vie.',
+    blocks:[
+      {title:'Protection des composants', text:'Des solutions pensées pour préserver les organes critiques et limiter l\'impact des impuretés sur le fonctionnement mécanique.'},
+      {title:'Régularité de performance', text:'Une filtration fiable contribue à maintenir un comportement moteur stable, un meilleur niveau d\'efficacité et une exploitation plus sereine.'},
+      {title:'Exigence industrielle', text:'MISFAT valorise ici une approche rigoureuse fondée sur la qualité produit, la constance et la maîtrise des besoins du terrain.'}
+    ]
+  },
+  {
+    slug:'solutions-industrielles', eyebrow:'Filtration', title:'Solutions Industrielles',
+    subtitle:'Des solutions de filtration développées pour les environnements industriels, les contraintes techniques et la continuité d\'exploitation.',
+    intro:'Au-delà de la mobilité, MISFAT s\'inscrit dans une logique industrielle plus large, avec une vision orientée fiabilité, efficacité et maîtrise des usages professionnels.',
+    blocks:[
+      {title:'Adaptation aux contraintes', text:'Des solutions capables de répondre à des contextes où la régularité, la stabilité et la sécurité opérationnelle sont prioritaires.'},
+      {title:'Efficacité des systèmes', text:'La filtration contribue à l\'optimisation des performances globales et à une meilleure continuité des opérations industrielles.'},
+      {title:'Image institutionnelle', text:'Une page construite pour donner plus de poids au positionnement industriel de MISFAT dans un cadre corporate plus premium.'}
+    ]
+  },
+
+  /* ── Nos Secteurs ── */
+  {
+    slug:'nos-secteurs', eyebrow:'Secteurs', title:'Nos Secteurs',
+    subtitle:'MISFAT accompagne les secteurs automobile, industriel, agricole, maritime et de la maintenance.',
+    intro:'De l\'automobile aux applications industrielles les plus exigeantes, MISFAT déploie une offre de filtration adaptée aux réalités de chaque secteur.',
+    blocks:[
+      {title:'Automobile & Mobilité', text:'Une présence forte sur le marché automobile léger et poids lourds avec des solutions couvrant l\'ensemble des besoins de filtration.'},
+      {title:'Industrie & Agriculture', text:'Des solutions adaptées aux environnements industriels intensifs et aux conditions terrain difficiles de l\'agriculture et des travaux publics.'},
+      {title:'Marine & Énergie', text:'Une expertise technique pour les environnements maritimes et énergétiques où la fiabilité est non négociable.'}
+    ]
+  },
+  {
+    slug:'automobile-vehicules-legers', eyebrow:'Nos Secteurs', title:'Automobile (Véhicules Légers)',
+    subtitle:'Une offre pensée pour les besoins du marché automobile léger, avec une approche claire, fiable et structurée.',
+    intro:'MISFAT accompagne le secteur automobile à travers des solutions de filtration conçues pour répondre aux besoins de performance, de maintenance et de confiance sur le long terme.',
+    blocks:[
+      {title:'Usage quotidien', text:'Des solutions adaptées aux besoins des véhicules légers, avec une attention portée à la continuité d\'usage et au niveau d\'exigence du marché.'},
+      {title:'Fiabilité produit', text:'Une logique de filtration orientée constance, protection et cohérence de performance dans les conditions habituelles d\'exploitation.'},
+      {title:'Présence marché', text:'Cette page valorise le rôle de MISFAT dans un secteur clé, avec une présentation plus premium et plus institutionnelle.'}
+    ]
+  },
+  {
+    slug:'poids-lourds-bus', eyebrow:'Nos Secteurs', title:'Poids Lourds & Bus',
+    subtitle:'Des solutions de filtration adaptées aux usages intensifs, aux longues durées d\'exploitation et aux environnements exigeants.',
+    intro:'Dans le secteur des poids lourds et des bus, la filtration participe à la continuité des opérations, à la protection des systèmes et à la maîtrise des cycles d\'entretien.',
+    blocks:[
+      {title:'Usage intensif', text:'Une approche pensée pour les contextes d\'exploitation prolongée, les volumes élevés et les contraintes quotidiennes du transport.'},
+      {title:'Continuité de service', text:'La filtration soutient la stabilité des équipements et contribue à sécuriser les performances sur la durée.'},
+      {title:'Positionnement robuste', text:'MISFAT présente ici une offre alignée avec les attentes du transport professionnel et des usages exigeants.'}
+    ]
+  },
+  {
+    slug:'agriculture-travaux-publics', eyebrow:'Nos Secteurs', title:'Agriculture & Travaux Publics',
+    subtitle:'Une filtration conçue pour les environnements poussiéreux, intensifs et fortement exposés aux contraintes terrain.',
+    intro:'Les secteurs de l\'agriculture et des travaux publics exigent des solutions de filtration capables d\'accompagner des machines soumises à des conditions d\'usage particulièrement difficiles.',
+    blocks:[
+      {title:'Contraintes terrain', text:'Des environnements marqués par la poussière, les charges de travail élevées et la nécessité d\'une grande fiabilité mécanique.'},
+      {title:'Protection durable', text:'La filtration joue un rôle essentiel dans la préservation des équipements et dans la régularité des cycles d\'exploitation.'},
+      {title:'Approche métier', text:'Une page sectorielle qui traduit le sérieux industriel de MISFAT au service des applications terrain.'}
+    ]
+  },
+  {
+    slug:'marine-energie', eyebrow:'Nos Secteurs', title:'Marine & Énergie',
+    subtitle:'Des applications de filtration destinées à des environnements techniques où la fiabilité et la maîtrise sont essentielles.',
+    intro:'Dans les univers marine et énergie, les attentes portent sur la solidité, la continuité et la maîtrise des systèmes. MISFAT valorise ici un positionnement professionnel et structuré.',
+    blocks:[
+      {title:'Environnements critiques', text:'Des usages où la stabilité des systèmes et la qualité des composants ont un impact direct sur l\'exploitation.'},
+      {title:'Maîtrise technique', text:'La filtration s\'inscrit dans une logique de contrôle, de protection et d\'efficacité durable.'},
+      {title:'Image professionnelle', text:'Une présentation claire qui renforce la crédibilité de MISFAT dans des secteurs techniques à forte exigence.'}
+    ]
+  },
+  {
+    slug:'maintenance-industrielle', eyebrow:'Nos Secteurs', title:'Maintenance Industrielle',
+    subtitle:'Une filtration qui soutient les démarches de maintenance, de continuité opérationnelle et de fiabilité des installations.',
+    intro:'La maintenance industrielle a besoin de solutions cohérentes, disponibles et techniquement fiables. MISFAT met en avant ici une lecture plus institutionnelle de sa contribution à ce secteur.',
+    blocks:[
+      {title:'Disponibilité des systèmes', text:'Des solutions de filtration qui participent à la stabilité des équipements et à la réduction des interruptions non souhaitées.'},
+      {title:'Support à la maintenance', text:'Une offre qui s\'intègre dans une logique de prévention, d\'entretien maîtrisé et de régularité opérationnelle.'},
+      {title:'Crédibilité industrielle', text:'Cette page renforce la perception de MISFAT comme acteur sérieux, structuré et orienté performance terrain.'}
+    ]
+  },
+
+  /* ── Solutions sub-pages ── */
+  {
+    slug:'solutions', eyebrow:'Solutions', title:'Nos Solutions',
+    subtitle:'Une gamme complète de filtration haute performance pour tous les besoins.',
+    intro:'MISFAT propose une gamme exhaustive de solutions de filtration couvrant les quatre familles de filtres essentielles à la performance et à la longévité des équipements.',
+    blocks:[
+      {title:'Filtres Huile', text:'Des filtres à huile conçus pour retenir les impuretés et protéger les organes moteur, disponibles pour toutes les cylindrées.'},
+      {title:'Filtres Air', text:'Une gamme de filtres à air pour une admission optimale, protégeant le moteur des particules et assurant la meilleure puissance.'},
+      {title:'Filtres Carburant & Habitacle', text:'Des filtres carburant pour une injection propre et des filtres habitacle pour un air intérieur de qualité.'}
+    ]
+  },
+  {
+    slug:'filtre-air', eyebrow:'Solutions', title:'Filtre Air',
+    subtitle:'Une filtration de l\'air optimisée pour la performance moteur et la longévité des systèmes d\'admission.',
+    intro:'Le filtre à air est le premier rempart contre les particules extérieures. MISFAT propose une gamme complète adaptée à toutes les motorisations, des véhicules légers aux applications industrielles.',
+    blocks:[
+      {title:'Haute capacité de filtration', text:'Des médias filtrants haute densité assurant une efficacité >99% sur les particules fines tout en maintenant un débit d\'air optimal.'},
+      {title:'Compatibilité étendue', text:'Une gamme couvrant un très large parc automobile européen et japonais, avec des références disponibles en stock permanent.'},
+      {title:'Durabilité', text:'Des filtres conçus pour résister aux variations de température et d\'humidité, avec des intervalles de remplacement prolongés.'}
+    ]
+  },
+  {
+    slug:'filtre-huile', eyebrow:'Solutions', title:'Filtre Huile',
+    subtitle:'La protection optimale du moteur par une filtration de l\'huile efficace et fiable.',
+    intro:'Le filtre à huile est essentiel à la longévité du moteur. La gamme MISFAT garantit une filtration complète des particules métalliques et organiques en circulation.',
+    blocks:[
+      {title:'Protection moteur maximale', text:'Des filtres retenus pour leur efficacité prouvée sur les particules >10µm, protégeant les coussinets et pièces mobiles du moteur.'},
+      {title:'Soupape anti-retour intégrée', text:'Chaque filtre intègre une soupape anti-retour et une soupape de dérivation calibrées pour le bon fonctionnement du circuit.'},
+      {title:'Large catalogue', text:'Plus de 200 références disponibles couvrant les principales marques automobiles et applications industrielles.'}
+    ]
+  },
+  {
+    slug:'filtre-carburant', eyebrow:'Solutions', title:'Filtre Carburant',
+    subtitle:'Une filtration du carburant haute précision pour protéger les systèmes d\'injection modernes.',
+    intro:'Les systèmes d\'injection directs sont particulièrement sensibles aux impuretés. Les filtres carburant MISFAT offrent une filtration de précision adaptée aux exigences des moteurs modernes.',
+    blocks:[
+      {title:'Filtration haute précision', text:'Un micronage adapté aux pressions d\'injection élevées des systèmes Common Rail et injection directe essence.'},
+      {title:'Séparateur eau-carburant', text:'Certaines références intègrent un séparateur eau-carburant pour une protection optimale dans les régions à carburant de qualité variable.'},
+      {title:'Montage et maintenance simplifiés', text:'Des géométries standardisées facilitant le remplacement et conformes aux intervalles constructeurs.'}
+    ]
+  },
+  {
+    slug:'filtre-habitacle', eyebrow:'Solutions', title:'Filtre Habitacle',
+    subtitle:'Un air intérieur sain et purifié pour le confort et la protection des occupants.',
+    intro:'Le filtre habitacle est souvent négligé mais reste un élément clé du confort et de la santé à bord. La gamme MISFAT au charbon actif offre une protection complète contre les polluants extérieurs.',
+    blocks:[
+      {title:'Filtration multi-couches', text:'Des filtres combinant fibre de verre, charbon actif et électrostatique pour bloquer pollens, bactéries, fine particules et odeurs.'},
+      {title:'Efficacité PM2.5', text:'Une efficacité certifiée >99.5% sur les particules PM2.5 pour une protection optimale contre la pollution atmosphérique.'},
+      {title:'Compatible climatisation', text:'Des filtres adaptés à tous les types de systèmes de ventilation et de climatisation automobile.'}
+    ]
+  },
+
+  /* ── Marques ── */
+  {
+    slug:'marques', eyebrow:'Marques', title:'Nos Marques',
+    subtitle:'MISFAT distribue et représente les grandes marques mondiales de filtration sur le marché tunisien.',
+    intro:'Fort de partenariats solides avec les leaders mondiaux de la filtration, MISFAT garantit l\'accès aux meilleures solutions pour chaque application et chaque marché.',
+    blocks:[
+      {title:'Distribution officielle', text:'MISFAT est distributeur officiel de plusieurs marques de référence mondiale, assurant disponibilité stock et conformité produit.'},
+      {title:'Gamme propre MISFAT', text:'En complément des grandes marques, MISFAT développe sa propre gamme de filtres conçus pour le marché local avec les mêmes exigences qualité.'},
+      {title:'Support technique', text:'Un support technique dédié pour chaque marque distribuée, avec assistance à la sélection des références et à l\'installation.'}
+    ]
+  },
+
+  /* ── Leadership ── */
+  {
+    slug:'leadership', eyebrow:'Leadership', title:'Leadership',
+    subtitle:'MISFAT s\'est imposé comme leader de la filtration en Tunisie grâce à une exigence constante de qualité et d\'innovation.',
+    intro:'Le positionnement de MISFAT repose sur une combinaison d\'expertise terrain, de qualité produit et d\'une vision long terme de la performance industrielle.',
+    blocks:[
+      {title:'Position de référence', text:'19 ans d\'expertise ont permis à MISFAT de s\'établir comme interlocuteur de confiance pour les professionnels de la mécanique et de l\'industrie.'},
+      {title:'Réseau national', text:'Une présence sur 12 marchés avec un réseau de distribution couvrant l\'ensemble du territoire et des délais d\'approvisionnement maîtrisés.'},
+      {title:'Engagement qualité', text:'Des certifications et des processus rigoureux garantissant la conformité de chaque produit distribué.'}
+    ]
+  },
+  {
+    slug:'succes-reconnaissances', eyebrow:'Leadership', title:'Succès & Reconnaissances',
+    subtitle:'Les reconnaissances obtenues par MISFAT témoignent de son engagement envers l\'excellence et la qualité.',
+    intro:'Au fil des années, MISFAT a été reconnu par ses partenaires et ses clients pour la qualité de ses produits, la fiabilité de ses services et son rôle dans le développement du secteur.',
+    blocks:[
+      {title:'Partenaire de l\'année', text:'Plusieurs fois distingué meilleur partenaire distributeur par les grandes marques de filtration pour la performance commerciale et la satisfaction client.'},
+      {title:'Certification qualité', text:'Des processus qualité conformes aux standards internationaux, garantissant la traçabilité et la conformité de chaque référence commercialisée.'},
+      {title:'Reconnaissance terrain', text:'Une réputation bâtie sur la fiabilité opérationnelle et la capacité à répondre aux exigences des marchés les plus exigeants.'}
+    ]
+  },
+  {
+    slug:'innovation-qualite', eyebrow:'Leadership', title:'Innovation & Qualité',
+    subtitle:'L\'innovation et la qualité sont les deux piliers sur lesquels repose le développement de MISFAT.',
+    intro:'MISFAT investit continuellement dans l\'amélioration de son offre, la recherche de nouvelles solutions et le renforcement de ses processus qualité pour rester à la hauteur des attentes du marché.',
+    blocks:[
+      {title:'Innovation produit', text:'Une veille active sur les évolutions technologiques du secteur de la filtration pour intégrer rapidement les meilleures innovations au catalogue.'},
+      {title:'Qualité sans compromis', text:'Des critères de sélection stricts pour chaque produit référencé, avec des tests réguliers en conditions réelles d\'utilisation.'},
+      {title:'Amélioration continue', text:'Une démarche d\'amélioration continue portée par les retours terrain et les exigences croissantes des clients professionnels.'}
+    ]
+  },
+
+  /* ── Le Groupe ── */
+  {
+    slug:'le-groupe', eyebrow:'Le Groupe', title:'Le Groupe MISFAT',
+    subtitle:'Une entreprise tunisienne construite sur des valeurs solides et une vision long terme de la performance industrielle.',
+    intro:'MISFAT est plus qu\'un distributeur de filtres. C\'est une entreprise construite sur des valeurs fondamentales d\'excellence, d\'intégrité et de service, engagée dans le développement de son secteur.',
+    blocks:[
+      {title:'Notre identité', text:'Un groupe industriel tunisien de référence, alliant expertise technique, culture de la performance et ambition régionale.'},
+      {title:'Notre mission', text:'Rendre accessible les meilleures solutions de filtration à tous les acteurs de l\'industrie et de la mobilité en Tunisie et dans la région.'},
+      {title:'Notre vision', text:'Devenir le partenaire de filtration de référence sur le marché nord-africain à horizon 2030.'}
+    ]
+  },
+  {
+    slug:'notre-adn', eyebrow:'Le Groupe', title:'Notre ADN',
+    subtitle:'Les fondements qui définissent l\'identité, les ambitions et les comportements de MISFAT.',
+    intro:'L\'ADN de MISFAT se construit autour de quatre dimensions complémentaires : une identité forte, une mission claire, une vision ambitieuse et des valeurs profondément ancrées.',
+    blocks:[
+      {title:'Identité', text:'MISFAT est une entreprise industrielle tunisienne spécialisée dans la filtration, construite sur l\'expertise technique et la fiabilité.'},
+      {title:'Mission', text:'Apporter les meilleures solutions de filtration, adaptées à chaque usage, avec un service irréprochable.'},
+      {title:'Vision & Valeurs', text:'Une ambition régionale portée par des valeurs d\'excellence, d\'intégrité, d\'innovation et d\'engagement client.'}
+    ]
+  },
+  {
+    slug:'identite', eyebrow:'Notre ADN', title:'Identité',
+    subtitle:'L\'identité de MISFAT — qui nous sommes, d\'où nous venons, et ce qui nous distingue.',
+    intro:'MISFAT est une entreprise tunisienne fondée sur la passion de la filtration et la conviction que la qualité technique est la base de toute relation commerciale durable.',
+    blocks:[
+      {title:'Origine', text:'Fondée en Tunisie il y a 19 ans, MISFAT s\'est développée organiquement grâce à la confiance de ses clients et la qualité constante de ses produits.'},
+      {title:'Positionnement', text:'Un acteur premium sur le marché de la filtration, reconnu pour son expertise, sa disponibilité et la qualité de ses références.'},
+      {title:'Différenciation', text:'Une combinaison unique de profondeur de catalogue, de réactivité logistique et d\'accompagnement technique.'}
+    ]
+  },
+  {
+    slug:'mission', eyebrow:'Notre ADN', title:'Mission',
+    subtitle:'La mission de MISFAT — pourquoi nous faisons ce que nous faisons chaque jour.',
+    intro:'La mission de MISFAT est de garantir à chaque professionnel, chaque atelier et chaque industriel l\'accès aux meilleures solutions de filtration, disponibles et conformes aux exigences de leurs équipements.',
+    blocks:[
+      {title:'Service aux professionnels', text:'Etre le partenaire de confiance des ateliers, garages, flottes et industriels avec une disponibilité produit et un support technique de qualité.'},
+      {title:'Accessibilité', text:'Rendre accessibles les meilleures marques mondiales de filtration à des conditions tarifaires compétitives sur le marché tunisien.'},
+      {title:'Fiabilité', text:'Garantir la conformité et la traçabilité de chaque produit distribué pour une utilisation en toute sécurité.'}
+    ]
+  },
+  {
+    slug:'vision', eyebrow:'Notre ADN', title:'Vision',
+    subtitle:'La vision de MISFAT — où nous allons et l\'avenir que nous construisons.',
+    intro:'MISFAT se projette comme le leader régional de la filtration à horizon 2030, en développant sa présence géographique, son catalogue et ses capacités de service.',
+    blocks:[
+      {title:'Leadership régional', text:'Devenir l\'acteur de référence de la filtration sur l\'ensemble du marché nord-africain avec une infrastructure logistique adaptée.'},
+      {title:'Innovation continue', text:'Intégrer les nouvelles technologies de filtration et les solutions pour les motorisations alternatives dans une logique d\'anticipation.'},
+      {title:'Excellence durable', text:'Maintenir un niveau d\'exigence élevé en matière de qualité, de service et de responsabilité industrielle sur le long terme.'}
+    ]
+  },
+  {
+    slug:'valeurs', eyebrow:'Notre ADN', title:'Valeurs',
+    subtitle:'Les valeurs de MISFAT — les principes qui guident chacune de nos décisions.',
+    intro:'Les valeurs de MISFAT sont le socle de chaque décision, chaque partenariat et chaque relation client. Elles définissent notre manière d\'être et de travailler au quotidien.',
+    blocks:[
+      {title:'Excellence', text:'Un engagement permanent envers la qualité supérieure — dans les produits que nous distribuons, dans les services que nous rendons et dans les relations que nous construisons.'},
+      {title:'Intégrité', text:'Une exigence de transparence, d\'honnêteté et de fiabilité dans toutes nos interactions commerciales et institutionnelles.'},
+      {title:'Innovation & Engagement', text:'La curiosité permanente pour les meilleures solutions et un engagement total envers la satisfaction de nos clients et partenaires.'}
+    ]
+  },
+  {
+    slug:'notre-histoire', eyebrow:'Le Groupe', title:'Notre Histoire',
+    subtitle:'19 ans de développement, de croissance et d\'engagement au service de la filtration en Tunisie.',
+    intro:'L\'histoire de MISFAT est celle d\'une entreprise bâtie progressivement sur la confiance, l\'expertise et la détermination à devenir un acteur de référence dans son secteur.',
+    blocks:[
+      {title:'Les premières années', text:'Fondée avec une vision claire du marché tunisien de la filtration automobile, MISFAT a rapidement construit sa réputation sur la fiabilité de ses produits et la qualité de son service.'},
+      {title:'La croissance', text:'Au fil des années, le catalogue s\'est enrichi, le réseau s\'est étendu et les partenariats avec les grandes marques mondiales se sont consolidés.'},
+      {title:'Aujourd\'hui', text:'850 références, 12 marchés, 25 partenaires et une équipe engagée — MISFAT s\'inscrit dans une trajectoire de développement ambitieuse.'}
+    ]
+  },
+  {
+    slug:'presence-mondiale', eyebrow:'Le Groupe', title:'Présence Mondiale',
+    subtitle:'Une ancre tunisienne et des ambitions régionales portées par des partenariats internationaux solides.',
+    intro:'Bien qu\'ancrée en Tunisie, MISFAT entretient des relations commerciales et des partenariats qui lui permettent d\'accéder aux meilleures solutions mondiales et d\'envisager un développement régional.',
+    blocks:[
+      {title:'Ancrage local', text:'Un réseau national dense avec une présence sur les 12 principaux marchés tunisiens et une logistique adaptée aux délais du marché.'},
+      {title:'Partenariats internationaux', text:'Des accords avec les leaders mondiaux de la filtration — Allemagne, USA, Italie, France — garantissant l\'accès aux meilleurs produits.'},
+      {title:'Vision régionale', text:'Une stratégie de développement orientée vers le marché nord-africain avec des projets d\'expansion en cours.'}
+    ]
+  }
+];
+
+/* ── RENDER STATIC PAGES ─────────────────────────────── */
+function renderStaticPageHTML(p){
   return `
-    <div class="page" id="page-${p.slug}">
-      <section class="page-top">
-        <div class="container">
-          <div class="eyebrow">${p.eyebrow}</div>
-          <div class="page-title">${p.title}</div>
-          <div class="page-sub">${p.subtitle}</div>
-        </div>
-      </section>
-      <section class="section">
-        <div class="container">
-          <div class="intro-grid">
-            <div>
-              <div class="eyebrow">${p.eyebrow}</div>
-              <div class="h2">${p.title}</div>
-            </div>
-            <div class="intro-text">${p.intro}</div>
-          </div>
-        </div>
-      </section>
-      <section class="section-tight">
-        <div class="container">
-          <div class="content-grid">
-            ${p.blocks.map(b => `
-              <div class="card content-card">
-                <h3>${b.title}</h3>
-                <p>${b.text}</p>
-              </div>
-            `).join('')}
-          </div>
-          <div class="content-cta">
-            <button class="btn primary" onclick="showPage('contact')">Contacter MISFAT</button>
-            <button class="btn white" onclick="showPage('catalog')">Voir le catalogue</button>
-          </div>
-        </div>
-      </section>
+<div class="page" id="page-${p.slug}">
+  <section class="page-top">
+    <div class="container">
+      <div class="eyebrow">${esc(p.eyebrow)}</div>
+      <div class="page-title">${esc(p.title)}</div>
+      <div class="page-sub">${esc(p.subtitle)}</div>
     </div>
-  `;
+  </section>
+  <section class="section">
+    <div class="container">
+      <div class="intro-grid">
+        <div>
+          <div class="eyebrow">${esc(p.eyebrow)}</div>
+          <div class="h2">${esc(p.title)}</div>
+        </div>
+        <div class="intro-text">${esc(p.intro)}</div>
+      </div>
+    </div>
+  </section>
+  <section class="section-tight">
+    <div class="container">
+      <div class="content-grid">
+        ${p.blocks.map(b => `
+          <div class="card content-card">
+            <h3>${esc(b.title)}</h3>
+            <p>${esc(b.text)}</p>
+          </div>`).join('')}
+      </div>
+      <div class="content-cta">
+        <button class="btn primary" onclick="showPage('contact-us')">Contacter MISFAT</button>
+        <button class="btn white" onclick="showPage('solutions')">Voir les solutions</button>
+      </div>
+    </div>
+  </section>
+</div>`;
 }
 
+/* ── RENDER CMS + STATIC PAGES ───────────────────────── */
 function renderPages(){
   const wrap = document.getElementById('dynamic-pages');
-  wrap.innerHTML = '';
+  if(!wrap) return;
 
-  site.pages.forEach(p => {
+  let html = '';
+
+  /* CMS pages */
+  (site.pages || []).forEach(p => {
     if(p.slug === 'catalog'){
-      wrap.innerHTML += `
-      <div class="page" id="page-catalog">
-        <section class="page-top"><div class="container"><div class="eyebrow">${p.eyebrow}</div><div class="page-title">${p.title}</div><div class="page-sub">${p.subtitle}</div></div></section>
-        <section class="section">
-          <div class="container">
-            <div class="filters">
-              <div class="search-wrap">
-                <span class="search-icon">🔍</span>
-                <input class="search-input" id="search-input" placeholder="Rechercher..." oninput="filterProducts()">
-              </div>
-              <div class="cat-filters">
-                <button class="cat-btn active" id="cat-all" onclick="setCat('all', this)">Tous</button>
-                <button class="cat-btn" onclick="setCat('oil', this)">Huile</button>
-                <button class="cat-btn" onclick="setCat('air', this)">Air</button>
-                <button class="cat-btn" onclick="setCat('fuel', this)">Carburant</button>
-                <button class="cat-btn" onclick="setCat('cabin', this)">Habitacle</button>
-              </div>
-            </div>
-            <div id="results-count" style="margin-bottom:18px;color:#64748B;font-weight:700"></div>
-            <div class="grid-3" id="catalog-products"></div>
-          </div>
-        </section>
-      </div>`;
+      html += `
+<div class="page" id="page-catalog">
+  <section class="page-top"><div class="container"><div class="eyebrow">${esc(p.eyebrow)}</div><div class="page-title">${esc(p.title)}</div><div class="page-sub">${esc(p.subtitle)}</div></div></section>
+  <section class="section">
+    <div class="container">
+      <div class="filters">
+        <div class="search-wrap">
+          <span class="search-icon">🔍</span>
+          <input class="search-input" id="search-input" placeholder="Rechercher..." oninput="filterProducts()">
+        </div>
+        <div class="cat-filters">
+          <button class="cat-btn active" onclick="setCat('all',this)">Tous</button>
+          <button class="cat-btn" onclick="setCat('oil',this)">Huile</button>
+          <button class="cat-btn" onclick="setCat('air',this)">Air</button>
+          <button class="cat-btn" onclick="setCat('fuel',this)">Carburant</button>
+          <button class="cat-btn" onclick="setCat('cabin',this)">Habitacle</button>
+        </div>
+      </div>
+      <div id="results-count" style="margin-bottom:18px;color:#64748B;font-weight:700"></div>
+      <div class="grid-3" id="catalog-products"></div>
+    </div>
+  </section>
+</div>`;
     } else if(p.slug === 'contact'){
-      wrap.innerHTML += `
-      <div class="page" id="page-contact">
-        <section class="page-top"><div class="container"><div class="eyebrow">${p.eyebrow}</div><div class="page-title">${p.title}</div><div class="page-sub">${p.subtitle}</div></div></section>
-        <section class="section">
-          <div class="container contact-grid">
-            <div class="card contact-panel">
-              <div class="success-msg" id="success-msg">✓ Message envoyé avec succès.</div>
-              <div class="editor-field"><label class="form-label">Nom complet</label><input class="form-input" id="c-name" placeholder="Votre nom"></div>
-              <div class="editor-field"><label class="form-label">Email</label><input class="form-input" id="c-email" placeholder="Votre email"></div>
-              <div class="editor-field"><label class="form-label">Sujet</label><input class="form-input" id="c-subject" placeholder="Sujet"></div>
-              <div class="editor-field"><label class="form-label">Message</label><textarea class="form-input" id="c-message" rows="6" placeholder="Votre message"></textarea></div>
-              <button class="btn primary" onclick="sendContact()">Envoyer</button>
-            </div>
-            <div class="card contact-panel">
-              <div class="info-row"><div class="info-icon">📍</div><div><div class="eyebrow">Adresse</div><div>${site.contact.address}</div></div></div>
-              <div class="info-row"><div class="info-icon">📞</div><div><div class="eyebrow">Téléphone</div><div>${site.contact.phone}</div></div></div>
-              <div class="info-row"><div class="info-icon">✉️</div><div><div class="eyebrow">Email</div><div>${site.contact.email}</div></div></div>
-              <div class="map-box">Bloc carte / localisation<br><strong style="display:block;color:var(--brand);margin-top:10px">${site.brand.name}</strong></div>
-            </div>
-          </div>
-        </section>
-      </div>`;
+      html += `
+<div class="page" id="page-contact">
+  <section class="page-top"><div class="container"><div class="eyebrow">${esc(p.eyebrow)}</div><div class="page-title">${esc(p.title)}</div><div class="page-sub">${esc(p.subtitle)}</div></div></section>
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="card contact-panel">
+        <div class="success-msg" id="success-msg">✓ Message envoyé avec succès.</div>
+        <div class="editor-field"><label class="form-label">Nom complet</label><input class="form-input" id="c-name" placeholder="Votre nom"></div>
+        <div class="editor-field"><label class="form-label">Email</label><input class="form-input" id="c-email" placeholder="Votre email"></div>
+        <div class="editor-field"><label class="form-label">Sujet</label><input class="form-input" id="c-subject" placeholder="Sujet"></div>
+        <div class="editor-field"><label class="form-label">Message</label><textarea class="form-input" id="c-message" rows="6" placeholder="Votre message"></textarea></div>
+        <button class="btn primary" onclick="sendContact()">Envoyer</button>
+      </div>
+      <div class="card contact-panel">
+        <div class="info-row"><div class="info-icon">📍</div><div><div class="eyebrow">Adresse</div><div>${esc(site.contact.address)}</div></div></div>
+        <div class="info-row"><div class="info-icon">📞</div><div><div class="eyebrow">Téléphone</div><div>${esc(site.contact.phone)}</div></div></div>
+        <div class="info-row"><div class="info-icon">✉️</div><div><div class="eyebrow">Email</div><div>${esc(site.contact.email)}</div></div></div>
+        <div class="map-box">Bloc carte / localisation<br><strong style="display:block;color:var(--brand);margin-top:10px">${esc(site.brand.name)}</strong></div>
+      </div>
+    </div>
+  </section>
+</div>`;
     } else {
-      wrap.innerHTML += `
-      <div class="page" id="page-${p.slug}">
-        <section class="page-top"><div class="container"><div class="eyebrow">${p.eyebrow}</div><div class="page-title">${p.title}</div><div class="page-sub">${p.subtitle}</div></div></section>
-        <section class="section"><div class="container"><div class="card story"><p>${p.content || ''}</p></div></div></section>
-      </div>`;
+      html += `
+<div class="page" id="page-${esc(p.slug)}">
+  <section class="page-top"><div class="container"><div class="eyebrow">${esc(p.eyebrow)}</div><div class="page-title">${esc(p.title)}</div><div class="page-sub">${esc(p.subtitle)}</div></div></section>
+  <section class="section"><div class="container"><div class="card story"><p>${esc(p.content||'')}</p></div></div></section>
+</div>`;
     }
   });
 
-  groupedSubPages.forEach(p => { wrap.innerHTML += renderRichSubPage(p); });
+  /* Contact page accessible from CTA buttons (alias) */
+  html += `
+<div class="page" id="page-contact-us">
+  <section class="page-top"><div class="container"><div class="eyebrow">Contact</div><div class="page-title">Nous Contacter</div><div class="page-sub">Notre équipe est à votre disposition pour toute demande.</div></div></section>
+  <section class="section">
+    <div class="container contact-grid">
+      <div class="card contact-panel">
+        <div class="success-msg" id="success-msg2">✓ Message envoyé avec succès.</div>
+        <div class="editor-field"><label class="form-label">Nom complet</label><input class="form-input" id="c2-name" placeholder="Votre nom"></div>
+        <div class="editor-field"><label class="form-label">Email</label><input class="form-input" id="c2-email" placeholder="Votre email"></div>
+        <div class="editor-field"><label class="form-label">Sujet</label><input class="form-input" id="c2-subject" placeholder="Sujet"></div>
+        <div class="editor-field"><label class="form-label">Message</label><textarea class="form-input" id="c2-message" rows="6" placeholder="Votre message"></textarea></div>
+        <button class="btn primary" onclick="sendContact2()">Envoyer</button>
+      </div>
+      <div class="card contact-panel">
+        <div class="info-row"><div class="info-icon">📍</div><div><div class="eyebrow">Adresse</div><div id="cu-address"></div></div></div>
+        <div class="info-row"><div class="info-icon">📞</div><div><div class="eyebrow">Téléphone</div><div id="cu-phone"></div></div></div>
+        <div class="info-row"><div class="info-icon">✉️</div><div><div class="eyebrow">Email</div><div id="cu-email"></div></div></div>
+        <div class="map-box">Bloc carte / localisation<br><strong style="display:block;color:var(--brand);margin-top:10px" id="cu-brand"></strong></div>
+      </div>
+    </div>
+  </section>
+</div>`;
 
-  wrap.innerHTML += `
-  <div class="page" id="page-product">
-    <section class="page-top"><div class="container"><div class="eyebrow">Produit</div><div class="page-title">Fiche produit</div><div class="page-sub">Présentation claire et premium.</div></div></section>
-    <section class="section"><div class="container" id="product-detail-content"></div></section>
-  </div>`;
+  /* Static pages */
+  staticPages.forEach(p => { html += renderStaticPageHTML(p); });
+
+  /* Product detail page */
+  html += `
+<div class="page" id="page-product">
+  <section class="page-top"><div class="container"><div class="eyebrow">Produit</div><div class="page-title">Fiche produit</div><div class="page-sub">Présentation complète du produit sélectionné.</div></div></section>
+  <section class="section"><div class="container" id="product-detail-content"></div></section>
+</div>`;
+
+  wrap.innerHTML = html;
 }
+
+/* ── PRODUCT RENDERING ───────────────────────────────── */
+function catLabel(cat){ return {oil:'Huile',air:'Air',fuel:'Carburant',cabin:'Habitacle'}[cat] || cat; }
+function stars(r){ let s=''; for(let i=1;i<=5;i++) s += i<=Math.round(r)?'★':'☆'; return s; }
 
 function productCardHTML(p){
   return `<div class="card solution" onclick="viewProduct(${p.id})">
-    <div class="solution-top"><div class="solution-icon">${p.img}</div><div class="solution-badge">${catLabel(p.category)}</div></div>
+    <div class="solution-top"><div class="solution-icon">${esc(p.img)}</div><div class="solution-badge">${catLabel(p.category)}</div></div>
     <div class="solution-body">
-      <div class="solution-ref">${p.ref}</div>
-      <div class="solution-name">${p.name}</div>
-      <div style="color:#64748B">${p.brand}</div>
+      <div class="solution-ref">${esc(p.ref)}</div>
+      <div class="solution-name">${esc(p.name)}</div>
+      <div style="color:#64748B;font-size:14px">${esc(p.brand)}</div>
       <div style="margin:12px 0;color:#F59E0B">${stars(p.rating)} <span style="font-size:13px;color:#64748B;margin-left:6px">${p.rating}</span></div>
       <div class="solution-foot">
         <div class="price">${Number(p.price).toFixed(2)} <span>TND</span></div>
-        <button class="btn primary" style="padding:10px 14px" onclick="event.stopPropagation();alert('Ajouté à la demande de devis');">Ajouter</button>
+        <button class="btn primary" style="padding:10px 14px" onclick="event.stopPropagation();alert('Ajouté à la demande de devis.');">Ajouter</button>
       </div>
     </div>
   </div>`;
 }
 
-function renderHomeProducts(){ document.getElementById('home-products').innerHTML = site.products.slice(0,3).map(productCardHTML).join(''); }
-function stars(r){ let s=''; for(let i=1;i<=5;i++) s += i <= Math.round(r) ? '★' : '☆'; return s; }
-function catLabel(cat){ return {oil:'Huile',air:'Air',fuel:'Carburant',cabin:'Habitacle'}[cat] || cat; }
+function renderHomeProducts(){
+  const el = document.getElementById('home-products');
+  if(el && site.products) el.innerHTML = site.products.slice(0,3).map(productCardHTML).join('');
+}
 
 function setCat(cat, btn){
   currentCat = cat;
   document.querySelectorAll('.cat-btn').forEach(x => x.classList.remove('active'));
-  btn.classList.add('active');
+  if(btn) btn.classList.add('active');
   filterProducts();
 }
 
 function filterProducts(){
   const q = (document.getElementById('search-input')?.value || '').toLowerCase();
-  const filtered = site.products.filter(p => {
-    const okSearch = p.name.toLowerCase().includes(q) || p.ref.toLowerCase().includes(q) || p.brand.toLowerCase().includes(q);
-    const okCat = currentCat === 'all' || p.category === currentCat;
+  const filtered = (site.products||[]).filter(p => {
+    const okSearch = (p.name+p.ref+p.brand).toLowerCase().includes(q);
+    const okCat = currentCat==='all' || p.category===currentCat;
     return okSearch && okCat;
   });
   const res = document.getElementById('results-count');
@@ -985,43 +1339,44 @@ function filterProducts(){
 }
 
 function viewProduct(id){
-  const p = site.products.find(x => x.id === id);
+  const p = (site.products||[]).find(x => x.id===id);
   if(!p) return;
-  document.getElementById('product-detail-content').innerHTML = `
+  const el = document.getElementById('product-detail-content');
+  if(el) el.innerHTML = `
     <div class="product-detail">
-      <div class="card" style="min-height:460px;display:flex;align-items:center;justify-content:center;font-size:180px">${p.img}</div>
+      <div class="card" style="min-height:460px;display:flex;align-items:center;justify-content:center;font-size:160px">${esc(p.img)}</div>
       <div class="card" style="padding:32px">
-        <div class="eyebrow">${p.ref}</div>
-        <div class="page-title" style="font-size:40px">${p.name}</div>
-        <div style="color:#64748B;margin:12px 0">${p.brand}</div>
+        <div class="eyebrow">${esc(p.ref)}</div>
+        <div class="page-title" style="font-size:40px">${esc(p.name)}</div>
+        <div style="color:#64748B;margin:12px 0">${esc(p.brand)}</div>
         <div class="price" style="margin:18px 0">${Number(p.price).toFixed(2)} <span>TND</span></div>
-        <p style="color:#475569;line-height:1.8">${p.description}</p>
+        <p style="color:#475569;line-height:1.8">${esc(p.description)}</p>
         <div style="padding:18px;border-radius:20px;background:#F8FAFC;border:1px solid var(--line);margin:18px 0">
           <strong>Spécifications</strong>
-          <div style="margin-top:10px;color:#475569">${p.specs}</div>
+          <div style="margin-top:10px;color:#475569">${esc(p.specs)}</div>
           <div style="margin-top:8px;color:#475569"><strong>Stock :</strong> ${p.stock}</div>
         </div>
-        <button class="btn primary" style="padding:15px 18px;width:100%" onclick="showPage('contact')">Demander un devis</button>
+        <button class="btn primary" style="padding:15px 18px;width:100%" onclick="showPage('contact-us')">Demander un devis</button>
       </div>
     </div>`;
   showPage('product');
 }
 
+/* ── COUNTERS ─────────────────────────────────────────── */
 function animateCounters(){
   if(countersAnimated) return;
   countersAnimated = true;
   document.querySelectorAll('.counter').forEach(el => {
-    const target = Number(el.dataset.target || 0);
-    const suffix = el.dataset.suffix || '';
-    const duration = 1500;
+    const target = Number(el.dataset.target||0);
+    const suffix = el.dataset.suffix||'';
+    const duration = 1600;
     const start = performance.now();
     function update(now){
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const value = Math.floor(eased * target);
-      el.textContent = value + suffix;
-      if(progress < 1) requestAnimationFrame(update);
-      else el.textContent = target + suffix;
+      const prog = Math.min((now-start)/duration,1);
+      const eased = 1-Math.pow(1-prog,3);
+      el.textContent = Math.floor(eased*target)+suffix;
+      if(prog<1) requestAnimationFrame(update);
+      else el.textContent = target+suffix;
     }
     requestAnimationFrame(update);
   });
@@ -1030,73 +1385,90 @@ function animateCounters(){
 function setupCounterObserver(){
   const wrap = document.querySelector('.kpis-wrap');
   if(!wrap) return;
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting){ animateCounters(); observer.disconnect(); }
-    });
-  }, {threshold:.35});
-  observer.observe(wrap);
+  countersAnimated = false;
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ animateCounters(); obs.disconnect(); } });
+  },{threshold:.3});
+  obs.observe(wrap);
 }
 
 function setupHeroVideo(){
-  const video = document.getElementById('hero-video');
-  if(!video) return;
-  const p = video.play();
-  if(p && typeof p.catch === 'function') p.catch(() => {});
+  const v = document.getElementById('hero-video');
+  if(!v) return;
+  const p = v.play();
+  if(p && typeof p.catch==='function') p.catch(()=>{});
 }
+
+/* ── NAV ACTIVE STATE ─────────────────────────────────── */
+const filtrationSlugs = ['home','mobilite-durable','air-sante','protection-moteur','solutions-industrielles'];
+const secteursSlugs   = ['nos-secteurs','automobile-vehicules-legers','poids-lourds-bus','agriculture-travaux-publics','marine-energie','maintenance-industrielle'];
+const solutionsSlugs  = ['solutions','filtre-air','filtre-huile','filtre-carburant','filtre-habitacle'];
+const leadershipSlugs = ['leadership','succes-reconnaissances','innovation-qualite'];
+const groupeSlugs     = ['le-groupe','notre-adn','identite','mission','vision','valeurs','notre-histoire','presence-mondiale'];
+const adnSlugs        = ['notre-adn','identite','mission','vision','valeurs'];
 
 function markActiveNav(slug){
   document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
   document.querySelectorAll('.nav-sub-link').forEach(n => n.classList.remove('active'));
-  const subNav = document.getElementById('nav-' + slug);
-  const topNav = document.getElementById('nav-' + slug);
 
-  if(filtrationSubPages.some(p => p.slug === slug)){
-    document.getElementById('nav-home')?.classList.add('active');
-    subNav?.classList.add('active');
-    return;
-  }
-  if(sectorsSubPages.some(p => p.slug === slug)){
-    const aboutPage = site.pages.find(isAboutPage);
-    if(aboutPage) document.getElementById('nav-' + aboutPage.slug)?.classList.add('active');
-    subNav?.classList.add('active');
-    return;
-  }
-  if(slug === 'home'){
-    document.getElementById('nav-home')?.classList.add('active');
-    return;
-  }
-  topNav?.classList.add('active');
+  // Mark top-level
+  if(filtrationSlugs.includes(slug)) document.getElementById('nav-home')?.classList.add('active');
+  else if(secteursSlugs.includes(slug))  document.getElementById('nav-nos-secteurs')?.classList.add('active');
+  else if(solutionsSlugs.includes(slug)) document.getElementById('nav-solutions')?.classList.add('active');
+  else if(slug==='marques')              document.getElementById('nav-marques')?.classList.add('active');
+  else if(leadershipSlugs.includes(slug)) document.getElementById('nav-leadership')?.classList.add('active');
+  else if(groupeSlugs.includes(slug))    document.getElementById('nav-le-groupe')?.classList.add('active');
+
+  // Mark sub-link
+  const sub = document.getElementById('nav-'+slug);
+  if(sub) sub.classList.add('active');
+
+  // Notre ADN: also mark parent sub-link when on child page
+  if(adnSlugs.includes(slug)) document.getElementById('nav-notre-adn')?.classList.add('active');
 }
 
+/* ── SHOW PAGE ────────────────────────────────────────── */
 function showPage(slug){
+  if(slug==='admin' && !currentUser){ showPage('login'); return; }
+
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   markActiveNav(slug);
-  const page = document.getElementById('page-' + slug);
+
+  const page = document.getElementById('page-'+slug);
   if(page) page.classList.add('active');
-  document.getElementById('footer').style.display = slug === 'login' ? 'none' : 'block';
-  if(slug === 'catalog') filterProducts();
-  if(slug === 'admin' && !currentUser){ showPage('login'); return; }
-  if(slug === 'admin'){ renderAdmin(); fillAdminForms(); }
-  if(slug === 'home'){ setupCounterObserver(); setupHeroVideo(); }
+
+  const footer = document.getElementById('footer');
+  if(footer) footer.style.display = slug==='login' ? 'none' : 'block';
+
+  if(slug==='catalog') filterProducts();
+  if(slug==='admin'){ renderAdmin(); fillAdminForms(); }
+  if(slug==='home'){ setupCounterObserver(); setupHeroVideo(); }
+
+  /* Refresh contact-us info */
+  if(slug==='contact-us'){
+    setTxt('cu-address', site.contact.address);
+    setTxt('cu-phone',   site.contact.phone);
+    setTxt('cu-email',   site.contact.email);
+    setTxt('cu-brand',   site.brand.name);
+  }
+
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
+/* ── ADMIN ────────────────────────────────────────────── */
 function renderAdmin(){
-  document.getElementById('stat-products').textContent = site.products.length;
-  document.getElementById('stat-pages').textContent = site.pages.length + 1;
-  document.getElementById('stat-partners').textContent = site.partners.length;
-  document.getElementById('stat-stock').textContent = site.products.reduce((s,p) => s + Number(p.stock || 0), 0);
+  setTxt('stat-products', (site.products||[]).length);
+  setTxt('stat-pages',    (site.pages||[]).length + 1);
+  setTxt('stat-partners', (site.partners||[]).length);
+  setTxt('stat-stock',    (site.products||[]).reduce((s,p)=>s+Number(p.stock||0),0));
 
-  document.getElementById('admin-products-table').innerHTML = site.products.map(p => `
+  document.getElementById('admin-products-table').innerHTML = (site.products||[]).map(p => `
     <tr>
-      <td><div class="table-product"><div class="table-product-icon">${p.img}</div><div>${p.name}</div></div></td>
-      <td>${p.ref}</td>
-      <td>${catLabel(p.category)}</td>
-      <td>${Number(p.price).toFixed(2)} TND</td>
-      <td>${p.stock}</td>
+      <td><div class="table-product"><div class="table-product-icon">${esc(p.img)}</div><div>${esc(p.name)}</div></div></td>
+      <td>${esc(p.ref)}</td><td>${catLabel(p.category)}</td>
+      <td>${Number(p.price).toFixed(2)} TND</td><td>${p.stock}</td>
       <td>
-        <button class="btn white" onclick="openProductModal(${p.id})">Modifier</button>
+        <button class="btn white" onclick="openProductModal(${p.id})" style="margin-right:6px">Modifier</button>
         <button class="btn white" onclick="deleteProduct(${p.id})">Supprimer</button>
       </td>
     </tr>`).join('');
@@ -1106,128 +1478,131 @@ function renderAdmin(){
 }
 
 function fillAdminForms(){
-  document.getElementById('brand-name-input').value = site.brand.name;
-  document.getElementById('brand-subtitle-input').value = site.brand.subtitle;
-  document.getElementById('brand-logo-type').value = site.brand.logoType;
-  document.getElementById('brand-logo-text').value = site.brand.logoText;
-  document.getElementById('brand-logo-image').value = site.brand.logoImageUrl;
-  document.getElementById('brand-primary').value = site.brand.primaryColor;
-  document.getElementById('brand-secondary').value = site.brand.secondaryColor;
-  document.getElementById('brand-accent').value = site.brand.accentColor;
-  document.getElementById('brand-bg').value = site.brand.backgroundColor;
-  document.getElementById('hero-badge-input').value = site.hero.badge;
-  document.getElementById('hero-title-input').value = site.hero.title;
-  document.getElementById('hero-highlight-input').value = site.hero.highlight;
-  document.getElementById('hero-text-input').value = site.hero.text;
-  document.getElementById('hero-panel-title-input').value = site.hero.panelTitle;
-  document.getElementById('hero-panel-value-input').value = site.hero.panelValue;
-  document.getElementById('hero-panel-text-input').value = site.hero.panelText;
-  document.getElementById('hero-card-title-input').value = site.hero.cardTitle;
-  document.getElementById('hero-card-text-input').value = site.hero.cardText;
-  document.getElementById('contact-address-input').value = site.contact.address;
-  document.getElementById('contact-phone-input').value = site.contact.phone;
-  document.getElementById('contact-email-input').value = site.contact.email;
+  const set = (id,v) => { const el=document.getElementById(id); if(el) el.value=v||''; };
+  set('brand-name-input',    site.brand.name);
+  set('brand-subtitle-input',site.brand.subtitle);
+  set('brand-logo-type',     site.brand.logoType);
+  set('brand-logo-text',     site.brand.logoText);
+  set('brand-logo-image',    site.brand.logoImageUrl);
+  set('brand-primary',       site.brand.primaryColor);
+  set('brand-secondary',     site.brand.secondaryColor);
+  set('brand-accent',        site.brand.accentColor);
+  set('brand-bg',            site.brand.backgroundColor);
+  set('hero-badge-input',    site.hero.badge);
+  set('hero-title-input',    site.hero.title);
+  set('hero-highlight-input',site.hero.highlight);
+  set('hero-text-input',     site.hero.text);
+  set('contact-address-input',site.contact.address);
+  set('contact-phone-input', site.contact.phone);
+  set('contact-email-input', site.contact.email);
 }
 
 function renderPagesEditor(){
   const box = document.getElementById('pages-editor-list');
-  box.innerHTML = '';
-  site.pages.forEach((p, i) => {
-    box.innerHTML += `
-      <div class="card" style="padding:18px;margin-bottom:14px">
-        <div class="editor-grid">
-          <div class="editor-field"><label>Slug</label><input class="form-input page-slug" data-i="${i}" value="${p.slug}"></div>
-          <div class="editor-field"><label>Menu</label><input class="form-input page-nav" data-i="${i}" value="${p.nav}"></div>
-          <div class="editor-field"><label>Eyebrow</label><input class="form-input page-eyebrow" data-i="${i}" value="${p.eyebrow}"></div>
-          <div class="editor-field full"><label>Titre</label><input class="form-input page-title" data-i="${i}" value="${p.title}"></div>
-          <div class="editor-field full"><label>Sous-titre</label><textarea class="form-input page-subtitle" data-i="${i}" rows="2">${p.subtitle}</textarea></div>
-          <div class="editor-field full"><label>Contenu</label><textarea class="form-input page-content" data-i="${i}" rows="4">${p.content || ''}</textarea></div>
-        </div>
-        <div class="editor-actions"><button class="btn white" onclick="removePage(${i})">Supprimer cette page</button></div>
-      </div>`;
-  });
+  if(!box) return;
+  box.innerHTML = (site.pages||[]).map((p,i) => `
+    <div class="card" style="padding:18px;margin-bottom:14px">
+      <div class="editor-grid">
+        <div class="editor-field"><label>Slug</label><input class="form-input page-slug" data-i="${i}" value="${esc(p.slug)}"></div>
+        <div class="editor-field"><label>Menu</label><input class="form-input page-nav" data-i="${i}" value="${esc(p.nav)}"></div>
+        <div class="editor-field"><label>Eyebrow</label><input class="form-input page-eyebrow" data-i="${i}" value="${esc(p.eyebrow||'')}"></div>
+        <div class="editor-field full"><label>Titre</label><input class="form-input page-title-input" data-i="${i}" value="${esc(p.title)}"></div>
+        <div class="editor-field full"><label>Sous-titre</label><textarea class="form-input page-subtitle" data-i="${i}" rows="2">${esc(p.subtitle||'')}</textarea></div>
+        <div class="editor-field full"><label>Contenu</label><textarea class="form-input page-content" data-i="${i}" rows="4">${esc(p.content||'')}</textarea></div>
+      </div>
+      <div class="editor-actions"><button class="btn white" onclick="removePage(${i})">Supprimer cette page</button></div>
+    </div>`).join('');
 }
 
 function renderPartnersEditor(){
   const box = document.getElementById('partners-editor');
-  box.innerHTML = '';
-  site.partners.forEach((name, i) => {
-    box.innerHTML += `<div class="editor-field"><label>Partenaire ${i+1}</label><input class="form-input partner-input" data-i="${i}" value="${name}"></div>`;
-  });
+  if(!box) return;
+  box.innerHTML = (site.partners||[]).map((name,i) =>
+    `<div class="editor-field"><label>Partenaire ${i+1}</label><input class="form-input partner-input" data-i="${i}" value="${esc(name)}"></div>`
+  ).join('');
 }
 
-function addPage(){ site.pages.push({slug:'nouvelle-page', nav:'Nouvelle page', eyebrow:'Section', title:'Nouvelle page', subtitle:'Sous-titre...', content:'Contenu...'}); renderPagesEditor(); }
+function showAdminTab(tab, btn){
+  document.querySelectorAll('.admin-tab').forEach(x=>x.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.admin-section').forEach(x=>x.classList.remove('active'));
+  const sec = document.getElementById('admin-'+tab);
+  if(sec) sec.classList.add('active');
+}
+
+function addPage(){ site.pages.push({slug:'nouvelle-page',nav:'Nouvelle page',eyebrow:'Section',title:'Nouvelle page',subtitle:'',content:''}); renderPagesEditor(); }
 function removePage(i){ site.pages.splice(i,1); renderPagesEditor(); }
 function addPartner(){ site.partners.push('Nouveau partenaire'); renderPartnersEditor(); }
 
 async function saveBrand(){
-  site.brand.name = document.getElementById('brand-name-input').value.trim();
-  site.brand.subtitle = document.getElementById('brand-subtitle-input').value.trim();
-  site.brand.logoType = document.getElementById('brand-logo-type').value;
-  site.brand.logoText = document.getElementById('brand-logo-text').value.trim();
-  site.brand.logoImageUrl = document.getElementById('brand-logo-image').value.trim();
-  site.brand.primaryColor = document.getElementById('brand-primary').value.trim();
-  site.brand.secondaryColor = document.getElementById('brand-secondary').value.trim();
-  site.brand.accentColor = document.getElementById('brand-accent').value.trim();
-  site.brand.backgroundColor = document.getElementById('brand-bg').value.trim();
+  const get = id => document.getElementById(id)?.value.trim()||'';
+  site.brand.name           = get('brand-name-input');
+  site.brand.subtitle       = get('brand-subtitle-input');
+  site.brand.logoType       = get('brand-logo-type');
+  site.brand.logoText       = get('brand-logo-text');
+  site.brand.logoImageUrl   = get('brand-logo-image');
+  site.brand.primaryColor   = get('brand-primary');
+  site.brand.secondaryColor = get('brand-secondary');
+  site.brand.accentColor    = get('brand-accent');
+  site.brand.backgroundColor= get('brand-bg');
   await apiSave(); initUI(); alert('Marque enregistrée.');
 }
 
 async function saveHero(){
-  site.hero.badge = document.getElementById('hero-badge-input').value.trim();
-  site.hero.title = document.getElementById('hero-title-input').value.trim();
-  site.hero.highlight = document.getElementById('hero-highlight-input').value.trim();
-  site.hero.text = document.getElementById('hero-text-input').value.trim();
-  site.hero.panelTitle = document.getElementById('hero-panel-title-input').value.trim();
-  site.hero.panelValue = document.getElementById('hero-panel-value-input').value.trim();
-  site.hero.panelText = document.getElementById('hero-panel-text-input').value.trim();
-  site.hero.cardTitle = document.getElementById('hero-card-title-input').value.trim();
-  site.hero.cardText = document.getElementById('hero-card-text-input').value.trim();
+  const get = id => document.getElementById(id)?.value.trim()||'';
+  site.hero.badge     = get('hero-badge-input');
+  site.hero.title     = get('hero-title-input');
+  site.hero.highlight = get('hero-highlight-input');
+  site.hero.text      = get('hero-text-input');
   await apiSave(); initUI(); alert('Hero enregistré.');
 }
 
 async function savePages(){
-  site.pages = site.pages.map((p, i) => ({
-    slug: document.querySelector('.page-slug[data-i="'+i+'"]').value.trim().replace(/\s+/g,'-').toLowerCase(),
-    nav: document.querySelector('.page-nav[data-i="'+i+'"]').value.trim(),
-    eyebrow: document.querySelector('.page-eyebrow[data-i="'+i+'"]').value.trim(),
-    title: document.querySelector('.page-title[data-i="'+i+'"]').value.trim(),
-    subtitle: document.querySelector('.page-subtitle[data-i="'+i+'"]').value.trim(),
-    content: document.querySelector('.page-content[data-i="'+i+'"]').value.trim()
+  const len = site.pages.length;
+  site.pages = site.pages.map((p,i) => ({
+    slug:     (document.querySelector('.page-slug[data-i="'+i+'"]')?.value||'').trim().replace(/\s+/g,'-').toLowerCase(),
+    nav:      (document.querySelector('.page-nav[data-i="'+i+'"]')?.value||'').trim(),
+    eyebrow:  (document.querySelector('.page-eyebrow[data-i="'+i+'"]')?.value||'').trim(),
+    title:    (document.querySelector('.page-title-input[data-i="'+i+'"]')?.value||'').trim(),
+    subtitle: (document.querySelector('.page-subtitle[data-i="'+i+'"]')?.value||'').trim(),
+    content:  (document.querySelector('.page-content[data-i="'+i+'"]')?.value||'').trim()
   }));
   await apiSave(); initUI(); alert('Pages enregistrées.');
 }
 
 async function savePartners(){
-  site.partners = Array.from(document.querySelectorAll('.partner-input')).map(x => x.value.trim()).filter(Boolean);
+  site.partners = Array.from(document.querySelectorAll('.partner-input')).map(x=>x.value.trim()).filter(Boolean);
   await apiSave(); initUI(); alert('Partenaires enregistrés.');
 }
 
 async function saveContact(){
-  site.contact.address = document.getElementById('contact-address-input').value.trim();
-  site.contact.phone = document.getElementById('contact-phone-input').value.trim();
-  site.contact.email = document.getElementById('contact-email-input').value.trim();
+  site.contact.address = document.getElementById('contact-address-input')?.value.trim()||'';
+  site.contact.phone   = document.getElementById('contact-phone-input')?.value.trim()||'';
+  site.contact.email   = document.getElementById('contact-email-input')?.value.trim()||'';
   await apiSave(); initUI(); alert('Contact enregistré.');
 }
 
+/* ── PRODUCTS MODAL ───────────────────────────────────── */
 function openProductModal(id=null){
   editingProductId = id;
   document.getElementById('product-modal').classList.add('show');
+  const fields = ['m-name','m-ref','m-price','m-stock','m-img','m-brand','m-specs','m-desc'];
   if(id){
-    const p = site.products.find(x => x.id === id);
+    const p = (site.products||[]).find(x=>x.id===id);
+    if(!p) return;
     document.getElementById('product-modal-title').textContent = 'Modifier le produit';
-    document.getElementById('m-name').value = p.name;
-    document.getElementById('m-ref').value = p.ref;
+    document.getElementById('m-name').value  = p.name;
+    document.getElementById('m-ref').value   = p.ref;
     document.getElementById('m-price').value = p.price;
-    document.getElementById('m-cat').value = p.category;
+    document.getElementById('m-cat').value   = p.category;
     document.getElementById('m-stock').value = p.stock;
-    document.getElementById('m-img').value = p.img;
+    document.getElementById('m-img').value   = p.img;
     document.getElementById('m-brand').value = p.brand;
     document.getElementById('m-specs').value = p.specs;
-    document.getElementById('m-desc').value = p.description;
+    document.getElementById('m-desc').value  = p.description;
   } else {
     document.getElementById('product-modal-title').textContent = 'Ajouter un produit';
-    ['m-name','m-ref','m-price','m-stock','m-img','m-brand','m-specs','m-desc'].forEach(id => document.getElementById(id).value = '');
+    fields.forEach(id => { const el=document.getElementById(id); if(el) el.value=''; });
     document.getElementById('m-cat').value = 'oil';
   }
 }
@@ -1235,93 +1610,101 @@ function openProductModal(id=null){
 function closeProductModal(){ document.getElementById('product-modal').classList.remove('show'); }
 
 async function saveProduct(){
+  const get = id => (document.getElementById(id)?.value||'').trim();
   const p = {
-    id: editingProductId || Date.now(),
-    name: document.getElementById('m-name').value.trim(),
-    ref: document.getElementById('m-ref').value.trim(),
-    price: Number(document.getElementById('m-price').value || 0),
-    category: document.getElementById('m-cat').value,
-    stock: Number(document.getElementById('m-stock').value || 0),
-    img: document.getElementById('m-img').value.trim() || '📦',
-    brand: document.getElementById('m-brand').value.trim(),
-    specs: document.getElementById('m-specs').value.trim(),
-    description: document.getElementById('m-desc').value.trim(),
-    rating: 4.7
+    id:          editingProductId || Date.now(),
+    name:        get('m-name'),
+    ref:         get('m-ref'),
+    price:       Number(document.getElementById('m-price')?.value||0),
+    category:    get('m-cat'),
+    stock:       Number(document.getElementById('m-stock')?.value||0),
+    img:         get('m-img') || '📦',
+    brand:       get('m-brand'),
+    specs:       get('m-specs'),
+    description: get('m-desc'),
+    rating:      4.7
   };
-  if(!p.name || !p.ref) return alert('Nom et référence requis');
-  const idx = site.products.findIndex(x => x.id === editingProductId);
-  if(idx >= 0) site.products[idx] = p; else site.products.push(p);
+  if(!p.name || !p.ref){ alert('Nom et référence requis'); return; }
+  const idx = (site.products||[]).findIndex(x=>x.id===editingProductId);
+  if(idx>=0) site.products[idx]=p; else site.products.push(p);
   await apiSave(); initUI(); closeProductModal(); alert('Produit enregistré.');
 }
 
 async function deleteProduct(id){
   if(!confirm('Supprimer ce produit ?')) return;
-  site.products = site.products.filter(x => x.id !== id);
+  site.products = (site.products||[]).filter(x=>x.id!==id);
   await apiSave(); initUI();
 }
 
-function showAdminTab(tab, btn){
-  document.querySelectorAll('.admin-tab').forEach(x => x.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.admin-section').forEach(x => x.classList.remove('active'));
-  document.getElementById('admin-' + tab).classList.add('active');
-}
-
+/* ── CONTACT FORMS ────────────────────────────────────── */
 function sendContact(){
-  const name = document.getElementById('c-name').value.trim();
-  const email = document.getElementById('c-email').value.trim();
-  const msg = document.getElementById('c-message').value.trim();
-  if(!name || !email || !msg) return alert('Veuillez remplir les champs requis');
-  document.getElementById('success-msg').classList.add('show');
-  ['c-name','c-email','c-subject','c-message'].forEach(id => document.getElementById(id).value = '');
-  setTimeout(() => document.getElementById('success-msg')?.classList.remove('show'), 2500);
+  const name = document.getElementById('c-name')?.value.trim();
+  const email= document.getElementById('c-email')?.value.trim();
+  const msg  = document.getElementById('c-message')?.value.trim();
+  if(!name||!email||!msg){ alert('Veuillez remplir les champs requis'); return; }
+  const ok = document.getElementById('success-msg');
+  if(ok){ ok.classList.add('show'); setTimeout(()=>ok.classList.remove('show'),2500); }
+  ['c-name','c-email','c-subject','c-message'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+}
+function sendContact2(){
+  const name = document.getElementById('c2-name')?.value.trim();
+  const email= document.getElementById('c2-email')?.value.trim();
+  const msg  = document.getElementById('c2-message')?.value.trim();
+  if(!name||!email||!msg){ alert('Veuillez remplir les champs requis'); return; }
+  const ok = document.getElementById('success-msg2');
+  if(ok){ ok.classList.add('show'); setTimeout(()=>ok.classList.remove('show'),2500); }
+  ['c2-name','c2-email','c2-subject','c2-message'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
 }
 
+/* ── AUTH ─────────────────────────────────────────────── */
 function doLogin(){
-  const email = document.getElementById('l-email').value.trim();
-  const pass = document.getElementById('l-pass').value.trim();
-  const err = document.getElementById('login-error');
-  if(email === 'admin@misfat.tn' && pass === 'admin123'){
-    currentUser = {name: 'Admin ' + site.brand.name};
-    document.getElementById('login-btn').classList.add('hide');
-    document.getElementById('logout-btn').classList.remove('hide');
-    document.getElementById('user-badge').style.display = 'inline-flex';
-    document.getElementById('user-badge').textContent = '👤 ' + currentUser.name;
+  const email = document.getElementById('l-email')?.value.trim();
+  const pass  = document.getElementById('l-pass')?.value.trim();
+  const err   = document.getElementById('login-error');
+  if(email==='admin@misfat.tn' && pass==='admin123'){
+    currentUser = {name:'Admin ' + site.brand.name};
+    document.getElementById('login-btn')?.classList.add('hide');
+    document.getElementById('logout-btn')?.classList.remove('hide');
+    const badge = document.getElementById('user-badge');
+    if(badge){ badge.style.display='inline-flex'; badge.textContent='👤 '+currentUser.name; }
     document.getElementById('nav-admin')?.classList.remove('hide');
     showPage('admin');
   } else {
-    err.classList.add('show');
-    setTimeout(() => err.classList.remove('show'), 2500);
+    if(err){ err.classList.add('show'); setTimeout(()=>err.classList.remove('show'),2500); }
   }
 }
 
 function logout(){
   currentUser = null;
-  document.getElementById('login-btn').classList.remove('hide');
-  document.getElementById('logout-btn').classList.add('hide');
-  document.getElementById('user-badge').style.display = 'none';
+  document.getElementById('login-btn')?.classList.remove('hide');
+  document.getElementById('logout-btn')?.classList.add('hide');
+  const badge = document.getElementById('user-badge');
+  if(badge) badge.style.display='none';
   document.getElementById('nav-admin')?.classList.add('hide');
   showPage('home');
 }
 
-async function resetSite(){ if(!confirm('Reset complet du site ?')) return; await apiReset(); alert('Site réinitialisé.'); }
+async function resetSite(){
+  if(!confirm('Reset complet du site ?')) return;
+  await apiReset();
+  alert('Site réinitialisé.');
+}
 
+/* ── INIT ─────────────────────────────────────────────── */
 async function initUI(){
   site = await apiGet();
   applyBrandVars();
   renderLogo();
-  renderNav();
   renderHero();
   renderPages();
   renderHomeProducts();
   renderPartners();
   renderContactBlocks();
-  renderAdmin();
-  fillAdminForms();
   countersAnimated = false;
   setupCounterObserver();
   setupHeroVideo();
 }
+
 initUI();
 </script>
 </body>
