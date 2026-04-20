@@ -1914,5 +1914,13 @@ async function initUI(){
 
 initUI();
 </script>
+<script>
+  const video = document.getElementById('hero-video');
+  if (video) {
+    video.play().catch(() => {
+      console.log("Autoplay blocked");
+    });
+  }
+</script>
 </body>
 </html>
