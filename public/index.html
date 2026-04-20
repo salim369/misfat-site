@@ -6,6 +6,19 @@
 <title>MISFAT</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 :root{
   --brand:#C61F26;
   --brand2:#9F171C;
@@ -126,30 +139,12 @@ a{text-decoration:none;color:inherit}
 
 /* ─── HERO ─────────────────────────────────────────────── */
 .hero{
-  position:relative;
-  min-height:calc(100vh - 82px);
-  overflow:hidden;
-  background:#0b0f14;
-  color:#fff;
-}
-.hero-video-wrap{
-  position:absolute;
-  inset:0;
-  overflow:hidden;
-  z-index:0;
+  position:relative;min-height:calc(100vh - 82px);overflow:hidden;
+  background:#0b0f14;color:#fff;
 }
 .hero-video{
-  position:absolute;
-  top:50%;
-  left:50%;
-  width:177.77777778vh;
-  height:100vh;
-  min-width:100%;
-  min-height:56.25vw;
-  transform:translate(-50%,-50%);
-  pointer-events:none;
-  border:0;
-  z-index:0;
+  display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  margin:0;padding:0;
 }
 .hero:before{
   content:"";position:absolute;inset:0;
@@ -160,6 +155,28 @@ a{text-decoration:none;color:inherit}
   position:relative;z-index:2;min-height:calc(100vh - 82px);
   display:flex;align-items:flex-end;padding:120px 0 96px;
 }
+.hero-content{max-width:920px}
+.badge{
+  display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
+  color:#fff;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;
+  backdrop-filter:blur(8px)
+}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
+.hero h1{
+  font-family:'Barlow Condensed',Inter,sans-serif;
+  font-size:clamp(56px,7vw,108px);line-height:.96;letter-spacing:-1px;font-weight:900;
+  max-width:1050px;margin:24px 0 20px;text-transform:none;
+}
+.hero h1 span{color:var(--brand)}
+.hero p{font-size:20px;line-height:1.8;color:rgba(255,255,255,.88);max-width:680px;margin-bottom:30px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-actions .btn{padding:16px 24px;font-size:14px}
+.hero-actions .btn.white{
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.24);color:#fff;
+}
+.hero-actions .btn.white:hover{background:rgba(255,255,255,.16)}
+
 /* ─── CERTIFICATIONS ─────────────────────────────────── */
 .hero-certs{
   display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;align-items:center;
@@ -170,7 +187,12 @@ a{text-decoration:none;color:inherit}
   backdrop-filter:blur(8px);
   padding:6px 12px;border-radius:8px;
   font-size:11px;font-weight:800;letter-spacing:.8px;color:rgba(255,255,255,.92);
-  text-transform:uppercase;
+  text-transform:uppercase;cursor:pointer;transition:all .2s ease;
+}
+.cert-badge:hover{
+  background:rgba(255,255,255,.18);
+  border-color:rgba(255,255,255,.34);
+  transform:translateY(-1px);
 }
 .cert-badge:before{
   content:"✓";font-size:10px;color:var(--brand);font-weight:900;
@@ -364,7 +386,6 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   .hero-certs{gap:6px}
   .cert-badge{font-size:10px;padding:5px 9px}
 }
-</style>
 </head>
 <body>
 
@@ -476,17 +497,13 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 <!-- ═══ HOME ══════════════════════════════════════════════════════════ -->
 <div class="page active" id="page-home">
   <section class="hero">
-    <div class="hero-video-wrap">
-      <iframe
-        class="hero-video"
-        src="https://www.youtube.com/embed/RakLwqhx-yU?autoplay=1&mute=1&loop=1&playlist=RakLwqhx-yU&controls=0&modestbranding=1&rel=0&playsinline=1"
-        title="MISFAT Hero Video"
-        frameborder="0"
-        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen>
-      </iframe>
-    </div>
+   <iframe
+  class="hero-video"
+  src="https://www.youtube.com/embed/RakLwqhx-yU?autoplay=1&mute=1&controls=0&loop=1&playlist=RakLwqhx-yU"
+  frameborder="0"
+  allow="autoplay; fullscreen"
+  allowfullscreen>
+</iframe>
     <div class="container">
       <div class="hero-wrap">
         <div class="hero-content">
@@ -494,15 +511,15 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
           <h1 id="hero-title"></h1>
           <p id="hero-text"></p>
           <div class="hero-actions">
-            <button class="btn primary" onclick="showPage('solutions')">Explorer notre catalogue →</button>
+            <button class="btn primary" onclick="showPage('catalogue')">Explorer notre catalogue →</button>
             <button class="btn white" onclick="showPage('devis')">Demander un devis</button>
           </div>
           <div class="hero-certs">
-            <span class="cert-badge">IATF 16949</span>
-            <span class="cert-badge">ISO 9001</span>
-            <span class="cert-badge">ISO 14001</span>
-            <span class="cert-badge">PSA Platinum Supplier</span>
-            <span class="cert-badge">Ford Q1</span>
+            <span class="cert-badge" onclick="showPage('iatf-16949')">IATF 16949</span>
+            <span class="cert-badge" onclick="showPage('iso-9001')">ISO 9001</span>
+            <span class="cert-badge" onclick="showPage('iso-14001')">ISO 14001</span>
+            <span class="cert-badge" onclick="showPage('psa-platinum-supplier')">PSA Platinum Supplier</span>
+            <span class="cert-badge" onclick="showPage('ford-q1')">Ford Q1</span>
           </div>
         </div>
       </div>
@@ -1231,6 +1248,71 @@ const staticPages = [
       {title:'Vision régionale', text:'Une stratégie de développement orientée vers le marché nord-africain avec des projets d\'expansion en cours.'}
     ]
   }
+  ,
+  /* ── Catalogue ── */
+  {
+    slug:'catalogue', eyebrow:'Catalogue', title:'Catalogue MISFAT',
+    subtitle:'Un espace dédié à la consultation de notre catalogue complet, structuré pour une lecture plus claire et plus professionnelle.',
+    intro:'Cette page est réservée au catalogue global MISFAT. Elle pourra accueillir par la suite les familles produits, la recherche, les filtres par catégorie, les références et les documents techniques.',
+    blocks:[
+      {title:'Vue d’ensemble', text:'Une page catalogue dédiée permet de séparer clairement la présentation corporate des solutions et la consultation détaillée des produits.'},
+      {title:'Organisation par familles', text:'Le catalogue pourra être structuré par type de filtre, référence, application, véhicule, secteur ou compatibilité technique.'},
+      {title:'Base pour l’évolution future', text:'Cette page est prête à recevoir le vrai catalogue MISFAT dans une logique plus professionnelle, plus lisible et plus évolutive.'}
+    ]
+  },
+
+  /* ── Certifications ── */
+  {
+    slug:'iatf-16949', eyebrow:'Certification', title:'IATF 16949',
+    subtitle:'Une certification clé pour l’industrie automobile, associée à l’exigence qualité, à la régularité et à la conformité des processus.',
+    intro:'La norme IATF 16949 renforce la crédibilité industrielle et la confiance des partenaires du secteur automobile. Cette page pourra accueillir le document, les détails et la portée de la certification.',
+    blocks:[
+      {title:'Référence automobile', text:'IATF 16949 est l’une des normes les plus reconnues dans les chaînes de valeur automobiles et industrielles exigeantes.'},
+      {title:'Qualité process', text:'Cette certification soutient une logique de maîtrise, d’amélioration continue et de constance dans les opérations.'},
+      {title:'Valorisation institutionnelle', text:'La page permet de présenter la certification dans un cadre plus corporate et plus lisible.'}
+    ]
+  },
+  {
+    slug:'iso-9001', eyebrow:'Certification', title:'ISO 9001',
+    subtitle:'Une référence internationale en management de la qualité, tournée vers la satisfaction client et l’amélioration continue.',
+    intro:'La norme ISO 9001 constitue un socle fort pour démontrer l’organisation, la qualité et la discipline opérationnelle de l’entreprise.',
+    blocks:[
+      {title:'Management qualité', text:'ISO 9001 structure les processus autour de la qualité, de la cohérence et de l’efficacité.'},
+      {title:'Confiance client', text:'Elle renforce la lisibilité de l’organisation pour les clients, partenaires et parties prenantes.'},
+      {title:'Base institutionnelle', text:'Cette page est prévue pour accueillir la présentation détaillée et les éléments justificatifs liés à la certification.'}
+    ]
+  },
+  {
+    slug:'iso-14001', eyebrow:'Certification', title:'ISO 14001',
+    subtitle:'Une norme dédiée au management environnemental et à l’amélioration des pratiques liées à l’impact écologique.',
+    intro:'La norme ISO 14001 met en avant une démarche environnementale structurée, cohérente et suivie dans la durée.',
+    blocks:[
+      {title:'Maîtrise environnementale', text:'ISO 14001 montre une volonté de structurer les actions et les processus autour des enjeux environnementaux.'},
+      {title:'Engagement durable', text:'Elle renforce la cohérence entre performance industrielle et responsabilité environnementale.'},
+      {title:'Page de référence', text:'Cette page est prête pour recevoir le contenu officiel, les preuves et la mise en valeur de la certification.'}
+    ]
+  },
+  {
+    slug:'psa-platinum-supplier', eyebrow:'Reconnaissance', title:'PSA Platinum Supplier',
+    subtitle:'Une reconnaissance valorisante qui traduit un haut niveau d’exigence, de fiabilité et de relation fournisseur.',
+    intro:'La distinction PSA Platinum Supplier renforce la perception premium, industrielle et professionnelle du positionnement MISFAT.',
+    blocks:[
+      {title:'Reconnaissance partenaire', text:'Cette distinction met en lumière la qualité de la collaboration, la fiabilité et la performance fournisseur.'},
+      {title:'Image premium', text:'Elle donne du poids à la communication institutionnelle et à la crédibilité du groupe.'},
+      {title:'Mise en valeur future', text:'Cette page est dédiée à la présentation détaillée de la reconnaissance et de son contexte.'}
+    ]
+  },
+  {
+    slug:'ford-q1', eyebrow:'Reconnaissance', title:'Ford Q1',
+    subtitle:'Une distinction associée à la qualité, à la performance et à la constance dans les exigences fournisseurs.',
+    intro:'Le label Ford Q1 constitue un signal fort de confiance et de sérieux industriel, avec une portée importante en matière de réputation.',
+    blocks:[
+      {title:'Exigence fournisseur', text:'Ford Q1 reflète un haut niveau de discipline, de qualité et de régularité dans les opérations.'},
+      {title:'Crédibilité industrielle', text:'Cette reconnaissance renforce la stature professionnelle et institutionnelle de MISFAT.'},
+      {title:'Page dédiée', text:'Elle permettra d’intégrer plus tard le contenu officiel, les visuels et les documents liés à cette distinction.'}
+    ]
+  }
+
 ];
 
 /* ── RENDER STATIC PAGES ─────────────────────────────── */
@@ -1917,6 +1999,5 @@ async function initUI(){
 }
 
 initUI();
-</script>
-</body>
+</script></body>
 </html>
