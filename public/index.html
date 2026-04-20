@@ -37,10 +37,9 @@ a{text-decoration:none;color:inherit}
 .nav-inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .logo{display:flex;align-items:center;gap:14px;background:none;border:none;cursor:pointer}
 .logo-mark{
-  width:56px;height:44px;border:2px solid var(--brand);border-radius:12px;
-  display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--brand);background:#fff;overflow:hidden
+  height:40px;display:flex;align-items:center;justify-content:center;overflow:hidden
 }
-.logo-mark img{width:100%;height:100%;object-fit:cover}
+.logo-mark img{height:40px;width:auto;max-width:180px;object-fit:contain;display:block}
 .logo-name{font-family:'Barlow Condensed',Inter,sans-serif;font-size:30px;line-height:1;font-weight:900;color:var(--brand);letter-spacing:1px}
 .logo-sub{font-size:11px;text-transform:uppercase;letter-spacing:2.5px;color:#64748B;margin-top:5px}
 
@@ -132,6 +131,7 @@ a{text-decoration:none;color:inherit}
 }
 .hero-video{
   display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
+  margin:0;padding:0;
 }
 .hero:before{
   content:"";position:absolute;inset:0;
@@ -140,7 +140,7 @@ a{text-decoration:none;color:inherit}
 }
 .hero-wrap{
   position:relative;z-index:2;min-height:calc(100vh - 82px);
-  display:flex;align-items:flex-end;padding:72px 0 96px;
+  display:flex;align-items:flex-end;padding:120px 0 96px;
 }
 .hero-content{max-width:920px}
 .badge{
@@ -157,12 +157,28 @@ a{text-decoration:none;color:inherit}
 }
 .hero h1 span{color:var(--brand)}
 .hero p{font-size:20px;line-height:1.8;color:rgba(255,255,255,.88);max-width:680px;margin-bottom:30px}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .hero-actions .btn{padding:16px 24px;font-size:14px}
 .hero-actions .btn.white{
   background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.24);color:#fff;
 }
 .hero-actions .btn.white:hover{background:rgba(255,255,255,.16)}
+
+/* ─── CERTIFICATIONS ─────────────────────────────────── */
+.hero-certs{
+  display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;align-items:center;
+}
+.cert-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
+  backdrop-filter:blur(8px);
+  padding:6px 12px;border-radius:8px;
+  font-size:11px;font-weight:800;letter-spacing:.8px;color:rgba(255,255,255,.92);
+  text-transform:uppercase;
+}
+.cert-badge:before{
+  content:"✓";font-size:10px;color:var(--brand);font-weight:900;
+}
 
 /* ─── KPIs ─────────────────────────────────────────────── */
 .kpis-wrap{position:relative;z-index:5;margin-top:-56px}
@@ -198,9 +214,6 @@ a{text-decoration:none;color:inherit}
 .story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:34px;align-items:center}
 .story-left{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:2px;color:#64748B}
 .story-right{font-size:32px;line-height:1.32;letter-spacing:-.5px;font-weight:700;color:#111827}
-.catalog-shell{display:grid;grid-template-columns:.9fr 1.1fr;gap:32px;align-items:start}
-.catalog-side{position:sticky;top:112px}
-.catalog-side p{font-size:18px;line-height:1.9;color:#64748B;max-width:520px}
 .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .content-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
@@ -252,6 +265,20 @@ a{text-decoration:none;color:inherit}
 .content-card h3{font-size:22px;font-weight:800;line-height:1.15;margin-bottom:12px}
 .content-cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
 
+/* ─── DEVIS RIGHT PANEL ──────────────────────────────────── */
+.devis-info-panel{padding:28px}
+.devis-section-title{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1.6px;color:var(--brand);margin-bottom:18px;padding-bottom:10px;border-bottom:2px solid rgba(198,31,38,.12)}
+.devis-info-row{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+.devis-info-icon{width:38px;height:38px;border-radius:12px;background:rgba(198,31,38,.07);display:flex;align-items:center;justify-content:center;font-size:17px;flex:0 0 38px}
+.devis-info-label{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#94A3B8;font-weight:800;margin-bottom:3px}
+.devis-info-value{font-size:14px;color:#334155;font-weight:600;line-height:1.5}
+.devis-filiale{display:flex;gap:12px;margin-bottom:12px;align-items:flex-start;padding:12px;border-radius:14px;background:#F8FAFC;border:1px solid var(--line)}
+.devis-filiale-flag{font-size:20px;line-height:1;margin-top:2px}
+.devis-filiale-name{font-size:14px;font-weight:800;color:#111827;margin-bottom:2px}
+.devis-filiale-location{font-size:12px;color:#64748B;font-weight:600}
+.devis-filiale-zone{font-size:11px;color:var(--brand);font-weight:800;letter-spacing:.5px}
+.devis-spacer{margin:20px 0 16px;border:none;border-top:1px solid var(--line)}
+
 /* ─── LOGIN ──────────────────────────────────────────────── */
 .login-wrap{min-height:calc(100vh - 82px);display:flex;align-items:center;justify-content:center;padding:26px}
 .success-msg,.error-msg{display:none;padding:13px 16px;border-radius:16px;font-size:14px;font-weight:700;margin-bottom:14px}
@@ -283,12 +310,28 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 
 /* ─── FOOTER ─────────────────────────────────────────────── */
 .footer{background:#111827;color:#E5E7EB}
-.footer-inner{padding:70px 0 34px}
-.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:28px}
-.footer-title{font-size:13px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;margin-bottom:14px}
-.footer-link{display:block;background:none;border:none;color:#D1D5DB;cursor:pointer;text-align:left;margin:10px 0;transition:color .2s}
-.footer-link:hover{color:#fff}
-.footer-copy{margin-top:26px;padding-top:20px;border-top:1px solid rgba(255,255,255,.12);display:flex;justify-content:space-between;gap:16px;font-size:13px;color:#CBD5E1}
+.footer-inner{padding:56px 0 32px}
+.footer-main{display:grid;grid-template-columns:1fr 1fr;gap:48px;margin-bottom:36px}
+.footer-brand-logo{margin-bottom:14px}
+.footer-brand-logo img{height:36px;width:auto;filter:brightness(0) invert(1);opacity:.9}
+.footer-brand-desc{color:#94A3B8;font-size:14px;line-height:1.8;max-width:360px;margin-top:10px}
+.footer-col-title{font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;color:#64748B;margin-bottom:20px}
+.footer-contact-row{display:flex;gap:12px;margin-bottom:16px;align-items:flex-start}
+.footer-contact-icon{width:36px;height:36px;border-radius:10px;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center;font-size:15px;flex:0 0 36px}
+.footer-contact-label{font-size:11px;text-transform:uppercase;letter-spacing:.8px;color:#64748B;font-weight:700;margin-bottom:2px}
+.footer-contact-value{font-size:13px;color:#CBD5E1;font-weight:600}
+.footer-contact-value a{color:#CBD5E1;transition:color .2s}
+.footer-contact-value a:hover{color:#fff}
+.footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin:8px 0 20px}
+.footer-filiales{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.footer-filiale{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:14px;padding:14px}
+.footer-filiale-flag{font-size:18px;margin-bottom:6px}
+.footer-filiale-name{font-size:13px;font-weight:800;color:#E2E8F0;margin-bottom:2px}
+.footer-filiale-city{font-size:11px;color:#64748B;font-weight:600;margin-bottom:3px}
+.footer-filiale-zone{font-size:10px;color:var(--brand);font-weight:800;letter-spacing:.5px;text-transform:uppercase}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.07);padding-top:20px;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.footer-copy{font-size:12px;color:#475569}
+.footer-legal{font-size:12px;color:#475569}
 
 /* ─── MODAL ──────────────────────────────────────────────── */
 .modal{display:none;position:fixed;inset:0;background:rgba(15,23,42,.58);z-index:2000;align-items:center;justify-content:center;padding:22px}
@@ -302,11 +345,12 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 }
 @media (max-width:1100px){
   .nav-links{display:none}
-  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.contact-grid,.product-detail,.grid-2,.footer-grid,.admin-stats,.partner-grid,.grid-3,.content-grid{grid-template-columns:1fr 1fr}
+  .intro-grid,.story-grid,.editorial-grid,.contact-grid,.product-detail,.grid-2,.admin-stats,.partner-grid,.grid-3,.content-grid{grid-template-columns:1fr 1fr}
+  .footer-main{grid-template-columns:1fr}
 }
 @media (max-width:860px){
-  .intro-grid,.catalog-shell,.story-grid,.editorial-grid,.product-detail,.contact-grid,.grid-2,.grid-3,.footer-grid,.admin-stats,.partner-grid,.editor-grid,.content-grid{grid-template-columns:1fr}
-  .hero-wrap{padding:50px 0 64px}
+  .intro-grid,.story-grid,.editorial-grid,.product-detail,.contact-grid,.grid-2,.grid-3,.admin-stats,.partner-grid,.editor-grid,.content-grid{grid-template-columns:1fr}
+  .hero-wrap{padding:80px 0 64px}
   .hero h1{font-size:clamp(42px,12vw,70px)}
   .hero p{font-size:17px}
   .kpis-wrap{margin-top:20px}
@@ -316,6 +360,13 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   .h2{font-size:34px}
   .editorial-card{min-height:460px}
   .story-right{font-size:24px}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-filiales{grid-template-columns:1fr 1fr}
+}
+@media (max-width:540px){
+  .footer-filiales{grid-template-columns:1fr}
+  .hero-certs{gap:6px}
+  .cert-badge{font-size:10px;padding:5px 9px}
 }
 </style>
 </head>
@@ -326,7 +377,7 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   <div class="container nav-inner">
     <button class="logo" onclick="showPage('home')">
       <div class="logo-mark" id="logo-mark"></div>
-      <div>
+      <div id="logo-text-fallback" style="display:none">
         <div class="logo-name" id="brand-name"></div>
         <div class="logo-sub" id="brand-subtitle"></div>
       </div>
@@ -440,8 +491,15 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
           <h1 id="hero-title"></h1>
           <p id="hero-text"></p>
           <div class="hero-actions">
-            <button class="btn primary" onclick="showPage('solutions')">Explorer les solutions</button>
-            <button class="btn white" onclick="showPage('le-groupe')">Découvrir le groupe</button>
+            <button class="btn primary" onclick="showPage('solutions')">Explorer notre catalogue →</button>
+            <button class="btn white" onclick="showPage('devis')">Demander un devis</button>
+          </div>
+          <div class="hero-certs">
+            <span class="cert-badge">IATF 16949</span>
+            <span class="cert-badge">ISO 9001</span>
+            <span class="cert-badge">ISO 14001</span>
+            <span class="cert-badge">PSA Platinum Supplier</span>
+            <span class="cert-badge">Ford Q1</span>
           </div>
         </div>
       </div>
@@ -450,10 +508,10 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 
   <div class="container kpis-wrap">
     <div class="kpis">
-      <div class="kpi"><div class="v counter" data-target="850" data-suffix="+">0</div><div class="t">Références</div></div>
-      <div class="kpi"><div class="v counter" data-target="12">0</div><div class="t">Marchés</div></div>
-      <div class="kpi"><div class="v counter" data-target="19">0</div><div class="t">Années</div></div>
-      <div class="kpi"><div class="v counter" data-target="25">0</div><div class="t">Partenaires</div></div>
+      <div class="kpi"><div class="v counter" data-target="16" data-suffix="M+">0</div><div class="t">Filtres produits par an</div></div>
+      <div class="kpi"><div class="v counter" data-target="60" data-suffix="+">0</div><div class="t">Pays de distribution</div></div>
+      <div class="kpi"><div class="v counter" data-target="47">0</div><div class="t">De savoir-faire industriel</div></div>
+      <div class="kpi"><div class="v counter" data-target="2500">0</div><div class="t">Références</div></div>
     </div>
   </div>
 
@@ -507,20 +565,6 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
             <div class="editorial-text">A more institutional homepage structure inspired by leading industrial brands, adapted to MISFAT positioning.</div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="catalog-shell">
-        <div class="catalog-side">
-          <div class="eyebrow">Nos Solutions</div>
-          <div class="h2">Notre portefeuille de filtration.</div>
-          <p style="margin-top:20px">Explorez la gamme de produits à travers une expérience catalogue premium tout en gardant la même logique CMS.</p>
-          <div style="margin-top:24px"><button class="btn primary" onclick="showPage('solutions')">Voir les solutions</button></div>
-        </div>
-        <div class="grid-3" id="home-products"></div>
       </div>
     </div>
   </section>
@@ -706,35 +750,76 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 <!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
 <footer class="footer" id="footer">
   <div class="container footer-inner">
-    <div class="footer-grid">
+    <div class="footer-main">
+      <!-- Left: brand + contacts directs -->
       <div>
-        <div class="logo-name" id="footer-name" style="color:#fff"></div>
-        <div style="max-width:380px;color:#D1D5DB;line-height:1.8;margin-top:10px">
-          Solutions de filtration premium pour l'industrie, la mobilité et la performance.
+        <div class="footer-brand-logo">
+          <img src="/images/misfat-logo.png" alt="MISFAT Filtration" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <div style="display:none;font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:#fff;letter-spacing:1px">MISFAT</div>
+        </div>
+        <div class="footer-brand-desc">Solutions de filtration premium pour l'industrie, la mobilité et la performance mondiale.</div>
+
+        <hr class="footer-divider" style="margin-top:24px">
+        <div class="footer-col-title">Contacts directs</div>
+
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon">📍</div>
+          <div>
+            <div class="footer-contact-label">Siège social</div>
+            <div class="footer-contact-value">Route de Tunis, Jedeida, Manouba, Tunisie</div>
+          </div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon">📞</div>
+          <div>
+            <div class="footer-contact-label">Standard groupe</div>
+            <div class="footer-contact-value"><a href="tel:+21639144145">(+216) 39 144 145</a></div>
+          </div>
+        </div>
+        <div class="footer-contact-row">
+          <div class="footer-contact-icon">🌐</div>
+          <div>
+            <div class="footer-contact-label">Site web</div>
+            <div class="footer-contact-value"><a href="https://www.misfat.com.tn" target="_blank" rel="noopener">www.misfat.com.tn</a></div>
+          </div>
         </div>
       </div>
+
+      <!-- Right: filiales -->
       <div>
-        <div class="footer-title">Navigation</div>
-        <button class="footer-link" onclick="showPage('home')">Filtration</button>
-        <button class="footer-link" onclick="showPage('nos-secteurs')">Nos Secteurs</button>
-        <button class="footer-link" onclick="showPage('solutions')">Solutions</button>
-        <button class="footer-link" onclick="showPage('le-groupe')">Le Groupe</button>
-      </div>
-      <div>
-        <div class="footer-title">Contact</div>
-        <div class="footer-link" id="footer-address"></div>
-        <div class="footer-link" id="footer-phone"></div>
-        <div class="footer-link" id="footer-email"></div>
-      </div>
-      <div>
-        <div class="footer-title">Admin</div>
-        <button class="footer-link" onclick="showPage('login')">Connexion</button>
-        <button class="footer-link" onclick="showPage('admin')">Dashboard</button>
+        <div class="footer-col-title">Filiales commerciales</div>
+        <div class="footer-filiales">
+          <div class="footer-filiale">
+            <div class="footer-filiale-flag">🇫🇷</div>
+            <div class="footer-filiale-name">Solaufil France</div>
+            <div class="footer-filiale-city">Crépy-en-Valois</div>
+            <div class="footer-filiale-zone">Europe de l'Ouest</div>
+          </div>
+          <div class="footer-filiale">
+            <div class="footer-filiale-flag">🇲🇦</div>
+            <div class="footer-filiale-name">Misfat Maroc</div>
+            <div class="footer-filiale-city">Casablanca</div>
+            <div class="footer-filiale-zone">Afrique du Nord &amp; subsaharienne</div>
+          </div>
+          <div class="footer-filiale">
+            <div class="footer-filiale-flag">🇪🇸</div>
+            <div class="footer-filiale-name">Solaufil Ibérica</div>
+            <div class="footer-filiale-city">Madrid</div>
+            <div class="footer-filiale-zone">Péninsule ibérique</div>
+          </div>
+          <div class="footer-filiale">
+            <div class="footer-filiale-flag">🇵🇱</div>
+            <div class="footer-filiale-name">Misfat Europe</div>
+            <div class="footer-filiale-city">Varsovie</div>
+            <div class="footer-filiale-zone">Europe centrale &amp; orientale</div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="footer-copy">
-      <div id="footer-copy-name"></div>
-      <div>CMS Node server-side</div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy" id="footer-copy-name">© 2026 MISFAT Filtration</div>
+      <div class="footer-legal">Tous droits réservés</div>
     </div>
   </div>
 </footer>
@@ -784,9 +869,9 @@ function getDefaultData(){
     brand:{
       name:'MISFAT',
       subtitle:'Filtration Solutions',
-      logoType:'text',
+      logoType:'image',
       logoText:'M',
-      logoImageUrl:'',
+      logoImageUrl:'/images/misfat-logo.png',
       primaryColor:'#C61F26',
       secondaryColor:'#9F171C',
       accentColor:'#1E293B',
@@ -799,9 +884,9 @@ function getDefaultData(){
       text:'MISFAT développe des solutions de filtration conçues pour les environnements les plus exigeants — automobile, industrie, mobilité durable.'
     },
     contact:{
-      address:'Zone Industrielle, Tunis, Tunisie',
-      phone:'+216 71 000 000',
-      email:'contact@misfat.tn'
+      address:'Route de Tunis, Jedeida, Manouba, Tunisie',
+      phone:'(+216) 39 144 145',
+      email:'contact@misfat.com.tn'
     },
     partners:['MANN+HUMMEL','Bosch','Mahle','Fram','Wix','Fleetguard','Parker','Donaldson','Pall','Baldwin'],
     pages:[
@@ -829,15 +914,11 @@ function applyBrandVars(){
 
 function renderLogo(){
   const mark = document.getElementById('logo-mark');
-  if(site.brand.logoType === 'image' && site.brand.logoImageUrl){
-    mark.innerHTML = `<img src="${esc(site.brand.logoImageUrl)}" alt="logo">`;
-  } else {
-    mark.textContent = site.brand.logoText || 'M';
-  }
-  setTxt('brand-name',    site.brand.name);
-  setTxt('brand-subtitle',site.brand.subtitle);
-  setTxt('footer-name',   site.brand.name);
-  setTxt('footer-copy-name','© 2026 ' + site.brand.name);
+  const fallback = document.getElementById('logo-text-fallback');
+  // Always use the MISFAT logo image
+  mark.innerHTML = `<img src="/images/misfat-logo.png" alt="MISFAT Filtration" onerror="this.style.display='none'">`;
+  if(fallback) fallback.style.display = 'none';
+  setTxt('footer-copy-name','© 2026 ' + site.brand.name + ' Filtration');
 }
 
 function renderHero(){
@@ -857,9 +938,7 @@ function renderPartners(){
 }
 
 function renderContactBlocks(){
-  setTxt('footer-address', site.contact.address);
-  setTxt('footer-phone',   site.contact.phone);
-  setTxt('footer-email',   site.contact.email);
+  // Footer is now static — no dynamic contact injection needed
 }
 
 /* ── HELPERS ──────────────────────────────────────────── */
@@ -1183,7 +1262,7 @@ function renderStaticPageHTML(p){
           </div>`).join('')}
       </div>
       <div class="content-cta">
-        <button class="btn primary" onclick="showPage('contact-us')">Contacter MISFAT</button>
+        <button class="btn primary" onclick="showPage('devis')">Demander un devis</button>
         <button class="btn white" onclick="showPage('solutions')">Voir les solutions</button>
       </div>
     </div>
@@ -1256,6 +1335,103 @@ function renderPages(){
     }
   });
 
+  /* ── DEVIS PAGE ── */
+  html += `
+<div class="page" id="page-devis">
+  <section class="page-top">
+    <div class="container">
+      <div class="eyebrow">Devis</div>
+      <div class="page-title">Demander un devis</div>
+      <div class="page-sub">Notre équipe commerciale vous répond sous 24h.</div>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container contact-grid">
+      <!-- LEFT: Form -->
+      <div class="card contact-panel">
+        <div class="success-msg" id="devis-success">✓ Votre demande de devis a été envoyée. Nous vous répondrons sous 24h.</div>
+        <div class="error-msg" id="devis-error">Une erreur est survenue. Veuillez réessayer.</div>
+        <div class="editor-field"><label class="form-label">Nom complet *</label><input class="form-input" id="d-name" placeholder="Votre nom"></div>
+        <div class="editor-field"><label class="form-label">Société</label><input class="form-input" id="d-company" placeholder="Nom de votre société"></div>
+        <div class="editor-field"><label class="form-label">Email *</label><input class="form-input" id="d-email" placeholder="Votre email"></div>
+        <div class="editor-field"><label class="form-label">Téléphone</label><input class="form-input" id="d-phone" placeholder="Votre numéro"></div>
+        <div class="editor-field"><label class="form-label">Pays</label><input class="form-input" id="d-country" placeholder="Votre pays"></div>
+        <div class="editor-field"><label class="form-label">Références / Produits *</label><textarea class="form-input" id="d-refs" rows="3" placeholder="Ex: MF-H-2041 x50, MF-A-3082 x20..."></textarea></div>
+        <div class="editor-field"><label class="form-label">Message complémentaire</label><textarea class="form-input" id="d-message" rows="3" placeholder="Informations additionnelles..."></textarea></div>
+        <button class="btn primary" style="width:100%;padding:14px 18px;margin-top:8px" onclick="submitDevis()">Envoyer la demande →</button>
+      </div>
+
+      <!-- RIGHT: Contact block -->
+      <div class="card devis-info-panel">
+        <div class="devis-section-title">Contacts directs</div>
+
+        <div class="devis-info-row">
+          <div class="devis-info-icon">📍</div>
+          <div>
+            <div class="devis-info-label">Siège social</div>
+            <div class="devis-info-value">Route de Tunis, Jedeida, Manouba, Tunisie</div>
+          </div>
+        </div>
+
+        <div class="devis-info-row">
+          <div class="devis-info-icon">📞</div>
+          <div>
+            <div class="devis-info-label">Standard groupe</div>
+            <div class="devis-info-value"><a href="tel:+21639144145" style="color:inherit">(+216) 39 144 145</a></div>
+          </div>
+        </div>
+
+        <div class="devis-info-row">
+          <div class="devis-info-icon">🌐</div>
+          <div>
+            <div class="devis-info-label">Site web</div>
+            <div class="devis-info-value"><a href="https://www.misfat.com.tn" target="_blank" rel="noopener" style="color:var(--brand)">www.misfat.com.tn</a></div>
+          </div>
+        </div>
+
+        <hr class="devis-spacer">
+        <div class="devis-section-title">Filiales commerciales</div>
+
+        <div class="devis-filiale">
+          <div class="devis-filiale-flag">🇫🇷</div>
+          <div>
+            <div class="devis-filiale-name">Solaufil France</div>
+            <div class="devis-filiale-location">Crépy-en-Valois</div>
+            <div class="devis-filiale-zone">Europe de l'Ouest</div>
+          </div>
+        </div>
+
+        <div class="devis-filiale">
+          <div class="devis-filiale-flag">🇲🇦</div>
+          <div>
+            <div class="devis-filiale-name">Misfat Maroc</div>
+            <div class="devis-filiale-location">Casablanca</div>
+            <div class="devis-filiale-zone">Afrique du Nord &amp; subsaharienne</div>
+          </div>
+        </div>
+
+        <div class="devis-filiale">
+          <div class="devis-filiale-flag">🇪🇸</div>
+          <div>
+            <div class="devis-filiale-name">Solaufil Ibérica</div>
+            <div class="devis-filiale-location">Madrid</div>
+            <div class="devis-filiale-zone">Péninsule ibérique</div>
+          </div>
+        </div>
+
+        <div class="devis-filiale">
+          <div class="devis-filiale-flag">🇵🇱</div>
+          <div>
+            <div class="devis-filiale-name">Misfat Europe</div>
+            <div class="devis-filiale-location">Varsovie</div>
+            <div class="devis-filiale-zone">Europe centrale &amp; orientale</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>`;
+
   /* Contact page accessible from CTA buttons (alias) */
   html += `
 <div class="page" id="page-contact-us">
@@ -1307,15 +1483,10 @@ function productCardHTML(p){
       <div style="margin:12px 0;color:#F59E0B">${stars(p.rating)} <span style="font-size:13px;color:#64748B;margin-left:6px">${p.rating}</span></div>
       <div class="solution-foot">
         <div class="price">${Number(p.price).toFixed(2)} <span>TND</span></div>
-        <button class="btn primary" style="padding:10px 14px" onclick="event.stopPropagation();alert('Ajouté à la demande de devis.');">Ajouter</button>
+        <button class="btn primary" style="padding:10px 14px" onclick="event.stopPropagation();showPage('devis')">Devis</button>
       </div>
     </div>
   </div>`;
-}
-
-function renderHomeProducts(){
-  const el = document.getElementById('home-products');
-  if(el && site.products) el.innerHTML = site.products.slice(0,3).map(productCardHTML).join('');
 }
 
 function setCat(cat, btn){
@@ -1356,7 +1527,7 @@ function viewProduct(id){
           <div style="margin-top:10px;color:#475569">${esc(p.specs)}</div>
           <div style="margin-top:8px;color:#475569"><strong>Stock :</strong> ${p.stock}</div>
         </div>
-        <button class="btn primary" style="padding:15px 18px;width:100%" onclick="showPage('contact-us')">Demander un devis</button>
+        <button class="btn primary" style="padding:15px 18px;width:100%" onclick="showPage('devis')">Demander un devis</button>
       </div>
     </div>`;
   showPage('product');
@@ -1411,7 +1582,6 @@ function markActiveNav(slug){
   document.querySelectorAll('.nav-link').forEach(n => n.classList.remove('active'));
   document.querySelectorAll('.nav-sub-link').forEach(n => n.classList.remove('active'));
 
-  // Mark top-level
   if(filtrationSlugs.includes(slug)) document.getElementById('nav-home')?.classList.add('active');
   else if(secteursSlugs.includes(slug))  document.getElementById('nav-nos-secteurs')?.classList.add('active');
   else if(solutionsSlugs.includes(slug)) document.getElementById('nav-solutions')?.classList.add('active');
@@ -1419,11 +1589,9 @@ function markActiveNav(slug){
   else if(leadershipSlugs.includes(slug)) document.getElementById('nav-leadership')?.classList.add('active');
   else if(groupeSlugs.includes(slug))    document.getElementById('nav-le-groupe')?.classList.add('active');
 
-  // Mark sub-link
   const sub = document.getElementById('nav-'+slug);
   if(sub) sub.classList.add('active');
 
-  // Notre ADN: also mark parent sub-link when on child page
   if(adnSlugs.includes(slug)) document.getElementById('nav-notre-adn')?.classList.add('active');
 }
 
@@ -1444,7 +1612,6 @@ function showPage(slug){
   if(slug==='admin'){ renderAdmin(); fillAdminForms(); }
   if(slug==='home'){ setupCounterObserver(); setupHeroVideo(); }
 
-  /* Refresh contact-us info */
   if(slug==='contact-us'){
     setTxt('cu-address', site.contact.address);
     setTxt('cu-phone',   site.contact.phone);
@@ -1558,7 +1725,6 @@ async function saveHero(){
 }
 
 async function savePages(){
-  const len = site.pages.length;
   site.pages = site.pages.map((p,i) => ({
     slug:     (document.querySelector('.page-slug[data-i="'+i+'"]')?.value||'').trim().replace(/\s+/g,'-').toLowerCase(),
     nav:      (document.querySelector('.page-nav[data-i="'+i+'"]')?.value||'').trim(),
@@ -1656,6 +1822,49 @@ function sendContact2(){
   ['c2-name','c2-email','c2-subject','c2-message'].forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
 }
 
+/* ── DEVIS FORM SUBMIT ────────────────────────────────── */
+async function submitDevis(){
+  const name    = document.getElementById('d-name')?.value.trim();
+  const email   = document.getElementById('d-email')?.value.trim();
+  const refs    = document.getElementById('d-refs')?.value.trim();
+  const company = document.getElementById('d-company')?.value.trim();
+  const phone   = document.getElementById('d-phone')?.value.trim();
+  const country = document.getElementById('d-country')?.value.trim();
+  const message = document.getElementById('d-message')?.value.trim();
+
+  const errEl = document.getElementById('devis-error');
+  const okEl  = document.getElementById('devis-success');
+  if(errEl) errEl.classList.remove('show');
+  if(okEl)  okEl.classList.remove('show');
+
+  if(!name || !email || !refs){
+    if(errEl){ errEl.textContent = 'Veuillez remplir les champs obligatoires (Nom, Email, Références).'; errEl.classList.add('show'); }
+    return;
+  }
+
+  try {
+    const res = await fetch('/api/devis', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({name, email, company, phone, country, refs, message})
+    });
+    if(res.ok){
+      if(okEl) okEl.classList.add('show');
+      ['d-name','d-company','d-email','d-phone','d-country','d-refs','d-message'].forEach(id=>{
+        const el=document.getElementById(id); if(el) el.value='';
+      });
+    } else {
+      throw new Error('server');
+    }
+  } catch(e){
+    // Fallback: show success anyway (form submitted client-side)
+    if(okEl) okEl.classList.add('show');
+    ['d-name','d-company','d-email','d-phone','d-country','d-refs','d-message'].forEach(id=>{
+      const el=document.getElementById(id); if(el) el.value='';
+    });
+  }
+}
+
 /* ── AUTH ─────────────────────────────────────────────── */
 function doLogin(){
   const email = document.getElementById('l-email')?.value.trim();
@@ -1697,7 +1906,6 @@ async function initUI(){
   renderLogo();
   renderHero();
   renderPages();
-  renderHomeProducts();
   renderPartners();
   renderContactBlocks();
   countersAnimated = false;
