@@ -6,19 +6,6 @@
 <title>MISFAT</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
-.hero {
-  position: relative;
-  height: 100vh;
-  overflow: hidden;
-}
-
-.hero-video {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-}
 :root{
   --brand:#C61F26;
   --brand2:#9F171C;
@@ -139,12 +126,30 @@ a{text-decoration:none;color:inherit}
 
 /* ─── HERO ─────────────────────────────────────────────── */
 .hero{
-  position:relative;min-height:calc(100vh - 82px);overflow:hidden;
-  background:#0b0f14;color:#fff;
+  position:relative;
+  min-height:calc(100vh - 82px);
+  overflow:hidden;
+  background:#0b0f14;
+  color:#fff;
+}
+.hero-video-wrap{
+  position:absolute;
+  inset:0;
+  overflow:hidden;
+  z-index:0;
 }
 .hero-video{
-  display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;
-  margin:0;padding:0;
+  position:absolute;
+  top:50%;
+  left:50%;
+  width:177.77777778vh;
+  height:100vh;
+  min-width:100%;
+  min-height:56.25vw;
+  transform:translate(-50%,-50%);
+  pointer-events:none;
+  border:0;
+  z-index:0;
 }
 .hero:before{
   content:"";position:absolute;inset:0;
@@ -155,28 +160,6 @@ a{text-decoration:none;color:inherit}
   position:relative;z-index:2;min-height:calc(100vh - 82px);
   display:flex;align-items:flex-end;padding:120px 0 96px;
 }
-.hero-content{max-width:920px}
-.badge{
-  display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;
-  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);
-  color:#fff;font-size:11px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;
-  backdrop-filter:blur(8px)
-}
-.badge-dot{width:8px;height:8px;border-radius:50%;background:var(--brand)}
-.hero h1{
-  font-family:'Barlow Condensed',Inter,sans-serif;
-  font-size:clamp(56px,7vw,108px);line-height:.96;letter-spacing:-1px;font-weight:900;
-  max-width:1050px;margin:24px 0 20px;text-transform:none;
-}
-.hero h1 span{color:var(--brand)}
-.hero p{font-size:20px;line-height:1.8;color:rgba(255,255,255,.88);max-width:680px;margin-bottom:30px}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
-.hero-actions .btn{padding:16px 24px;font-size:14px}
-.hero-actions .btn.white{
-  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.24);color:#fff;
-}
-.hero-actions .btn.white:hover{background:rgba(255,255,255,.16)}
-
 /* ─── CERTIFICATIONS ─────────────────────────────────── */
 .hero-certs{
   display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;align-items:center;
@@ -381,6 +364,7 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   .hero-certs{gap:6px}
   .cert-badge{font-size:10px;padding:5px 9px}
 }
+</style>
 </head>
 <body>
 
@@ -492,13 +476,17 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 <!-- ═══ HOME ══════════════════════════════════════════════════════════ -->
 <div class="page active" id="page-home">
   <section class="hero">
-   <iframe
-  class="hero-video"
-  src="https://www.youtube.com/embed/RakLwqhx-yU?autoplay=1&mute=1&controls=0&loop=1&playlist=RakLwqhx-yU"
-  frameborder="0"
-  allow="autoplay; fullscreen"
-  allowfullscreen>
-</iframe>
+    <div class="hero-video-wrap">
+      <iframe
+        class="hero-video"
+        src="https://www.youtube.com/embed/RakLwqhx-yU?autoplay=1&mute=1&loop=1&playlist=RakLwqhx-yU&controls=0&modestbranding=1&rel=0&playsinline=1"
+        title="MISFAT Hero Video"
+        frameborder="0"
+        allow="autoplay; fullscreen; encrypted-media; picture-in-picture"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen>
+      </iframe>
+    </div>
     <div class="container">
       <div class="hero-wrap">
         <div class="hero-content">
@@ -1929,14 +1917,6 @@ async function initUI(){
 }
 
 initUI();
-</script>
-<script>
-  const video = document.getElementById('hero-video');
-  if (video) {
-    video.play().catch(() => {
-      console.log("Autoplay blocked");
-    });
-  }
 </script>
 </body>
 </html>
