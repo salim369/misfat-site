@@ -6,14 +6,18 @@
 <title>MISFAT</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Barlow+Condensed:wght@700;800;900&display=swap" rel="stylesheet">
 <style>
+.hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
 .hero-video {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 120vw;
-  height: 120vh;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
 :root{
   --brand:#C61F26;
@@ -490,11 +494,10 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   <section class="hero">
    <iframe
   class="hero-video"
-  src="https://www.youtube.com/embed/RakLwqhx-yU?autoplay=1&mute=1&loop=1&playlist=RakLwqhx-yU&controls=0"
+  src="https://www.youtube.com/embed/RakLwqhx-yU?autoplay=1&mute=1&controls=0&loop=1&playlist=RakLwqhx-yU"
   frameborder="0"
   allow="autoplay; fullscreen"
-  allowfullscreen
-  style="position:absolute; top:0; left:0; width:100%; height:100%;">
+  allowfullscreen>
 </iframe>
     <div class="container">
       <div class="hero-wrap">
