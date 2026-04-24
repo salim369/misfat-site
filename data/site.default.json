@@ -1,143 +1,103 @@
 {
   "brand": {
     "name": "MISFAT",
-    "subtitle": "Filtration industrielle",
-    "logoType": "text",
+    "subtitle": "Filtration Solutions",
+    "logoType": "image",
     "logoText": "M",
-    "logoImageUrl": "",
-    "primaryColor": "#C61F26",
-    "secondaryColor": "#9F171C",
+    "logoImageUrl": "/images/misfat-logo.png",
+    "primaryColor": "#e64a19",
+    "secondaryColor": "#bf3d12",
     "accentColor": "#1E293B",
-    "backgroundColor": "#F8FAFC"
+    "backgroundColor": "#F7F8FA"
   },
   "hero": {
-    "badge": "MISFAT · Corporate identity",
-    "title": "Solutions de filtration à l’image d’un grand groupe industriel",
-    "highlight": "filtration",
-    "text": "Une version corporate, premium et officielle, avec identité MISFAT conservée et un admin capable de tout modifier.",
-    "panelTitle": "Positionnement",
-    "panelValue": "Premium",
-    "panelText": "Design institutionnel, hiérarchie claire, multiples pages corporate et contenu entièrement éditable.",
-    "cardTitle": "Un site qui paraît officiel, sérieux et professionnel.",
-    "cardText": "Chaque changement enregistré depuis l’admin est partagé à tous les navigateurs qui ouvrent le site."
+    "badge": "Solutions de Filtration Premium",
+    "title": "Performance. Fiabilité. Précision.",
+    "highlight": "Précision.",
+    "text": "MISFAT développe des solutions de filtration conçues pour les environnements les plus exigeants — automobile, industrie, mobilité durable."
   },
   "contact": {
-    "address": "adresse...",
-    "phone": "tel...",
-    "email": "email..."
+    "address": "Route de Tunis, Jedeida, Manouba, Tunisie",
+    "phone": "(+216) 39 144 145",
+    "email": "contact@misfat.com.tn"
   },
   "partners": [
-    "Partner 01",
-    "Partner 02",
-    "Partner 03",
-    "Partner 04",
-    "Partner 05"
+    "MANN+HUMMEL",
+    "Bosch",
+    "Mahle",
+    "Fram",
+    "Wix",
+    "Fleetguard",
+    "Parker",
+    "Donaldson",
+    "Pall",
+    "Baldwin"
   ],
   "pages": [
     {
       "slug": "about",
-      "nav": "À propos",
-      "eyebrow": "Entreprise",
-      "title": "À propos de MISFAT",
-      "subtitle": "Une page corporate dédiée à l’histoire, la vision, la mission et à la présence industrielle.",
-      "content": "Cette page est entièrement modifiable depuis l’admin. Tu peux remplacer ce texte, le titre, le menu et l’ordre des pages."
-    },
-    {
-      "slug": "solutions",
-      "nav": "Solutions",
-      "eyebrow": "Solutions",
-      "title": "Domaines de solutions",
-      "subtitle": "Une page orientée solutions et gammes, dans un style corporate.",
-      "content": "Présente ici les gammes, familles de produits, avantages, secteurs et expertises."
-    },
-    {
-      "slug": "industries",
-      "nav": "Industries",
-      "eyebrow": "Industries",
-      "title": "Marchés & applications",
-      "subtitle": "Une page pensée pour donner plus de profondeur au site.",
-      "content": "Ajoute ici automobile, utilitaires, aftermarket, export, industrie ou autres segments."
-    },
-    {
-      "slug": "innovation",
-      "nav": "Innovation",
-      "eyebrow": "Innovation",
-      "title": "Recherche & développement",
-      "subtitle": "Une page supplémentaire pour renforcer l’impression d’un groupe structuré et innovant.",
-      "content": "Décris ici matériaux, tests, amélioration continue et performance."
-    },
-    {
-      "slug": "sustainability",
-      "nav": "Durabilité",
-      "eyebrow": "Durabilité",
-      "title": "Engagement responsable",
-      "subtitle": "Une page corporate dédiée à l’environnement et à la responsabilité.",
-      "content": "Ajoute ici les engagements durables, environnementaux et sociaux."
-    },
-    {
-      "slug": "qse",
-      "nav": "QSE",
-      "eyebrow": "QSE",
-      "title": "Qualité, sécurité & environnement",
-      "subtitle": "Une page dédiée pour renforcer la crédibilité et la rigueur.",
-      "content": "Ajoute ici certifications, processus, conformité, sécurité et environnement."
+      "nav": "À Propos",
+      "eyebrow": "Notre Entreprise",
+      "title": "À Propos de MISFAT",
+      "subtitle": "Leader tunisien de la filtration industrielle et automobile.",
+      "content": "MISFAT est une entreprise tunisienne spécialisée dans la distribution et la commercialisation de filtres pour les secteurs automobile et industriel."
     },
     {
       "slug": "catalog",
       "nav": "Catalogue",
       "eyebrow": "Catalogue",
-      "title": "Produits & références",
-      "subtitle": "Catalogue avec filtrage, recherche et cartes premium.",
+      "title": "Catalogue Produits",
+      "subtitle": "Toute notre gamme de filtration.",
       "content": ""
     },
     {
       "slug": "contact",
       "nav": "Contact",
       "eyebrow": "Contact",
-      "title": "Parlons de vos besoins",
-      "subtitle": "Coordonnées, formulaire et bloc localisation dans un style plus officiel.",
+      "title": "Nous Contacter",
+      "subtitle": "Notre équipe est à votre disposition.",
       "content": ""
     }
   ],
   "products": [
     {
       "id": 1,
-      "name": "Filtre Huile Premium HF-2241",
-      "ref": "HF-2241",
-      "category": "oil",
+      "name": "Filtre à Huile Premium",
+      "ref": "MF-H-2041",
       "price": 18.5,
+      "category": "oil",
+      "stock": 240,
       "img": "🛢️",
-      "brand": "Toyota, Honda, Nissan",
-      "specs": "Filetage: M20x1.5 | H: 75mm | Ø: 66mm",
-      "description": "Filtre huile haute performance avec joint renforcé et excellente tenue mécanique.",
-      "stock": 245,
+      "brand": "Compatible : Peugeot, Citroën, Renault",
+      "specs": "Hauteur : 76mm | Filetage : M20x1.5 | Media : Cellulose haute densité",
+      "description": "Filtre à huile haute performance pour moteurs essence et diesel modernes.",
       "rating": 4.8
     },
     {
       "id": 2,
-      "name": "Filtre Air Moteur AF-5560",
-      "ref": "AF-5560",
+      "name": "Filtre à Air Sport",
+      "ref": "MF-A-3082",
+      "price": 22,
       "category": "air",
-      "price": 24.9,
+      "stock": 185,
       "img": "💨",
-      "brand": "Volkswagen, Audi, Seat",
-      "specs": "L: 290mm | l: 190mm | H: 60mm",
-      "description": "Filtration efficace de l’air avec très bonne tenue des matériaux.",
-      "stock": 187,
+      "brand": "Compatible : BMW, Mercedes, Audi",
+      "specs": "Longueur : 320mm | Largeur : 180mm | Hauteur : 50mm | Débit : 520 m³/h",
+      "description": "Filtre à air haute performance pour une respiration optimale du moteur.",
       "rating": 4.7
     },
     {
       "id": 3,
-      "name": "Filtre Carburant Diesel FC-3312",
-      "ref": "FC-3312",
+      "name": "Filtre à Carburant",
+      "ref": "MF-F-1023",
+      "price": 14.9,
       "category": "fuel",
-      "price": 31.0,
+      "stock": 310,
       "img": "⛽",
-      "brand": "Peugeot, Citroën, Fiat",
-      "specs": "Ø: 88mm | H: 120mm | Pression max: 6 bar",
-      "description": "Filtre carburant diesel de haute précision avec protection renforcée du circuit.",
-      "stock": 134,
-      "rating": 4.9
+      "brand": "Compatible : Toyota, Honda, Nissan",
+      "specs": "Pression max : 8 bar | Micronage : 10µm | Raccords : 8mm IN/OUT",
+      "description": "Filtre à carburant haute filtration pour protéger l'injection.",
+      "rating": 4.6
     }
   ]
 }
