@@ -1,14 +1,73 @@
 const express = require('express');
 const path = require('path');
+const fs = require('fs');
 
 const app = express();
 const PORT = process.env.PORT || 10000;
 
+const dataDir = path.join(__dirname, 'data');
+const sitePath = path.join(dataDir, 'site.json');
+const defaultPath = path.join(dataDir, 'site.default.json');
+
 // middleware
-app.use(express.json());
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true }));
 
-// ✅ SERVE STATIC (video fix included)
+// ensure data folder exists
+if (!fs.existsSync(dataDir)) {
+  fs.mkdirSync(dataDir, { recursive: true });
+}
+
+// ✅ GET SITE DATA
+app.get('/api/site-data', (req, res) => {
+  try {
+    if (fs.existsSync(sitePath)) {
+      const data = fs.readFileSync(sitePath, 'utf8');
+      return res.json(JSON.parse(data));
+    }
+
+    if (fs.existsSync(defaultPath)) {
+      const data = fs.readFileSync(defaultPath, 'utf8');
+      fs.writeFileSync(sitePath, data);
+      return res.json(JSON.parse(data));
+    }
+
+    return res.status(404).json({ error: 'site.json not found' });
+  } catch (err) {
+    console.error('GET /api/site-data error:', err);
+    res.status(500).json({ error: 'Failed to read site data' });
+  }
+});
+
+// ✅ SAVE SITE DATA
+app.post('/api/site-data', (req, res) => {
+  try {
+    fs.writeFileSync(sitePath, JSON.stringify(req.body, null, 2), 'utf8');
+    res.json({ success: true });
+  } catch (err) {
+    console.error('POST /api/site-data error:', err);
+    res.status(500).json({ error: 'Failed to save site data' });
+  }
+});
+
+// ✅ RESET SITE DATA
+app.post('/api/reset', (req, res) => {
+  try {
+    if (!fs.existsSync(defaultPath)) {
+      return res.status(404).json({ error: 'site.default.json not found' });
+    }
+
+    const data = fs.readFileSync(defaultPath, 'utf8');
+    fs.writeFileSync(sitePath, data, 'utf8');
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error('POST /api/reset error:', err);
+    res.status(500).json({ error: 'Failed to reset site data' });
+  }
+});
+
+// ✅ SERVE STATIC
 app.use(express.static(path.join(__dirname, 'public'), {
   setHeaders: (res, filePath) => {
     if (filePath.endsWith('.mp4')) {
