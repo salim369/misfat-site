@@ -2207,7 +2207,7 @@ function filterVisualHTML(p){
     cabin: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Cabin_air_filter.jpg/400px-Cabin_air_filter.jpg'
   };
 
-  const src = realImgs[cat] || realImgs.air;
+  const src = p.img || realImgs[cat] || realImgs.air;
   const fb  = fallbacks[cat] || fallbacks.air;
 
   return '<div class="filter-visual" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%">'
