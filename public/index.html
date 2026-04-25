@@ -476,6 +476,234 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   color:#fff;
   transform:translateY(-4px) scale(1.05);
 }
+
+/* ─── CATALOGUE ADVANCED SEARCH ───────────────────────── */
+.catalog-hero{
+  background:linear-gradient(135deg,#0F172A 0%,#1E293B 55%,#334155 100%);
+  color:#fff;
+  padding:46px 0 92px;
+  position:relative;
+  overflow:hidden;
+}
+.catalog-hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:radial-gradient(circle at 82% 20%,rgba(230,74,25,.28),transparent 32%);
+  pointer-events:none;
+}
+.catalog-hero .container{position:relative;z-index:2}
+.catalog-title{
+  font-family:Inter,system-ui,sans-serif;
+  font-size:clamp(42px,4.4vw,68px);
+  line-height:1;
+  letter-spacing:-.05em;
+  font-weight:900;
+  max-width:780px;
+}
+.catalog-title span{color:var(--brand)}
+.catalog-sub{
+  margin-top:16px;
+  color:#CBD5E1;
+  font-size:18px;
+  line-height:1.7;
+  max-width:620px;
+}
+.catalog-search-card{
+  position:relative;
+  z-index:5;
+  margin-top:-62px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  box-shadow:0 24px 58px rgba(2,6,23,.14);
+  padding:26px;
+}
+.catalog-search-head{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#0F3F78;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  margin-bottom:18px;
+}
+.catalog-search-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  gap:14px;
+}
+.catalog-field label{
+  display:block;
+  font-size:12px;
+  color:#64748B;
+  font-weight:800;
+  margin-bottom:8px;
+}
+.catalog-actions{
+  display:flex;
+  gap:12px;
+  align-items:end;
+  margin-top:14px;
+}
+.catalog-actions .btn{min-width:160px}
+.catalog-quick{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  margin-top:12px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:18px;
+  overflow:hidden;
+}
+.catalog-quick-item{
+  padding:18px 22px;
+  display:flex;
+  gap:12px;
+  align-items:center;
+  border-right:1px solid var(--line);
+}
+.catalog-quick-item:last-child{border-right:none}
+.catalog-quick-icon{
+  width:42px;height:42px;border-radius:14px;
+  background:#EFF6FF;color:#0F3F78;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:900;
+}
+.catalog-quick-title{font-size:14px;font-weight:900;color:#0F3F78}
+.catalog-quick-text{font-size:12px;color:#64748B;margin-top:2px}
+.catalog-results-layout{
+  display:grid;
+  grid-template-columns:280px 1fr;
+  gap:26px;
+}
+.catalog-side{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:22px;
+  padding:22px;
+  align-self:start;
+  box-shadow:var(--shadow);
+}
+.catalog-side-title{
+  font-size:14px;
+  font-weight:900;
+  text-transform:uppercase;
+  letter-spacing:.8px;
+  margin-bottom:18px;
+}
+.catalog-check{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color:#475569;
+  font-size:14px;
+  margin:12px 0;
+  cursor:pointer;
+}
+.catalog-check input{width:16px;height:16px}
+.catalog-results-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px;
+  margin-bottom:18px;
+}
+.catalog-result-title{
+  font-size:28px;
+  font-weight:900;
+  letter-spacing:-.03em;
+  color:#0F3F78;
+}
+.catalog-selected{
+  background:#111827;
+  color:#fff;
+  border-radius:16px;
+  padding:14px 18px;
+  margin-bottom:18px;
+  display:none;
+}
+.catalog-selected.show{display:block}
+.catalog-selected strong{color:var(--brand)}
+.catalog-product-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:0;
+  padding:0;
+  overflow:hidden;
+  box-shadow:0 10px 24px rgba(2,6,23,.06);
+  transition:.25s;
+}
+.catalog-product-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 18px 42px rgba(2,6,23,.12);
+}
+.catalog-product-img{
+  height:210px;
+  background:#fff;
+  border-bottom:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:82px;
+}
+.catalog-product-body{padding:20px}
+.catalog-product-type{
+  color:#047857;
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:6px;
+}
+.catalog-product-ref{
+  color:#0F766E;
+  font-size:30px;
+  font-weight:900;
+  line-height:1;
+  margin-bottom:12px;
+}
+.catalog-product-meta{
+  color:#64748B;
+  font-size:13px;
+  line-height:1.7;
+  min-height:46px;
+}
+.catalog-status{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#047857;
+  font-size:12px;
+  font-weight:800;
+  margin:14px 0;
+}
+.catalog-status:before{
+  content:"";
+  width:8px;height:8px;border-radius:50%;
+  background:#22C55E;
+}
+.catalog-detail-btn{
+  width:100%;
+  border:1px solid #0F766E;
+  background:#fff;
+  color:#0F766E;
+  border-radius:0;
+  padding:11px 12px;
+  font-size:12px;
+  font-weight:900;
+  cursor:pointer;
+}
+.catalog-detail-btn:hover{
+  background:#0F766E;
+  color:#fff;
+}
+@media (max-width:1000px){
+  .catalog-search-grid{grid-template-columns:1fr}
+  .catalog-results-layout{grid-template-columns:1fr}
+  .catalog-quick{grid-template-columns:1fr}
+  .catalog-quick-item{border-right:none;border-bottom:1px solid var(--line)}
+}
+
 </style>
 </head>
 <body>
@@ -1513,24 +1741,103 @@ function renderPages(){
     if(p.slug === 'catalog'){
       html += `
 <div class="page" id="page-catalog">
-  <section class="page-top"><div class="container"><div class="eyebrow">${esc(p.eyebrow)}</div><div class="page-title">${esc(p.title)}</div><div class="page-sub">${esc(p.subtitle)}</div></div></section>
-  <section class="section">
+  <section class="catalog-hero">
     <div class="container">
-      <div class="filters">
-        <div class="search-wrap">
-          <span class="search-icon">🔍</span>
-          <input class="search-input" id="search-input" placeholder="Rechercher..." oninput="filterProducts()">
+      <div class="eyebrow" style="color:var(--brand)">Catalogue MISFAT</div>
+      <div class="catalog-title">Rechercher <span>un produit</span></div>
+      <div class="catalog-sub">Trouvez le filtre adapté à votre véhicule en sélectionnant la marque, le modèle et l'application.</div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top:0">
+    <div class="container">
+
+      <div class="catalog-search-card">
+        <div class="catalog-search-head">⚙️ Recherche avancée</div>
+
+        <div class="catalog-search-grid">
+          <div class="catalog-field">
+            <label>Saisir le nom de la marque</label>
+            <select class="form-input" id="filter-brand" onchange="syncCatalogueSelects()">
+              <option value="">Choisir une marque</option>
+              <option value="Land Rover">Land Rover</option>
+            </select>
+          </div>
+
+          <div class="catalog-field">
+            <label>Saisir le modèle / la série</label>
+            <select class="form-input" id="filter-model" onchange="syncCatalogueSelects()">
+              <option value="">Choisir un modèle</option>
+              <option value="Range Rover Sport II (L494)">Range Rover Sport II (L494)</option>
+            </select>
+          </div>
+
+          <div class="catalog-field">
+            <label>Préciser le véhicule / l'application</label>
+            <select class="form-input" id="filter-engine" onchange="syncCatalogueSelects()">
+              <option value="">Choisir une application</option>
+              <option value="3.0 SDV6 (LW, L494)">3.0 SDV6 (LW, L494)</option>
+            </select>
+          </div>
+
+          <div class="catalog-field">
+            <label>Nom du produit</label>
+            <input class="form-input" id="filter-name" placeholder="Ex: Filtre à huile" oninput="filterProducts()">
+          </div>
+
+          <div class="catalog-field">
+            <label>Référence correspondante</label>
+            <input class="form-input" id="search-input" placeholder="Ex: HU 826 x" oninput="filterProducts()">
+          </div>
+
+          <div class="catalog-field">
+            <label>VIN</label>
+            <input class="form-input" id="filter-vin" placeholder="Ex: VF1RFA00X12345678" oninput="filterProducts()">
+          </div>
         </div>
-        <div class="cat-filters">
-          <button class="cat-btn active" onclick="setCat('all',this)">Tous</button>
-          <button class="cat-btn" onclick="setCat('oil',this)">Huile</button>
-          <button class="cat-btn" onclick="setCat('air',this)">Air</button>
-          <button class="cat-btn" onclick="setCat('fuel',this)">Carburant</button>
-          <button class="cat-btn" onclick="setCat('cabin',this)">Habitacle</button>
+
+        <div class="catalog-actions">
+          <button class="btn primary" onclick="filterProducts()">🔍 Recherche</button>
+          <button class="btn white" onclick="resetCatalogueSearch()">Réinitialiser</button>
         </div>
       </div>
-      <div id="results-count" style="margin-bottom:18px;color:#64748B;font-weight:700"></div>
-      <div class="grid-3" id="catalog-products"></div>
+
+      <div class="catalog-quick">
+        <div class="catalog-quick-item">
+          <div class="catalog-quick-icon">↗</div>
+          <div><div class="catalog-quick-title">Nouveaux produits</div><div class="catalog-quick-text">Découvrez nos dernières références</div></div>
+        </div>
+        <div class="catalog-quick-item">
+          <div class="catalog-quick-icon">⟳</div>
+          <div><div class="catalog-quick-title">Produits récemment obsolètes</div><div class="catalog-quick-text">Vérifiez les mises à jour disponibles</div></div>
+        </div>
+        <div class="catalog-quick-item">
+          <div class="catalog-quick-icon">i</div>
+          <div><div class="catalog-quick-title">À propos du catalogue</div><div class="catalog-quick-text">Informations et guide d'utilisation</div></div>
+        </div>
+      </div>
+
+      <div class="catalog-selected" id="catalog-selected"></div>
+
+      <div class="catalog-results-layout" style="margin-top:28px">
+        <aside class="catalog-side">
+          <div class="catalog-side-title">Filtrer les résultats</div>
+          <label class="catalog-check"><input type="radio" name="cat" checked onclick="setCat('all',this)"> Tout</label>
+          <label class="catalog-check"><input type="radio" name="cat" onclick="setCat('air',this)"> Filtre à air</label>
+          <label class="catalog-check"><input type="radio" name="cat" onclick="setCat('oil',this)"> Filtre à huile</label>
+          <label class="catalog-check"><input type="radio" name="cat" onclick="setCat('fuel',this)"> Filtre à carburant</label>
+          <label class="catalog-check"><input type="radio" name="cat" onclick="setCat('cabin',this)"> Filtre habitacle</label>
+        </aside>
+
+        <div>
+          <div class="catalog-results-head">
+            <div class="catalog-result-title">Votre recherche</div>
+            <div id="results-count" style="color:#64748B;font-weight:800"></div>
+          </div>
+          <div class="grid-3" id="catalog-products"></div>
+        </div>
+      </div>
+
     </div>
   </section>
 </div>`;
@@ -1700,11 +2007,71 @@ function renderPages(){
   wrap.innerHTML = html;
 }
 
+
+/* ── CATALOGUE DEMO DATA ─────────────────────────────── */
+const landRoverCatalogueProducts = [
+  {id:9001,name:'Filtre à air',ref:'C 35 126',price:0,category:'air',stock:24,img:'▱',brand:'Land Rover',model:'Range Rover Sport II (L494)',engine:'3.0 SDV6 (LW, L494)',dimensions:'350 x 126 mm',specs:'Filtre à air principal',description:'Filtre à air pour Land Rover Range Rover Sport II 3.0 SDV6.',rating:5},
+  {id:9002,name:'Filtre à huile',ref:'HU 826 x',price:0,category:'oil',stock:18,img:'◉',brand:'Land Rover',model:'Range Rover Sport II (L494)',engine:'3.0 SDV6 (LW, L494)',dimensions:'Ø 76 x 85 mm',specs:'Filtre à huile moteur',description:'Filtre à huile pour moteur 3.0 SDV6.',rating:5},
+  {id:9003,name:'Filtre à carburant',ref:'WK 8078',price:0,category:'fuel',stock:15,img:'▥',brand:'Land Rover',model:'Range Rover Sport II (L494)',engine:'3.0 SDV6 (LW, L494)',dimensions:'Ø 55 x 164 mm',specs:'Filtre à carburant diesel',description:'Filtre à carburant pour système diesel 3.0 SDV6.',rating:5},
+  {id:9004,name:'Filtre à air de cabine',ref:'CU 1919/3',price:0,category:'cabin',stock:20,img:'▤',brand:'Land Rover',model:'Range Rover Sport II (L494)',engine:'3.0 SDV6 (LW, L494)',dimensions:'Particules',specs:'Filtre habitacle particules',description:'Filtre habitacle pour Range Rover Sport II.',rating:5},
+  {id:9005,name:'Filtre à air de cabine',ref:'CU 1919',price:0,category:'cabin',stock:20,img:'▤',brand:'Land Rover',model:'Range Rover Sport II (L494)',engine:'3.0 SDV6 (LW, L494)',dimensions:'Particules',specs:'Filtre habitacle standard',description:'Filtre habitacle standard pour Range Rover Sport II.',rating:5},
+  {id:9006,name:'Filtre à air de cabine',ref:'CUK 1919',price:0,category:'cabin',stock:20,img:'▤',brand:'Land Rover',model:'Range Rover Sport II (L494)',engine:'3.0 SDV6 (LW, L494)',dimensions:'Charbon actif',specs:'Filtre habitacle charbon actif',description:'Filtre habitacle charbon actif pour Range Rover Sport II.',rating:5}
+];
+
+function ensureCatalogueProducts(){
+  if(!site.products) site.products = [];
+  landRoverCatalogueProducts.forEach(prod => {
+    if(!site.products.some(p => String(p.ref).toLowerCase() === String(prod.ref).toLowerCase())){
+      site.products.push(prod);
+    }
+  });
+}
+
+function syncCatalogueSelects(){
+  const brand = document.getElementById('filter-brand')?.value;
+  const model = document.getElementById('filter-model');
+  const engine = document.getElementById('filter-engine');
+
+  if(brand === 'Land Rover'){
+    if(model && !model.value) model.value = 'Range Rover Sport II (L494)';
+    if(engine && !engine.value) engine.value = '3.0 SDV6 (LW, L494)';
+  }
+
+  filterProducts();
+}
+
+function resetCatalogueSearch(){
+  ['filter-brand','filter-model','filter-engine','filter-name','search-input','filter-vin'].forEach(id => {
+    const el = document.getElementById(id);
+    if(el) el.value = '';
+  });
+  currentCat = 'all';
+  document.querySelectorAll('input[name="cat"]').forEach((x,i)=>x.checked = i===0);
+  filterProducts();
+}
+
 /* ── PRODUCT RENDERING ───────────────────────────────── */
 function catLabel(cat){ return {oil:'Huile',air:'Air',fuel:'Carburant',cabin:'Habitacle'}[cat] || cat; }
 function stars(r){ let s=''; for(let i=1;i<=5;i++) s += i<=Math.round(r)?'★':'☆'; return s; }
 
 function productCardHTML(p){
+  const isCatalogue = Boolean(p.model || p.engine || p.dimensions);
+  if(isCatalogue){
+    return `<div class="catalog-product-card" onclick="viewProduct(${p.id})">
+      <div class="catalog-product-img">${esc(p.img || '▤')}</div>
+      <div class="catalog-product-body">
+        <div class="catalog-product-type">${catLabel(p.category)}</div>
+        <div class="catalog-product-ref">${esc(p.ref)}</div>
+        <div class="catalog-product-meta">
+          ${esc(p.dimensions || p.specs || '')}<br>
+          🚙 ${esc(p.brand || '')} ${p.model ? '· ' + esc(p.model) : ''}
+        </div>
+        <div class="catalog-status">Disponible</div>
+        <button class="catalog-detail-btn" onclick="event.stopPropagation();viewProduct(${p.id})">Voir les détails</button>
+      </div>
+    </div>`;
+  }
+
   return `<div class="card solution" onclick="viewProduct(${p.id})">
     <div class="solution-top"><div class="solution-icon">${esc(p.img)}</div><div class="solution-badge">${catLabel(p.category)}</div></div>
     <div class="solution-body">
@@ -1723,19 +2090,46 @@ function productCardHTML(p){
 function setCat(cat, btn){
   currentCat = cat;
   document.querySelectorAll('.cat-btn').forEach(x => x.classList.remove('active'));
-  if(btn) btn.classList.add('active');
+  if(btn && btn.classList && btn.classList.contains('cat-btn')) btn.classList.add('active');
   filterProducts();
 }
 
 function filterProducts(){
   const q = (document.getElementById('search-input')?.value || '').toLowerCase();
+  const nameQ = (document.getElementById('filter-name')?.value || '').toLowerCase();
+  const brand  = document.getElementById('filter-brand')?.value || '';
+  const model  = document.getElementById('filter-model')?.value || '';
+  const engine = document.getElementById('filter-engine')?.value || '';
+  const vin = (document.getElementById('filter-vin')?.value || '').toLowerCase();
+
   const filtered = (site.products||[]).filter(p => {
-    const okSearch = (p.name+p.ref+p.brand).toLowerCase().includes(q);
+    const textMatch =
+      (p.name+p.ref+p.brand+(p.model||'')+(p.engine||'')+(p.dimensions||'')).toLowerCase().includes(q);
+
+    const nameMatch = !nameQ || String(p.name||'').toLowerCase().includes(nameQ);
+    const brandMatch  = !brand  || p.brand === brand;
+    const modelMatch  = !model  || p.model === model;
+    const engineMatch = !engine || p.engine === engine;
+    const vinMatch = !vin || (brandMatch && modelMatch && engineMatch);
     const okCat = currentCat==='all' || p.category===currentCat;
-    return okSearch && okCat;
+
+    return textMatch && nameMatch && brandMatch && modelMatch && engineMatch && vinMatch && okCat;
   });
+
   const res = document.getElementById('results-count');
-  if(res) res.textContent = filtered.length + ' produit(s) trouvé(s)';
+  if(res) res.textContent = filtered.length + ' résultat(s) trouvé(s)';
+
+  const selected = document.getElementById('catalog-selected');
+  if(selected){
+    if(brand || model || engine){
+      selected.classList.add('show');
+      selected.innerHTML = `<strong>Votre sélection :</strong> ${esc(brand || 'Marque')} · ${esc(model || 'Modèle')} · ${esc(engine || 'Application')}`;
+    }else{
+      selected.classList.remove('show');
+      selected.innerHTML = '';
+    }
+  }
+
   const grid = document.getElementById('catalog-products');
   if(grid) grid.innerHTML = filtered.map(productCardHTML).join('');
 }
@@ -2133,6 +2527,7 @@ async function resetSite(){
 /* ── INIT ─────────────────────────────────────────────── */
 async function initUI(){
   site = await apiGet();
+  ensureCatalogueProducts();
   applyBrandVars();
   renderLogo();
   renderHero();
