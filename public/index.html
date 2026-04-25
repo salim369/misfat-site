@@ -704,6 +704,29 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
   .catalog-quick-item{border-right:none;border-bottom:1px solid var(--line)}
 }
 
+/* CATALOGUE UI V2 LIKE PROFESSIONAL MOCKUP */
+.catalog-hero{
+  background:linear-gradient(90deg,rgba(8,20,36,.94),rgba(10,31,55,.82)),linear-gradient(135deg,#061827,#12365a);
+  color:#fff;padding:56px 0 118px;position:relative;overflow:hidden;
+}
+.catalog-hero:before{content:"";position:absolute;right:8%;top:18%;width:360px;height:260px;background:repeating-linear-gradient(90deg,rgba(255,255,255,.20) 0 5px,rgba(255,255,255,.06) 5px 10px),linear-gradient(135deg,rgba(255,255,255,.18),rgba(255,255,255,.03));opacity:.45;border-radius:30px;transform:rotate(-8deg)}
+.catalog-title{font-size:clamp(40px,4.6vw,70px)}
+.catalog-search-card{border-radius:18px;padding:26px 28px}
+.catalog-search-grid{grid-template-columns:repeat(3,1fr)}
+.catalog-products-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.catalog-product-card{border-radius:16px;border:1px solid #E2E8F0;background:#fff;min-height:360px}
+.catalog-product-img{height:175px;background:linear-gradient(180deg,#fff,#F8FAFC);font-size:0;padding:18px}
+.filter-visual{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.filter-svg{max-width:150px;width:82%;height:auto;filter:drop-shadow(0 14px 18px rgba(15,23,42,.12))}
+.catalog-product-type{color:#0F3F78}.catalog-product-ref{color:#0F3F78;font-size:22px;letter-spacing:-.02em}
+.catalog-detail-btn{border-radius:10px;border-color:#0F5FA8;color:#0F5FA8}.catalog-detail-btn:hover{background:#0F5FA8;color:#fff}
+.catalog-features{margin-top:34px;background:rgba(255,255,255,.88);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);border-radius:20px;overflow:hidden;box-shadow:0 16px 36px rgba(2,6,23,.07)}
+.catalog-feature{padding:18px 20px;display:flex;gap:12px;align-items:center;border-right:1px solid var(--line)}.catalog-feature:last-child{border-right:none}
+.catalog-feature-icon{width:44px;height:44px;border-radius:50%;background:#EFF6FF;color:#0F5FA8;display:flex;align-items:center;justify-content:center;font-weight:900}
+.catalog-feature-title{font-size:13px;font-weight:900;color:#0F3F78}.catalog-feature-text{font-size:12px;color:#64748B;margin-top:2px}
+@media (max-width:1180px){.catalog-products-grid{grid-template-columns:repeat(3,1fr)}}
+@media (max-width:860px){.catalog-products-grid,.catalog-features{grid-template-columns:1fr 1fr}.catalog-search-grid{grid-template-columns:1fr}}
+@media (max-width:540px){.catalog-products-grid,.catalog-features{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -830,7 +853,7 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
           <h1 id="hero-title"></h1>
           <p id="hero-text"></p>
           <div class="hero-actions">
-            <button class="btn primary" onclick="showPage('catalogue')">Explorer notre catalogue →</button>
+            <button class="btn primary" onclick="showPage('catalog')">Explorer notre catalogue →</button>
             <button class="btn white" onclick="showPage('devis')">Demander un devis</button>
           </div>
           <div class="hero-certs">
@@ -1926,8 +1949,15 @@ function renderPages(){
             <div class="catalog-result-title">Votre recherche</div>
             <div id="results-count" style="color:#64748B;font-weight:800"></div>
           </div>
-          <div class="grid-3" id="catalog-products"></div>
+          <div class="catalog-products-grid" id="catalog-products"></div>
         </div>
+      </div>
+
+      <div class="catalog-features">
+        <div class="catalog-feature"><div class="catalog-feature-icon">✓</div><div><div class="catalog-feature-title">Qualité premium</div><div class="catalog-feature-text">Normes internationales</div></div></div>
+        <div class="catalog-feature"><div class="catalog-feature-icon">🚙</div><div><div class="catalog-feature-title">Large compatibilité</div><div class="catalog-feature-text">Véhicules européens & asiatiques</div></div></div>
+        <div class="catalog-feature"><div class="catalog-feature-icon">↗</div><div><div class="catalog-feature-title">Livraison rapide</div><div class="catalog-feature-text">Tunisie & export</div></div></div>
+        <div class="catalog-feature"><div class="catalog-feature-icon">⚙</div><div><div class="catalog-feature-title">Support technique</div><div class="catalog-feature-text">Notre équipe à votre écoute</div></div></div>
       </div>
 
     </div>
@@ -2146,11 +2176,21 @@ function resetCatalogueSearch(){
 function catLabel(cat){ return {oil:'Huile',air:'Air',fuel:'Carburant',cabin:'Habitacle'}[cat] || cat; }
 function stars(r){ let s=''; for(let i=1;i<=5;i++) s += i<=Math.round(r)?'★':'☆'; return s; }
 
+function filterVisualHTML(p){
+  const cat = p.category || 'air';
+  const air = `<svg class="filter-svg" viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg"><path d="M30 70 L170 30 L232 70 L92 116 Z" fill="#fbbf24" stroke="#d97706" stroke-width="4"/><path d="M50 74 L174 42 L214 68 L90 102 Z" fill="#fde68a" opacity=".9"/><path d="M70 68 L110 56M90 72 L130 60M110 76 L150 64M130 80 L170 68M150 84 L190 72" stroke="#f59e0b" stroke-width="3"/></svg>`;
+  const oil = `<svg class="filter-svg" viewBox="0 0 220 190" xmlns="http://www.w3.org/2000/svg"><ellipse cx="110" cy="42" rx="55" ry="18" fill="#0f172a"/><rect x="55" y="42" width="110" height="96" fill="#1f2937"/><ellipse cx="110" cy="138" rx="55" ry="18" fill="#334155"/><ellipse cx="110" cy="43" rx="32" ry="9" fill="#64748b"/><text x="110" y="92" font-size="18" text-anchor="middle" fill="#fff" font-family="Arial" font-weight="700">MISFAT</text></svg>`;
+  const fuel = `<svg class="filter-svg" viewBox="0 0 220 190" xmlns="http://www.w3.org/2000/svg"><path d="M90 20 h40 v22 h18 v98 h-76 v-98 h18z" fill="#9ca3af" stroke="#475569" stroke-width="3"/><path d="M75 55 h70M75 125 h70" stroke="#e5e7eb" stroke-width="5"/><circle cx="110" cy="72" r="18" fill="#e5e7eb" stroke="#6b7280"/></svg>`;
+  const cabin = `<svg class="filter-svg" viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg"><path d="M32 54 L210 34 L232 96 L52 122 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="4"/><path d="M55 58 L72 113M75 56 L92 111M95 54 L112 109M115 52 L132 107M135 50 L152 105M155 48 L172 103M175 46 L192 101" stroke="#cbd5e1" stroke-width="3"/></svg>`;
+  const map = {air, oil, fuel, cabin};
+  return `<div class="filter-visual">${map[cat] || air}</div>`;
+}
+
 function productCardHTML(p){
   const isCatalogue = Boolean(p.model || p.engine || p.dimensions);
   if(isCatalogue){
     return `<div class="catalog-product-card" onclick="viewProduct(${p.id})">
-      <div class="catalog-product-img">${esc(p.img || '▤')}</div>
+      <div class="catalog-product-img">${filterVisualHTML(p)}</div>
       <div class="catalog-product-body">
         <div class="catalog-product-type">${catLabel(p.category)}</div>
         <div class="catalog-product-ref">${esc(p.ref)}</div>
@@ -2314,6 +2354,7 @@ function markActiveNav(slug){
 
 /* ── SHOW PAGE ────────────────────────────────────────── */
 function showPage(slug){
+  if(slug==='catalogue') slug = 'catalog';
   if(slug==='admin' && !currentUser){ showPage('login'); return; }
 
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
