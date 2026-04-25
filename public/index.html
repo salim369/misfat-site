@@ -727,6 +727,15 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 @media (max-width:1180px){.catalog-products-grid{grid-template-columns:repeat(3,1fr)}}
 @media (max-width:860px){.catalog-products-grid,.catalog-features{grid-template-columns:1fr 1fr}.catalog-search-grid{grid-template-columns:1fr}}
 @media (max-width:540px){.catalog-products-grid,.catalog-features{grid-template-columns:1fr}}
+
+/* ─── PRODUCT IMAGE ENHANCEMENTS ────────────────────────── */
+.filter-visual img{
+  transition: transform .3s ease, filter .3s ease;
+}
+.catalog-product-card:hover .filter-visual img{
+  transform: scale(1.04);
+  filter: drop-shadow(0 10px 20px rgba(15,23,42,.18));
+}
 </style>
 </head>
 <body>
@@ -885,38 +894,38 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
     <div class="eyebrow">MISFAT Filtration</div>
     <div class="h2">
       Misfat Filtration pour une mobilité plus propre : 
-      l’excellence de la filtration depuis 1979
+      l'excellence de la filtration depuis 1979
     </div>
   </div>
 
   <!-- RIGHT -->
   <div class="intro-text">
     <p>
-      Il existe des industries visibles, et d’autres qui rendent tout le reste
+      Il existe des industries visibles, et d'autres qui rendent tout le reste
       possible. La filtration appartient à cette seconde catégorie : discrète mais
       essentielle, elle protège les systèmes et soutient la performance du
       monde moderne.
     </p>
 
     <p>
-      C’est dans cette logique que Misfat Filtration construit son histoire depuis
-      1979. Née en Tunisie au sein d’une entreprise familiale, elle s’est
-      développée autour d’une conviction forte : la qualité se prouve dans le
+      C'est dans cette logique que Misfat Filtration construit son histoire depuis
+      1979. Née en Tunisie au sein d'une entreprise familiale, elle s'est
+      développée autour d'une conviction forte : la qualité se prouve dans le
       temps, elle ne se déclare pas.
     </p>
 
     <p>
       Au fil des décennies, Misfat a transformé un savoir-faire local en
       expertise industrielle reconnue dans les secteurs automobile et
-      industriel. Cette évolution s’est faite de manière progressive, en phase
+      industriel. Cette évolution s'est faite de manière progressive, en phase
       avec les exigences de ses marchés.
     </p>
 
     <p>
-      Aujourd’hui, l’entreprise s’inscrit dans une dynamique de performance,
-      de fiabilité et d’amélioration continue, avec une ambition constante :
+      Aujourd'hui, l'entreprise s'inscrit dans une dynamique de performance,
+      de fiabilité et d'amélioration continue, avec une ambition constante :
       contribuer à des systèmes plus efficaces et à une industrie plus durable,
-      sans jamais perdre de vue l’essentiel : la confiance de ceux qui utilisent
+      sans jamais perdre de vue l'essentiel : la confiance de ceux qui utilisent
       nos produits au quotidien.
     </p>
   </div>
@@ -1744,36 +1753,36 @@ const staticPages = [
     subtitle:'Un espace dédié à la consultation de notre catalogue complet, structuré pour une lecture plus claire et plus professionnelle.',
     intro:'Cette page est réservée au catalogue global MISFAT. Elle pourra accueillir par la suite les familles produits, la recherche, les filtres par catégorie, les références et les documents techniques.',
     blocks:[
-      {title:'Vue d’ensemble', text:'Une page catalogue dédiée permet de séparer clairement la présentation corporate des solutions et la consultation détaillée des produits.'},
+      {title:'Vue d\'ensemble', text:'Une page catalogue dédiée permet de séparer clairement la présentation corporate des solutions et la consultation détaillée des produits.'},
       {title:'Organisation par familles', text:'Le catalogue pourra être structuré par type de filtre, référence, application, véhicule, secteur ou compatibilité technique.'},
-      {title:'Base pour l’évolution future', text:'Cette page est prête à recevoir le vrai catalogue MISFAT dans une logique plus professionnelle, plus lisible et plus évolutive.'}
+      {title:'Base pour l\'évolution future', text:'Cette page est prête à recevoir le vrai catalogue MISFAT dans une logique plus professionnelle, plus lisible et plus évolutive.'}
     ]
   },
 
   /* ── Certifications ── */
   {
     slug:'iatf-16949', eyebrow:'Certification', title:'IATF 16949',
-    subtitle:'Une certification clé pour l’industrie automobile, associée à l’exigence qualité, à la régularité et à la conformité des processus.',
+    subtitle:'Une certification clé pour l\'industrie automobile, associée à l\'exigence qualité, à la régularité et à la conformité des processus.',
     intro:'La norme IATF 16949 renforce la crédibilité industrielle et la confiance des partenaires du secteur automobile. Cette page pourra accueillir le document, les détails et la portée de la certification.',
     blocks:[
-      {title:'Référence automobile', text:'IATF 16949 est l’une des normes les plus reconnues dans les chaînes de valeur automobiles et industrielles exigeantes.'},
-      {title:'Qualité process', text:'Cette certification soutient une logique de maîtrise, d’amélioration continue et de constance dans les opérations.'},
+      {title:'Référence automobile', text:'IATF 16949 est l\'une des normes les plus reconnues dans les chaînes de valeur automobiles et industrielles exigeantes.'},
+      {title:'Qualité process', text:'Cette certification soutient une logique de maîtrise, d\'amélioration continue et de constance dans les opérations.'},
       {title:'Valorisation institutionnelle', text:'La page permet de présenter la certification dans un cadre plus corporate et plus lisible.'}
     ]
   },
   {
     slug:'iso-9001', eyebrow:'Certification', title:'ISO 9001',
-    subtitle:'Une référence internationale en management de la qualité, tournée vers la satisfaction client et l’amélioration continue.',
-    intro:'La norme ISO 9001 constitue un socle fort pour démontrer l’organisation, la qualité et la discipline opérationnelle de l’entreprise.',
+    subtitle:'Une référence internationale en management de la qualité, tournée vers la satisfaction client et l\'amélioration continue.',
+    intro:'La norme ISO 9001 constitue un socle fort pour démontrer l\'organisation, la qualité et la discipline opérationnelle de l\'entreprise.',
     blocks:[
-      {title:'Management qualité', text:'ISO 9001 structure les processus autour de la qualité, de la cohérence et de l’efficacité.'},
-      {title:'Confiance client', text:'Elle renforce la lisibilité de l’organisation pour les clients, partenaires et parties prenantes.'},
+      {title:'Management qualité', text:'ISO 9001 structure les processus autour de la qualité, de la cohérence et de l\'efficacité.'},
+      {title:'Confiance client', text:'Elle renforce la lisibilité de l\'organisation pour les clients, partenaires et parties prenantes.'},
       {title:'Base institutionnelle', text:'Cette page est prévue pour accueillir la présentation détaillée et les éléments justificatifs liés à la certification.'}
     ]
   },
   {
     slug:'iso-14001', eyebrow:'Certification', title:'ISO 14001',
-    subtitle:'Une norme dédiée au management environnemental et à l’amélioration des pratiques liées à l’impact écologique.',
+    subtitle:'Une norme dédiée au management environnemental et à l\'amélioration des pratiques liées à l\'impact écologique.',
     intro:'La norme ISO 14001 met en avant une démarche environnementale structurée, cohérente et suivie dans la durée.',
     blocks:[
       {title:'Maîtrise environnementale', text:'ISO 14001 montre une volonté de structurer les actions et les processus autour des enjeux environnementaux.'},
@@ -1783,7 +1792,7 @@ const staticPages = [
   },
   {
     slug:'psa-platinum-supplier', eyebrow:'Reconnaissance', title:'PSA Platinum Supplier',
-    subtitle:'Une reconnaissance valorisante qui traduit un haut niveau d’exigence, de fiabilité et de relation fournisseur.',
+    subtitle:'Une reconnaissance valorisante qui traduit un haut niveau d\'exigence, de fiabilité et de relation fournisseur.',
     intro:'La distinction PSA Platinum Supplier renforce la perception premium, industrielle et professionnelle du positionnement MISFAT.',
     blocks:[
       {title:'Reconnaissance partenaire', text:'Cette distinction met en lumière la qualité de la collaboration, la fiabilité et la performance fournisseur.'},
@@ -1798,7 +1807,7 @@ const staticPages = [
     blocks:[
       {title:'Exigence fournisseur', text:'Ford Q1 reflète un haut niveau de discipline, de qualité et de régularité dans les opérations.'},
       {title:'Crédibilité industrielle', text:'Cette reconnaissance renforce la stature professionnelle et institutionnelle de MISFAT.'},
-      {title:'Page dédiée', text:'Elle permettra d’intégrer plus tard le contenu officiel, les visuels et les documents liés à cette distinction.'}
+      {title:'Page dédiée', text:'Elle permettra d\'intégrer plus tard le contenu officiel, les visuels et les documents liés à cette distinction.'}
     ]
   }
 
@@ -2176,14 +2185,37 @@ function resetCatalogueSearch(){
 function catLabel(cat){ return {oil:'Huile',air:'Air',fuel:'Carburant',cabin:'Habitacle'}[cat] || cat; }
 function stars(r){ let s=''; for(let i=1;i<=5;i++) s += i<=Math.round(r)?'★':'☆'; return s; }
 
+/* ════════════════════════════════════════════════════════════════════
+   filterVisualHTML — UPDATED: real product photos + SVG fallbacks
+   ════════════════════════════════════════════════════════════════════ */
 function filterVisualHTML(p){
   const cat = p.category || 'air';
-  const air = `<svg class="filter-svg" viewBox="0 0 260 150" xmlns="http://www.w3.org/2000/svg"><path d="M30 70 L170 30 L232 70 L92 116 Z" fill="#fbbf24" stroke="#d97706" stroke-width="4"/><path d="M50 74 L174 42 L214 68 L90 102 Z" fill="#fde68a" opacity=".9"/><path d="M70 68 L110 56M90 72 L130 60M110 76 L150 64M130 80 L170 68M150 84 L190 72" stroke="#f59e0b" stroke-width="3"/></svg>`;
-  const oil = `<svg class="filter-svg" viewBox="0 0 220 190" xmlns="http://www.w3.org/2000/svg"><ellipse cx="110" cy="42" rx="55" ry="18" fill="#0f172a"/><rect x="55" y="42" width="110" height="96" fill="#1f2937"/><ellipse cx="110" cy="138" rx="55" ry="18" fill="#334155"/><ellipse cx="110" cy="43" rx="32" ry="9" fill="#64748b"/><text x="110" y="92" font-size="18" text-anchor="middle" fill="#fff" font-family="Arial" font-weight="700">MISFAT</text></svg>`;
-  const fuel = `<svg class="filter-svg" viewBox="0 0 220 190" xmlns="http://www.w3.org/2000/svg"><path d="M90 20 h40 v22 h18 v98 h-76 v-98 h18z" fill="#9ca3af" stroke="#475569" stroke-width="3"/><path d="M75 55 h70M75 125 h70" stroke="#e5e7eb" stroke-width="5"/><circle cx="110" cy="72" r="18" fill="#e5e7eb" stroke="#6b7280"/></svg>`;
-  const cabin = `<svg class="filter-svg" viewBox="0 0 260 160" xmlns="http://www.w3.org/2000/svg"><path d="M32 54 L210 34 L232 96 L52 122 Z" fill="#e2e8f0" stroke="#94a3b8" stroke-width="4"/><path d="M55 58 L72 113M75 56 L92 111M95 54 L112 109M115 52 L132 107M135 50 L152 105M155 48 L172 103M175 46 L192 101" stroke="#cbd5e1" stroke-width="3"/></svg>`;
-  const map = {air, oil, fuel, cabin};
-  return `<div class="filter-visual">${map[cat] || air}</div>`;
+
+  /* Fallback SVGs — clean professional line-art, always renders if image fails */
+  const fallbacks = {
+    air: '<svg viewBox="0 0 220 150" xmlns="http://www.w3.org/2000/svg" style="width:130px;height:auto"><rect x="16" y="28" width="188" height="94" rx="10" fill="#FEF3C7" stroke="#F59E0B" stroke-width="3"/><rect x="26" y="38" width="168" height="74" rx="7" fill="#FDE68A"/><line x1="44" y1="40" x2="44" y2="110" stroke="#F59E0B" stroke-width="2.5"/><line x1="63" y1="40" x2="63" y2="110" stroke="#F59E0B" stroke-width="2.5"/><line x1="82" y1="40" x2="82" y2="110" stroke="#F59E0B" stroke-width="2.5"/><line x1="101" y1="40" x2="101" y2="110" stroke="#F59E0B" stroke-width="2.5"/><line x1="120" y1="40" x2="120" y2="110" stroke="#F59E0B" stroke-width="2.5"/><line x1="139" y1="40" x2="139" y2="110" stroke="#F59E0B" stroke-width="2.5"/><line x1="158" y1="40" x2="158" y2="110" stroke="#F59E0B" stroke-width="2.5"/><line x1="177" y1="40" x2="177" y2="110" stroke="#F59E0B" stroke-width="2.5"/><text x="110" y="138" font-size="11" text-anchor="middle" fill="#92400E" font-family="Arial,sans-serif" font-weight="700" letter-spacing="1.5">AIR FILTER</text></svg>',
+    oil: '<svg viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg" style="width:70px;height:auto"><ellipse cx="70" cy="32" rx="42" ry="13" fill="#1E293B"/><rect x="28" y="32" width="84" height="116" fill="#334155"/><ellipse cx="70" cy="148" rx="42" ry="13" fill="#475569"/><ellipse cx="70" cy="33" rx="24" ry="7" fill="#64748B"/><rect x="48" y="60" width="44" height="3" rx="1.5" fill="#94A3B8" opacity=".5"/><rect x="48" y="70" width="44" height="3" rx="1.5" fill="#94A3B8" opacity=".5"/><rect x="48" y="80" width="44" height="3" rx="1.5" fill="#94A3B8" opacity=".5"/><rect x="48" y="90" width="44" height="3" rx="1.5" fill="#94A3B8" opacity=".5"/><text x="70" y="118" font-size="8.5" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-weight="900" letter-spacing=".5">MISFAT</text><text x="70" y="178" font-size="10" text-anchor="middle" fill="#475569" font-family="Arial,sans-serif" font-weight="700" letter-spacing="1">OIL FILTER</text></svg>',
+    fuel: '<svg viewBox="0 0 140 200" xmlns="http://www.w3.org/2000/svg" style="width:70px;height:auto"><rect x="38" y="18" width="64" height="148" rx="12" fill="#E2E8F0" stroke="#94A3B8" stroke-width="2.5"/><rect x="54" y="10" width="32" height="16" rx="5" fill="#CBD5E1" stroke="#94A3B8" stroke-width="2"/><circle cx="70" cy="72" r="20" fill="#fff" stroke="#94A3B8" stroke-width="2"/><circle cx="70" cy="72" r="11" fill="#E2E8F0"/><line x1="42" y1="110" x2="98" y2="110" stroke="#94A3B8" stroke-width="2.5"/><line x1="42" y1="128" x2="98" y2="128" stroke="#94A3B8" stroke-width="2.5"/><text x="70" y="186" font-size="10" text-anchor="middle" fill="#475569" font-family="Arial,sans-serif" font-weight="700" letter-spacing="1">FUEL FILTER</text></svg>',
+    cabin: '<svg viewBox="0 0 220 160" xmlns="http://www.w3.org/2000/svg" style="width:130px;height:auto"><rect x="12" y="22" width="196" height="100" rx="10" fill="#EFF6FF" stroke="#93C5FD" stroke-width="2.5"/><rect x="22" y="32" width="176" height="80" rx="7" fill="#DBEAFE"/><line x1="40" y1="34" x2="40" y2="110" stroke="#93C5FD" stroke-width="2.2"/><line x1="60" y1="34" x2="60" y2="110" stroke="#93C5FD" stroke-width="2.2"/><line x1="80" y1="34" x2="80" y2="110" stroke="#93C5FD" stroke-width="2.2"/><line x1="100" y1="34" x2="100" y2="110" stroke="#93C5FD" stroke-width="2.2"/><line x1="120" y1="34" x2="120" y2="110" stroke="#93C5FD" stroke-width="2.2"/><line x1="140" y1="34" x2="140" y2="110" stroke="#93C5FD" stroke-width="2.2"/><line x1="160" y1="34" x2="160" y2="110" stroke="#93C5FD" stroke-width="2.2"/><line x1="180" y1="34" x2="180" y2="110" stroke="#93C5FD" stroke-width="2.2"/><text x="110" y="148" font-size="11" text-anchor="middle" fill="#1D4ED8" font-family="Arial,sans-serif" font-weight="700" letter-spacing="1.5">CABIN FILTER</text></svg>'
+  };
+
+  /* Real product photos — Wikimedia Commons (stable, open license, white/neutral bg) */
+  const realImgs = {
+    air:   'https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Air_filter_of_BMW_5_series.jpg/400px-Air_filter_of_BMW_5_series.jpg',
+    oil:   'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Oil_filter_side_view_2.jpg/300px-Oil_filter_side_view_2.jpg',
+    fuel:  'https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Fuel_filter.jpg/320px-Fuel_filter.jpg',
+    cabin: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Cabin_air_filter.jpg/400px-Cabin_air_filter.jpg'
+  };
+
+  const src = realImgs[cat] || realImgs.air;
+  const fb  = fallbacks[cat] || fallbacks.air;
+
+  return '<div class="filter-visual" style="display:flex;align-items:center;justify-content:center;width:100%;height:100%">'
+       + '<img src="' + src + '" alt="' + cat + ' filter" '
+       + 'style="max-width:150px;max-height:145px;width:auto;height:auto;object-fit:contain;display:block;border-radius:4px" '
+       + 'onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'" />'
+       + '<div style="display:none;align-items:center;justify-content:center">' + fb + '</div>'
+       + '</div>';
 }
 
 function productCardHTML(p){
