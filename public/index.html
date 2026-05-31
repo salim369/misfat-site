@@ -730,6 +730,173 @@ th{font-size:12px;text-transform:uppercase;letter-spacing:1.3px;color:#64748B;ba
 @media (max-width:860px){.catalog-products-grid,.catalog-features{grid-template-columns:1fr 1fr}.catalog-search-grid{grid-template-columns:1fr}}
 @media (max-width:540px){.catalog-products-grid,.catalog-features{grid-template-columns:1fr}}
 
+
+
+/* ─── FILTRE AIR PREMIUM PAGE ─────────────────────────── */
+.filtre-air-showcase{
+  display:grid;
+  grid-template-columns:1.02fr .98fr;
+  gap:42px;
+  align-items:center;
+}
+.filtre-air-copy{
+  max-width:680px;
+}
+.filtre-air-copy .intro-text{
+  font-size:20px;
+  line-height:1.9;
+  color:#334155;
+}
+.filtre-air-visual-card{
+  background:linear-gradient(180deg,#fff 0%,#F8FAFC 100%);
+  border:1px solid var(--line);
+  border-radius:32px;
+  box-shadow:0 22px 54px rgba(2,6,23,.10);
+  padding:28px;
+  overflow:hidden;
+}
+.filtre-air-main-img{
+  height:430px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:radial-gradient(circle at 50% 45%,#fff 0%,#F8FAFC 52%,#EEF2F7 100%);
+  border-radius:26px;
+  border:1px solid rgba(15,23,42,.06);
+}
+.filtre-air-main-img img{
+  max-width:100%;
+  max-height:390px;
+  object-fit:contain;
+  filter:drop-shadow(0 24px 34px rgba(15,23,42,.18));
+}
+.filtre-air-thumbs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:14px;
+}
+.filtre-air-thumb{
+  border:1px solid var(--line);
+  background:#fff;
+  border-radius:18px;
+  height:104px;
+  padding:8px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.22s ease;
+}
+.filtre-air-thumb:hover{
+  border-color:var(--brand);
+  transform:translateY(-2px);
+  box-shadow:0 12px 28px rgba(2,6,23,.10);
+}
+.filtre-air-thumb img{
+  max-width:100%;
+  max-height:86px;
+  object-fit:contain;
+}
+.filtre-air-tech{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:26px;
+}
+.tech-mini-card{
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:22px;
+  box-shadow:0 14px 30px rgba(2,6,23,.06);
+}
+.tech-mini-card h3{
+  font-size:20px;
+  line-height:1.15;
+  margin-bottom:12px;
+  color:#111827;
+}
+.tech-mini-card p{
+  color:#64748B;
+  font-size:14px;
+  line-height:1.75;
+}
+.tech-table-wrap{
+  margin-top:24px;
+  background:#fff;
+  border:1px solid var(--line);
+  border-radius:26px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.tech-table-head{
+  padding:22px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  border-bottom:1px solid var(--line);
+}
+.tech-table-head h3{
+  font-size:24px;
+  line-height:1.1;
+}
+.tech-table{
+  width:100%;
+  border-collapse:collapse;
+}
+.tech-table th,
+.tech-table td{
+  padding:15px 18px;
+  border-bottom:1px solid var(--line);
+  vertical-align:top;
+  font-size:14px;
+  line-height:1.5;
+}
+.tech-table th{
+  background:#FAFBFC;
+  color:#475569;
+  font-weight:900;
+}
+.tech-table td:first-child{
+  font-weight:900;
+  color:#111827;
+  width:22%;
+}
+.filtre-air-download{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  margin-top:24px;
+  background:linear-gradient(135deg,#111827,#1E293B);
+  color:#fff;
+  border-radius:26px;
+  padding:26px;
+}
+.filtre-air-download p{
+  color:#CBD5E1;
+  line-height:1.7;
+  margin-top:6px;
+}
+.filtre-air-download .btn.white{
+  background:#fff;
+  color:#111827;
+  border:none;
+}
+@media (max-width:980px){
+  .filtre-air-showcase{grid-template-columns:1fr}
+  .filtre-air-tech{grid-template-columns:1fr}
+  .filtre-air-main-img{height:330px}
+  .filtre-air-download{align-items:flex-start;flex-direction:column}
+}
+@media (max-width:560px){
+  .filtre-air-thumbs{grid-template-columns:repeat(2,1fr)}
+  .tech-table-wrap{overflow:auto}
+  .tech-table{min-width:760px}
+}
+
 /* ─── PRODUCT IMAGE ENHANCEMENTS ────────────────────────── */
 .filter-visual img{
   transition: transform .3s ease, filter .3s ease;
@@ -1817,6 +1984,81 @@ const staticPages = [
 
 /* ── RENDER STATIC PAGES ─────────────────────────────── */
 function renderStaticPageHTML(p){
+  if(p.slug === 'filtre-air'){
+    return `
+<div class="page" id="page-filtre-air">
+  <section class="page-top">
+    <div class="container">
+      <div class="eyebrow">${esc(p.eyebrow)}</div>
+      <div class="page-title">${esc(p.title)}</div>
+      <div class="page-sub">${esc(p.subtitle)}</div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="filtre-air-showcase">
+        <div class="filtre-air-copy">
+          <div class="eyebrow">Gamme MAF — Série Industrielle</div>
+          <div class="h2">Filtration industrielle haute performance.</div>
+          <div class="intro-text" style="margin-top:22px">${esc(p.intro)}</div>
+          <div class="content-cta">
+            <a class="btn primary" href="/misfat_fiche_technique_v2.pdf" download>Télécharger la fiche technique</a>
+            <button class="btn white" onclick="showPage('devis')">Demander un devis</button>
+          </div>
+        </div>
+
+        <div class="filtre-air-visual-card">
+          <div class="filtre-air-main-img">
+            <img id="filtre-air-main" src="/images/image_0.png" alt="Filtre à air industriel MAF">
+          </div>
+          <div class="filtre-air-thumbs">
+            <button class="filtre-air-thumb" onclick="setMainFiltreAirImage('/images/image_0.png')"><img src="/images/image_0.png" alt="Vue filtre air MAF 01"></button>
+            <button class="filtre-air-thumb" onclick="setMainFiltreAirImage('/images/image_1.png')"><img src="/images/image_1.png" alt="Vue filtre air MAF 02"></button>
+            <button class="filtre-air-thumb" onclick="setMainFiltreAirImage('/images/image_2.png')"><img src="/images/image_2.png" alt="Vue filtre air MAF 1600S"></button>
+            <button class="filtre-air-thumb" onclick="setMainFiltreAirImage('/images/image_3.png')"><img src="/images/image_3.png" alt="Vue filtre air industriel"></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="filtre-air-tech">
+        <div class="tech-mini-card"><h3>MAF-2800</h3><p>Filtre bi-étagé avec pré-séparateur multi-cyclone et filtre principal. Débit volumique : 4 à 12 m³/min.</p></div>
+        <div class="tech-mini-card"><h3>MAF-2800V</h3><p>Version bi-étagée pour machines agricoles, engins mobiles et compresseurs. Débit volumique : 3 à 14 m³/min.</p></div>
+        <div class="tech-mini-card"><h3>MAF-1600S</h3><p>Filtre mono-étagé pour compresseurs fixes et équipements stationnaires nécessitant une faible perte de charge.</p></div>
+      </div>
+
+      <div class="tech-table-wrap">
+        <div class="tech-table-head">
+          <div>
+            <div class="eyebrow" style="margin-bottom:8px">Fiche technique</div>
+            <h3>Caractéristiques techniques principales</h3>
+          </div>
+          <a class="btn primary" href="/misfat_fiche_technique_v2.pdf" download>Télécharger PDF</a>
+        </div>
+        <table class="tech-table">
+          <thead><tr><th>Caractéristique</th><th>MAF-2800</th><th>MAF-2800V</th><th>MAF-1600S</th></tr></thead>
+          <tbody>
+            <tr><td>Type de filtre</td><td>Bi-étagé : pré-séparateur + filtre principal</td><td>Bi-étagé : pré-séparateur + filtre principal</td><td>Mono-étagé : filtre principal uniquement</td></tr>
+            <tr><td>Application</td><td>Machines agricoles et engins de chantier</td><td>Machines agricoles, engins mobiles et compresseurs</td><td>Compresseurs fixes et équipements stationnaires</td></tr>
+            <tr><td>Débit volumique</td><td>4 à 12 m³/min</td><td>3 à 14 m³/min</td><td>4 à 10 m³/min</td></tr>
+            <tr><td>Efficacité finale</td><td>Supérieure à 99,99%</td><td>Supérieure à 99,99%</td><td>Supérieure à 99,97%</td></tr>
+            <tr><td>Installation</td><td>Montage vertical ou horizontal</td><td>Montage vertical ou horizontal</td><td>Montage vertical ou horizontal</td></tr>
+            <tr><td>Certification</td><td>ISO 5011</td><td>ISO 5011</td><td>ISO 5011</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="filtre-air-download">
+        <div>
+          <h3>Document technique MISFAT Filtration</h3>
+          <p>Fiche produit téléchargeable — Gamme MAF, série industrielle, réf. MAF-2800 / MAF-2800V / MAF-1600S.</p>
+        </div>
+        <a class="btn white" href="/misfat_fiche_technique_v2.pdf" download>Télécharger la fiche</a>
+      </div>
+    </div>
+  </section>
+</div>`;
+  }
   return `
 <div class="page" id="page-${p.slug}">
   <section class="page-top">
@@ -2181,6 +2423,11 @@ function resetCatalogueSearch(){
   currentCat = 'all';
   document.querySelectorAll('input[name="cat"]').forEach((x,i)=>x.checked = i===0);
   filterProducts();
+}
+
+function setMainFiltreAirImage(src){
+  const img = document.getElementById('filtre-air-main');
+  if(img) img.src = src;
 }
 
 /* ── PRODUCT RENDERING ───────────────────────────────── */
